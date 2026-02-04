@@ -1,3 +1,4 @@
+import Header from './components/Header'
 import './App.css'
 import ComponenteBoton from './components/ComponenteBoton'
 
@@ -5,6 +6,7 @@ function App() {
 
   return (
     <>
+      <Header></Header>
       <ComponenteBoton texto="Login" estilo="btn-login" />
       <ComponenteBoton texto="Registrar" estilo="btn-header" />
       <ComponenteBoton texto="Opciones" estilo="btn-opciones" />
