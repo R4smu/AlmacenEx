@@ -1,33 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import ComponenteBoton from './components/ComponenteBoton'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ComponenteBoton texto="Login" estilo="btn-login" />
+      <ComponenteBoton texto="Registrar" estilo="btn-header" />
+      <ComponenteBoton texto="Opciones" estilo="btn-opciones" />
+      <ComponenteBoton texto="Carne" estilo="btn-carne" />
+      <ComponenteBoton texto="Pescado" estilo="btn-pescado" />
+      <ComponenteBoton texto="Verdura" estilo="btn-verdura" />
+      <ComponenteBoton texto="Panaderia" estilo="btn-panaderia" />
+      <ComponenteBoton texto="Lacteos" estilo="btn-lacteos" />
+      <ComponenteBoton texto="Congelados" estilo="btn-congelados" />
+      <ComponenteBoton texto="Fruta" estilo="btn-fruta" />
     </>
   )
 }
