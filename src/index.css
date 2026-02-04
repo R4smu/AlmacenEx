@@ -1,2 +1,16 @@
 @import "tailwindcss";
 
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-primary:#E5E5E5;
+  --color-secondary:#009966;
+  --color-warning:#E7000B;
+  --color-terciario:#F0B100;
+  --color-carne:#FFA1AD;
+  --color-lacteos:#A3B3FF;
+  --color-pescaod:#B8E6FE;
+  --color-fruta:#E9D4FF;
+  --color-verdura:#B9F8CF;
+  --color-panaderia:#FFD6A7;
+  --color-congelados:#DBEAFE;
+}
