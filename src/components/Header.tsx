@@ -9,8 +9,8 @@ const Header = () => {
                 <h1 className="text-4xl">Todo Caduca</h1>
             </div>
             <div className="flex gap-4">
-                <Boton texto="Registrar" estilo="btn-header" />
-                <Boton texto="Login" estilo="btn-header" />
+                <Boton texto="Registrar" estilo="btn-header cursor-pointer" />
+                <Boton texto="Login" estilo="btn-header cursor-pointer" />
             </div>
         </section>
     )

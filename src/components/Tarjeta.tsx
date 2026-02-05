@@ -14,10 +14,10 @@ const Tarjeta: React.FC<TarjetaProps> = ({
   invertida = false 
 }) => {
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden animate-slide-in-right">
+    <div className="mx-auto bg-white rounded-lg shadow-md overflow-hidden animate-slide-in-right">
       <div className={`flex flex-col md:flex-row ${invertida ? 'md:flex-row-reverse' : ''}`}>
         {/* Imagen */}
-        <div className="md:w-1/2">
+        <div className="md:w-[30%]">
           <img 
             src={imagen} 
             alt={altImagen || titulo}
