@@ -4,8 +4,8 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   --color-primario:#E5E5E5;
   --color-secundario:#009966;
-  --color-peligro:#E7000B;
   --color-terciario:#F0B100;
+  --color-peligro:#E7000B;
   --color-carne:#FFA1AD;
   --color-lacteos:#A3B3FF;
   --color-pescado:#B8E6FE;
@@ -13,14 +13,16 @@
   --color-verdura:#B9F8CF;
   --color-panaderia:#FFD6A7;
   --color-congelados:#DBEAFE;
+  --color-negro: #1D1D1D;
+  --color-blanco: #E2E2E2;
 }
 
 /* --- BOTÓN --- */
 button {
-  border: 2px solid black;
+  border: 2px solid var(--color-negro);
   border-radius: 6px;
   font-weight: 600;
-  color: black;
+  color: var(--color-negro);
 }
 
 .btn-carne, .btn-pescado, .btn-verdura, .btn-panaderia, .btn-lacteos, .btn-congelados, .btn-fruta {
@@ -29,34 +31,34 @@ button {
   font-size: 14px;
 }
 
-.btn-header, .btn-opciones, .btn-login { box-shadow: 0px 1px 4px 0px black; }
+.btn-header, .btn-opciones, .btn-login { box-shadow: 0px 1px 4px 0px var(--color-negro); }
 
 .btn-header {
-  background-color: #E5E5E5;
+  background-color: var(--color-primario);
   height: 74px;
   width: 138px;
   font-size: 24px;
 }
 
 .btn-opciones {
-  background-color: #F0B100;
+  background-color: var(--color-terciario);
   height: 92px;
   width: 300px;
   font-size: 32px;
 }
 
 .btn-login {
-  background-color: #009966;
+  background-color: var(--color-secundario);
   height: 72px;
   width: 222px;
   font-size: 20px;
-  color: white;
+  color: var(--color-blanco);
 }
 
-.btn-carne { background-color: #FFA1AD; }
-.btn-pescado { background-color: #B8E6FE; }
-.btn-verdura { background-color: #B9F8CF; }
-.btn-panaderia { background-color: #FFD6A7; }
-.btn-lacteos { background-color: #A3B3FF; }
-.btn-congelados { background-color: #DBEAFE; }
-.btn-fruta { background-color: #E9D4FF; }
+.btn-carne { background-color: var(--color-carne); }
+.btn-pescado { background-color: var(--color-pescado); }
+.btn-verdura { background-color: var(--color-verdura); }
+.btn-panaderia { background-color: var(--color-panaderia); }
+.btn-lacteos { background-color: var(--color-lacteos); }
+.btn-congelados { background-color: var(--color-congelados); }
+.btn-fruta { background-color: var(--color-fruta); }
