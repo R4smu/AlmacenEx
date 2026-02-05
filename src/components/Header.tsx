@@ -1,5 +1,5 @@
 import Logo from "../assets/Logo.png"
-import ComponenteBoton from "./ComponenteBoton"
+import Boton from "./Boton"
 
 const Header = () => {
     return (
@@ -9,8 +9,8 @@ const Header = () => {
                 <h1 className="text-4xl">Todo Caduca</h1>
             </div>
             <div className="flex gap-4">
-                <ComponenteBoton texto="Registrar" estilo="btn-header" />
-                <ComponenteBoton texto="Login" estilo="btn-header" />
+                <Boton texto="Registrar" estilo="btn-header" />
+                <Boton texto="Login" estilo="btn-header" />
             </div>
         </section>
     )
