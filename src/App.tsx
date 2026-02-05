@@ -1,24 +1,32 @@
-import './index.css'
-import Boton from './components/Boton'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
 
   return (
     <>
-      <Header></Header>
-      <Footer></Footer>
-      <Boton texto="Login" estilo="btn-login" />
-      <Boton texto="Registrar" estilo="btn-header" />
-      <Boton texto="Opciones" estilo="btn-opciones" />
-      <Boton texto="Carne" estilo="btn-carne" />
-      <Boton texto="Pescado" estilo="btn-pescado" />
-      <Boton texto="Verdura" estilo="btn-verdura" />
-      <Boton texto="Panaderia" estilo="btn-panaderia" />
-      <Boton texto="Lacteos" estilo="btn-lacteos" />
-      <Boton texto="Congelados" estilo="btn-congelados" />
-      <Boton texto="Fruta" estilo="btn-fruta" />
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
   )
 }
