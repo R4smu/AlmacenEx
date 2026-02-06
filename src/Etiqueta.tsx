@@ -1,11 +1,12 @@
 import "./App.css"
-import { LuMilk } from "react-icons/lu";
 
-const Etiqueta = ({texto, estilo}:any) => {
+const Etiqueta = ({texto, estilo, icono: Icon}:any) => {
   return (
-    <div className={(estilo)}>
-        
-      {texto}
+    <div className={estilo}>
+      
+      <span>{Icon && <Icon className="etiqueta-icono" />}</span>
+      <span>{texto}</span>
+      
     </div>
   )
 }

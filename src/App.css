@@ -91,7 +91,7 @@ width: 82px;
 height: 25px;
 border: 1px solid #5EC5FD;
 font-size: 14px;
-
+/*display: inline-flex;  gap: 6px; padding: 6px 10px;*/
 }
 .etiqueta-carne
 {
@@ -103,7 +103,7 @@ width: 82px;
 height: 25px;
 border: 1px solid #FF5C72;
 font-size: 14px;
-
+display: inline-flex;  gap: 6px; padding: 6px 10px;
 }
 .etiqueta-panaderia
 {
@@ -114,7 +114,7 @@ width: 82px;
 height: 25px;
 border: 1px solid #FF8800;
 font-size: 14px;
-
+display: inline-flex;  gap: 6px; padding: 6px 10px;
 }
 .etiqueta-verdura
 {
@@ -126,7 +126,7 @@ width: 82px;
 height: 25px;
 border: 1px solid #17E860;
 font-size: 14px;
-
+display: inline-flex;  gap: 6px; padding: 6px 10px;
 }
 .etiqueta-lacteos
 {
@@ -138,7 +138,7 @@ width: 82px;
 height: 25px;
 border: 1px solid #002BFF;
 font-size: 14px;
-
+display: inline-flex;  gap: 6px; padding: 6px 10px;
 }
 .etiqueta-congelados
 {
@@ -151,7 +151,7 @@ width: 82px;
 height: 25px;
 border: 1px solid #055AC8;
 font-size: 14px;
-
+display: inline-flex;  gap: 6px; padding: 6px 10px;
 }
 .etiqueta-fruta
 {
@@ -163,5 +163,8 @@ width: 82px;
 height: 25px;
 border: 1px solid #8E25FF;
 font-size: 14px;
-
+display: inline-flex;  gap: 6px; padding: 6px 10px;
+}
+.etiqueta-icono {
+  font-size: 16px;
 }
