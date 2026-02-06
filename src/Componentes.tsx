@@ -1,4 +1,5 @@
 import './App.css'
+import NavBar from './components/NavBar'
 import "./index.css"
 
 // ==============================
@@ -13,7 +14,7 @@ function Componentes() {
 
   return (
     <>
-      
+      <NavBar></NavBar>
     </>
   )
 }
