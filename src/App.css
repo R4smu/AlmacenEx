@@ -44,3 +44,124 @@ button {
 .btn-lacteos { background-color: #A3B3FF; }
 .btn-congelados { background-color: #DBEAFE; }
 .btn-fruta { background-color: #E9D4FF; }
+
+/* --- ETIQUETAS CADUCIDAD --- */
+.etiqueta-caducado{
+background-color: red;
+text-align: center;
+color: white;
+border-radius: 8px;
+width: 146px;
+height: 25px;
+border: 1px solid grey;
+font-size: 14px;
+
+}
+.etiqueta-apunto{
+text-align: center;
+background-color: #F0B100;
+color: white;
+border-radius: 8px;
+width: 146px;
+height: 25px;
+border: 1px solid grey;
+font-size: 14px;
+
+}
+.etiqueta-nocaducado{
+text-align: center;
+background-color: #009966;
+color: white;
+border-radius: 8px;
+width: 146px;
+height: 25px;
+border: 1px solid grey;
+font-size: 14px;
+
+}
+/* --- ETIQUETAS TIPO DE ALIMENTO --- */
+
+.etiqueta-pescados
+{
+text-align: center;
+background-color: #B8E6FE;
+color: #5EC5FD;
+border-radius: 6px;
+width: 82px;
+height: 25px;
+border: 1px solid #5EC5FD;
+font-size: 14px;
+
+}
+.etiqueta-carne
+{
+text-align: center;
+background-color: #FFA1AD;
+color: #FF5C72;
+border-radius: 6px;
+width: 82px;
+height: 25px;
+border: 1px solid #FF5C72;
+font-size: 14px;
+
+}
+.etiqueta-panaderia
+{
+background-color: #FFD6A7;
+color: #FF8800;
+border-radius: 6px;
+width: 82px;
+height: 25px;
+border: 1px solid #FF8800;
+font-size: 14px;
+
+}
+.etiqueta-verdura
+{
+text-align: center;
+background-color: #B9F8CF;
+color: #17E860;
+border-radius: 6px;
+width: 82px;
+height: 25px;
+border: 1px solid #17E860;
+font-size: 14px;
+
+}
+.etiqueta-lacteos
+{
+text-align: center;
+background-color: #A3B3FF;
+color: #002BFF;
+border-radius: 6px;
+width: 82px;
+height: 25px;
+border: 1px solid #002BFF;
+font-size: 14px;
+
+}
+.etiqueta-congelados
+{
+text-align: center;
+background-color: #DBEAFE;
+color: #055AC8;
+font-size: 14px;
+border-radius: 6px;
+width: 82px;
+height: 25px;
+border: 1px solid #055AC8;
+font-size: 14px;
+
+}
+.etiqueta-fruta
+{
+text-align: center;
+background-color: #E9D4FF;
+color: #8E25FF;
+border-radius: 6px;
+width: 82px;
+height: 25px;
+border: 1px solid #8E25FF;
+font-size: 14px;
+
+}
