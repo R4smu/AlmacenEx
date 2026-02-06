@@ -1,8 +1,14 @@
 import "../App.css"
-
+//import "./Etiqueta.tsx"
 const TarjetaAlimento = () => {
   return (
-    <div>TarjetaAlimento</div>
+    <>
+        <div className="contenedor-tarjeta-alimento">
+            <div className="">
+                
+            </div>
+        </div>
+    </>
   )
 }
 

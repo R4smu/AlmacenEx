@@ -44,3 +44,16 @@ button {
 .btn-lacteos { background-color: #A3B3FF; }
 .btn-congelados { background-color: #DBEAFE; }
 .btn-fruta { background-color: #E9D4FF; }
+
+/* --- TARJETA --- */
+.contenedor-tarjeta-alimento {
+  height: 150px;
+  width: 610px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 0px black;
+  display: flex;
+}
+
+.contenedor-tarjeta-alimento p {
+  color: grey;
+}
