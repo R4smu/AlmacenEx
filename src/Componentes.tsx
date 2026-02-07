@@ -1,6 +1,7 @@
 import './App.css'
 import "./index.css"
 import TarjetaAlimento from './components/TarjetaAlimento'
+import Boton from './components/Boton'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -14,6 +15,7 @@ function Componentes() {
 
   return (
     <>
+      <Boton estilo="header" />
       <TarjetaAlimento />
     </>
   )
