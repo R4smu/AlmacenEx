@@ -20,14 +20,14 @@ const TarjetaAlimento = () => {
 
         <div className="flex m-[10px]">
 
-          <div className="flex px-[10px]">
+          <div className="flex px-[10px] text-gray-500">
             <FiEdit />
           </div>
 
-          <div className="flex px-[10px]">
+          <div className="flex px-[10px] text-gray-500">
             <FaRegTrashCan />
           </div>
-          
+
         </div>
       </div>
     </>
