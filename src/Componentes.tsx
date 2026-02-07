@@ -15,7 +15,7 @@ function Componentes() {
 
   return (
     <>
-      <Boton estilo="header" />
+      <Boton estilo="carne">Hola</Boton>
       <TarjetaAlimento />
     </>
   )
