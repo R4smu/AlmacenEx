@@ -1,6 +1,6 @@
 import './App.css'
-import NavBar from './components/NavBar'
 import "./index.css"
+import AnadirAlimentos from './pages/AnadirAlimentos'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -14,8 +14,7 @@ function Componentes() {
 
   return (
     <>
-      <NavBar></NavBar>
-    </>
+      <AnadirAlimentos></AnadirAlimentos>    </>
   )
 }
 

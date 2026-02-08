@@ -1,6 +1,6 @@
 import { CiSearch } from "react-icons/ci";
 
-const NavBar = () => {
+const InputBuscarAlimentos = () => {
     return (
         <div className="p-2 flex items-center gap-2 rounded border">
             <CiSearch className="text-xl text-gray-500" />
@@ -13,4 +13,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar
+export default InputBuscarAlimentos
