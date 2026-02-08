@@ -1,20 +1,20 @@
 const Footer = () => {
     return (
         <>
-            <footer className=" bg-emerald-700 fixed bottom-0 left-0 z-20 w-full p-4 bg-neutral-primary-soft shadow-sm md:flex md:items-center md:justify-between md:p-6">
-                <span className=" text-white text-sm text-body sm:text-center">© 2026 All Rights Reserved.</span>
-                <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-body sm:mt-0 text-white">
+            <footer className="bg-emerald-700 w-full p-4 shadow-sm md:flex md:items-center md:justify-between md:p-6 mt-auto">
+                <span className="text-white text-sm sm:text-center">© 2026 All Rights Reserved.</span>
+                <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-white sm:mt-0">
                     <li>
-                        <p className="hover:underline me-4 md:me-6">Sobre nosotros</p>
+                        <p className="hover:underline me-4 md:me-6 cursor-pointer">Sobre nosotros</p>
                     </li>
                     <li>
-                        <p className="hover:underline me-4 md:me-6">Politica de privacidad</p>
+                        <p className="hover:underline me-4 md:me-6 cursor-pointer">Politica de privacidad</p>
                     </li>
                     <li>
-                        <p className="hover:underline me-4 md:me-6">Licencias</p>
+                        <p className="hover:underline me-4 md:me-6 cursor-pointer">Licencias</p>
                     </li>
                     <li>
-                        <p className="hover:underline">Contacto</p>
+                        <p className="hover:underline cursor-pointer">Contacto</p>
                     </li>
                 </ul>
             </footer>
