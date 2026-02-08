@@ -1,5 +1,4 @@
 import './App.css'
-import NavBar from './components/NavBar'
 import "./index.css"
 
 // ==============================
@@ -15,6 +14,22 @@ function Componentes() {
   return (
     <>
       <NavBar></NavBar>
+      <Etiqueta texto="Fresco (30d)" tipo="nocaducado"></Etiqueta>
+      <Etiqueta texto="Próximo a vencer (3d)" tipo="apunto"></Etiqueta>
+      <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
+      
+      <Etiqueta texto="Carne" tipo="carne"></Etiqueta>
+      <Etiqueta texto="Pescados" tipo="pescados"></Etiqueta>
+      <Etiqueta texto="Verdura" tipo="verdura"></Etiqueta>
+      <Etiqueta texto="Panadería" tipo="panaderia"></Etiqueta>
+      <Etiqueta texto="Lácteos" tipo="lacteos"></Etiqueta>
+      <Etiqueta texto="Congelados" tipo="congelados"></Etiqueta>
+      <Etiqueta texto="Fruta" tipo="fruta"></Etiqueta>
+
+      <TarjetaAlimento nombre_alimento="Leche" fecha="12/12/2012" cantidad="1 L">
+        <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
+        <Etiqueta texto="Carne" tipo="carne"></Etiqueta>
+      </TarjetaAlimento>
     </>
   )
 }
