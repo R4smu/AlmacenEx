@@ -28,7 +28,10 @@ function Componentes() {
       <Etiqueta texto="Congelados" tipo="congelados"></Etiqueta>
       <Etiqueta texto="Fruta" tipo="fruta"></Etiqueta>
 
-      <TarjetaAlimento nombre_alimento="Leche" fecha="12/12/2012" cantidad="1 L"/>
+      <TarjetaAlimento nombre_alimento="Leche" fecha="12/12/2012" cantidad="1 L">
+        <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
+        <Etiqueta texto="Carne" tipo="carne"></Etiqueta>
+      </TarjetaAlimento>
     </>
   )
 }
