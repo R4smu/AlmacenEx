@@ -29,7 +29,7 @@ function Componentes() {
       <Etiqueta texto="Congelados" tipo="congelados" />
       
       <Boton estilo="carne">Hola</Boton>
-      <TarjetaAlimento />
+      <TarjetaAlimento nombre_alimento="Leche" fecha="12/12/2012" cantidad="1 L"/>
     </>
   )
 }

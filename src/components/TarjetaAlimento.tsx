@@ -4,23 +4,23 @@ import { CiCalendar } from "react-icons/ci";
 
 import Etiqueta from './Etiqueta'
 
-const TarjetaAlimento = () => {
+const TarjetaAlimento = ({nombre_alimento, fecha, cantidad} : any) => {
   return (
     <>
       <div className="flex h-[150px] w-[610px] justify-between rounded-xl shadow-[0px_2px_4px_0px_black]">
 
         <div className="flex flex-col items-start justify-around ml-[10px]">
-          <p>Hola</p>
+          <p>{nombre_alimento}</p>
           
           <div className="flex flex-row items-start justify-around gap-2">
             <Etiqueta texto="a punto" tipo="apunto" />
             <Etiqueta texto="Lácteos" tipo="lacteos" />
           </div>
             
-
-          <div className="flex items-center justify-evenly text-gray-500">
-            <CiCalendar />
-            <p>Hola</p>
+          <div className="flex items-center justify-evenly text-gray-500 gap-2">
+              <CiCalendar />
+              <p>{fecha}</p>
+              <p>Cantidad: {cantidad}</p>
           </div>
         </div>
 
