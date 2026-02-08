@@ -35,9 +35,9 @@ button {
 
 .btn-header {
   background-color: var(--color-primario);
-  height: 74px;
-  width: 138px;
-  font-size: 24px;
+  height: 50px;
+  width: 110px;
+  font-size: 16px;
 }
 
 .btn-opciones {

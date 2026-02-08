@@ -17,16 +17,16 @@ button {
 
 .btn-header {
   background-color: #E5E5E5;
-  height: 74px;
-  width: 138px;
-  font-size: 24px;
+  height: 60px;
+  width: 110px;
+  font-size: 16px;
 }
 
 .btn-opciones {
   background-color: #F0B100;
-  height: 92px;
-  width: 300px;
-  font-size: 32px;
+  height: 60px;
+  width: 180px;
+  font-size: 18px;
 }
 
 .btn-login {

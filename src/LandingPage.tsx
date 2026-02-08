@@ -9,11 +9,13 @@ function App() {
 
   return (
     <div className='btn-secundario'>
+      <nav className='text-4xl md:text-5xl font-bold text-gray-900 leading-tight flex justify-center'>Landing page</nav>
       <Header></Header>
       <Hero></Hero>
-      <Tarjeta imagen={image} titulo='' texto={''}></Tarjeta><br />
-      <Tarjeta imagen={image} titulo='' texto={''} invertida={true}></Tarjeta><br />
-      <Tarjeta imagen={image} titulo='' texto={''}></Tarjeta><br />
+      <br />
+      <Tarjeta imagen={image} titulo='Lorem Ipsum' texto={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}></Tarjeta><br />
+      <Tarjeta imagen={image} titulo='Lorem Ipsum' texto={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} invertida={true}></Tarjeta><br />
+      <Tarjeta imagen={image} titulo='Lorem Ipsum' texto={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}></Tarjeta><br />
       <Footer></Footer>
     </div>
   )
