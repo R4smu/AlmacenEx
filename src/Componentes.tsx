@@ -1,6 +1,6 @@
 import './App.css'
-import Boton from './components/Boton'
 import Etiqueta from './components/Etiqueta'
+
 import TarjetaAlimento from './components/TarjetaAlimento'
 import "./index.css"
 
@@ -16,19 +16,18 @@ function Componentes() {
 
   return (
     <>
-      <Etiqueta texto="caducado" tipo="caducado" />
-      <Etiqueta texto="no caducado" tipo="nocaducado" />
-      <Etiqueta texto="a punto" tipo="apunto" />
-
-      <Etiqueta texto="Lácteos" tipo="lacteos" />
-      <Etiqueta texto="Fruta" tipo="fruta" />
-      <Etiqueta texto="Pescados" tipo="pescados" />
-      <Etiqueta texto="Verdura" tipo="verdura" />
-      <Etiqueta texto="Carne" tipo="carne" />
-      <Etiqueta texto="Panaderia" tipo="panaderia" />
-      <Etiqueta texto="Congelados" tipo="congelados" />
+      <Etiqueta texto="Fresco (30d)" tipo="nocaducado"></Etiqueta>
+      <Etiqueta texto="Próximo a vencer (3d)" tipo="apunto"></Etiqueta>
+      <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
       
-      <Boton estilo="carne">Hola</Boton>
+      <Etiqueta texto="Carne" tipo="carne"></Etiqueta>
+      <Etiqueta texto="Pescados" tipo="pescados"></Etiqueta>
+      <Etiqueta texto="Verdura" tipo="verdura"></Etiqueta>
+      <Etiqueta texto="Panadería" tipo="panaderia"></Etiqueta>
+      <Etiqueta texto="Lácteos" tipo="lacteos"></Etiqueta>
+      <Etiqueta texto="Congelados" tipo="congelados"></Etiqueta>
+      <Etiqueta texto="Fruta" tipo="fruta"></Etiqueta>
+
       <TarjetaAlimento nombre_alimento="Leche" fecha="12/12/2012" cantidad="1 L"/>
     </>
   )

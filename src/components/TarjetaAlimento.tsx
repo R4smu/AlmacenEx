@@ -18,9 +18,9 @@ const TarjetaAlimento = ({nombre_alimento, fecha, cantidad} : any) => {
           </div>
             
           <div className="flex items-center justify-evenly text-gray-500 gap-2">
-              <CiCalendar />
-              <p>{fecha}</p>
-              <p>Cantidad: {cantidad}</p>
+            <CiCalendar />
+            <p>{fecha}</p>
+            <p>Cantidad: {cantidad}</p>
           </div>
         </div>
 

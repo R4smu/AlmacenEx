@@ -47,171 +47,82 @@ button:hover { cursor: pointer; }
 .btn-congelados { background-color: #DBEAFE; }
 .btn-fruta { background-color: #E9D4FF; }
 
-/* --- ETIQUETAS CADUCIDAD --- */
-.etiqueta-caducado{
-background-color: red;
-text-align: center;
-color: white;
-border-radius: 8px;
-width: 146px;
-height: 25px;
-border: 1px solid grey;
-font-size: 14px;
-
+/* --- ETIQUETAS --- */
+.etiqueta-caducado, .etiqueta-apunto, .etiqueta-nocaducado {
+  display: inline-flex;
+  justify-content: center; 
+  align-items: center;
+  width: auto;              
+  min-width: 80px;
+  height: 25px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
 }
-.etiqueta-apunto{
-text-align: center;
-background-color: #F0B100;
-color: white;
-border-radius: 8px;
-width: 146px;
-height: 25px;
-border: 1px solid grey;
-font-size: 14px;
 
-}
-.etiqueta-nocaducado{
-text-align: center;
-background-color: #009966;
-color: white;
-border-radius: 8px;
-width: 146px;
-height: 25px;
-border: 1px solid grey;
-font-size: 14px;
+.etiqueta-caducado { background-color: red; }
+.etiqueta-apunto { background-color: #F0B100; }
+.etiqueta-nocaducado { background-color: #009966; }
+.etiqueta-apunto, .etiqueta-nocaducado { border: 1px solid #E5E7EB; }
 
-}
-/* --- ETIQUETAS TIPO DE ALIMENTO --- */
 
-.etiqueta-pescados
-{
+.etiqueta-pescados, .etiqueta-carne, .etiqueta-panaderia, .etiqueta-verdura, .etiqueta-lacteos, .etiqueta-congelados, .etiqueta-fruta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1;
-
-background-color: #B8E6FE;
-color: #5EC5FD;
-
-border: 1px solid #5EC5FD;
-font-size: 14px;
-justify-content: center;
-}
-.etiqueta-carne
-{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1;
-
-background-color: #FFA1AD;
-color: #FF5C72;
-border: 1px solid #FF5C72;
-font-size: 14px;
-justify-content: center;
-}
-.etiqueta-panaderia
-{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1;
-
-background-color: #FFD6A7;
-color: #FF8800;
-
-border: 1px solid #FF8800;
-font-size: 14px;
-justify-content: center;
-}
-.etiqueta-verdura
-{
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1;
-background-color: #B9F8CF;
-color: #17E860;
-border: 1px solid #17E860;
-font-size: 14px;
-justify-content: center;
-}
-.etiqueta-lacteos
-{
-background-color: #A3B3FF;
-color: #002BFF;
-
-border: 1px solid #002BFF;
-font-size: 14px;
-justify-content: center;
-
-display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 14px;
   line-height: 1;
 }
-.etiqueta-congelados
-{
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1;
-
-background-color: #DBEAFE;
-color: #055AC8;
-font-size: 14px;
-border: 1px solid #055AC8;
-font-size: 14px;justify-content: center;
+.etiqueta-pescados {
+  background-color: #B8E6FE;
+  color: #5EC5FD;
+  border: 1px solid #5EC5FD;
 }
-.etiqueta-fruta
-{
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+.etiqueta-carne {
+  background-color: #FFA1AD;
+  color: #FF5C72;
+  border: 1px solid #FF5C72;
+}
 
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1;
+.etiqueta-panaderia {
+  background-color: #FFD6A7;
+  color: #FF8800;
+  border: 1px solid #FF8800;
+}
+
+.etiqueta-verdura {
+  background-color: #B9F8CF;
+  color: #17E860;
+  border: 1px solid #17E860;
+}
+
+.etiqueta-lacteos {
+  background-color: #A3B3FF;
+  color: #002BFF;
+  border: 1px solid #002BFF;
+}
+
+.etiqueta-congelados {
+  background-color: #DBEAFE;
+  color: #055AC8;
+  border: 1px solid #055AC8;
+}
+
+.etiqueta-fruta {
   background-color: #E9D4FF;
   color: #8E25FF;
   border: 1px solid #8E25FF;
-  font-size: 14px;
 }
+
+
+/* --- ICONO --- */
 .etiqueta-icono {
   display: flex;
   align-items: center;
