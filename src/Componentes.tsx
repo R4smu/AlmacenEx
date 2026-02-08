@@ -1,7 +1,5 @@
 import './App.css'
 import "./index.css"
-import TarjetaAlimento from './components/TarjetaAlimento'
-import Boton from './components/Boton'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -15,7 +13,19 @@ function Componentes() {
 
   return (
     <>
-      <Boton estilo="carne">Hola</Boton>
+      <Etiqueta texto="caducado" estilo="etiqueta-caducado"/>
+      <Etiqueta texto="no-caducado" estilo="etiqueta-nocaducado"/>
+      <Etiqueta texto="a punto" estilo="etiqueta-apunto"/>
+
+        <Etiqueta texto="Lácteos" estilo="etiqueta-lacteos" icono={LuMilk} />
+        <Etiqueta texto="Fruta" estilo="etiqueta-fruta" icono={LuApple} />
+        <Etiqueta texto="Pescados" estilo="etiqueta-pescados" icono={LuFish} />
+        <Etiqueta texto="Verdura" estilo="etiqueta-verdura" icono={LuCarrot} />
+
+        <Etiqueta texto="Carne" estilo="etiqueta-carne" icono={GiMeat} />
+        <Etiqueta texto="Panaderia" estilo="etiqueta-panaderia" icono={FaBreadSlice} />
+        <Etiqueta texto="Congelados" estilo="etiqueta-congelados" icono={WiSnowflakeCold} />
+<Boton estilo="carne">Hola</Boton>
       <TarjetaAlimento />
     </>
   )

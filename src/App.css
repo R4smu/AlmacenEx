@@ -46,3 +46,175 @@ button:hover { cursor: pointer; }
 .btn-lacteos { background-color: #A3B3FF; }
 .btn-congelados { background-color: #DBEAFE; }
 .btn-fruta { background-color: #E9D4FF; }
+
+/* --- ETIQUETAS CADUCIDAD --- */
+.etiqueta-caducado{
+background-color: red;
+text-align: center;
+color: white;
+border-radius: 8px;
+width: 146px;
+height: 25px;
+border: 1px solid grey;
+font-size: 14px;
+
+}
+.etiqueta-apunto{
+text-align: center;
+background-color: #F0B100;
+color: white;
+border-radius: 8px;
+width: 146px;
+height: 25px;
+border: 1px solid grey;
+font-size: 14px;
+
+}
+.etiqueta-nocaducado{
+text-align: center;
+background-color: #009966;
+color: white;
+border-radius: 8px;
+width: 146px;
+height: 25px;
+border: 1px solid grey;
+font-size: 14px;
+
+}
+/* --- ETIQUETAS TIPO DE ALIMENTO --- */
+
+.etiqueta-pescados
+{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
+background-color: #B8E6FE;
+color: #5EC5FD;
+
+border: 1px solid #5EC5FD;
+font-size: 14px;
+justify-content: center;
+}
+.etiqueta-carne
+{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
+background-color: #FFA1AD;
+color: #FF5C72;
+border: 1px solid #FF5C72;
+font-size: 14px;
+justify-content: center;
+}
+.etiqueta-panaderia
+{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
+background-color: #FFD6A7;
+color: #FF8800;
+
+border: 1px solid #FF8800;
+font-size: 14px;
+justify-content: center;
+}
+.etiqueta-verdura
+{
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+background-color: #B9F8CF;
+color: #17E860;
+border: 1px solid #17E860;
+font-size: 14px;
+justify-content: center;
+}
+.etiqueta-lacteos
+{
+background-color: #A3B3FF;
+color: #002BFF;
+
+border: 1px solid #002BFF;
+font-size: 14px;
+justify-content: center;
+
+display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+}
+.etiqueta-congelados
+{
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
+background-color: #DBEAFE;
+color: #055AC8;
+font-size: 14px;
+border: 1px solid #055AC8;
+font-size: 14px;justify-content: center;
+}
+.etiqueta-fruta
+{
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+  background-color: #E9D4FF;
+  color: #8E25FF;
+  border: 1px solid #8E25FF;
+  font-size: 14px;
+}
+.etiqueta-icono {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1;
+}
