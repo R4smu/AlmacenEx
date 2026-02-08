@@ -1,5 +1,6 @@
 import './App.css'
 import "./index.css"
+import AnadirAlimentos from './pages/AnadirAlimentos'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -13,8 +14,7 @@ function Componentes() {
 
   return (
     <>
-      <NavBar></NavBar>
-      <Etiqueta texto="Fresco (30d)" tipo="nocaducado"></Etiqueta>
+      <AnadirAlimentos></AnadirAlimentos>      <Etiqueta texto="Fresco (30d)" tipo="nocaducado"></Etiqueta>
       <Etiqueta texto="Próximo a vencer (3d)" tipo="apunto"></Etiqueta>
       <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
       
