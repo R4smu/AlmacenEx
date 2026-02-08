@@ -83,88 +83,136 @@ font-size: 14px;
 
 .etiqueta-pescados
 {
-text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
 background-color: #B8E6FE;
 color: #5EC5FD;
-border-radius: 6px;
-width: 82px;
-height: 25px;
+
 border: 1px solid #5EC5FD;
 font-size: 14px;
-/*display: inline-flex;  gap: 6px; padding: 6px 10px;*/
+justify-content: center;
 }
 .etiqueta-carne
 {
-text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
 background-color: #FFA1AD;
 color: #FF5C72;
-border-radius: 6px;
-width: 82px;
-height: 25px;
 border: 1px solid #FF5C72;
 font-size: 14px;
-display: inline-flex;  gap: 6px; padding: 6px 10px;
+justify-content: center;
 }
 .etiqueta-panaderia
 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
 background-color: #FFD6A7;
 color: #FF8800;
-border-radius: 6px;
-width: 82px;
-height: 25px;
+
 border: 1px solid #FF8800;
 font-size: 14px;
-display: inline-flex;  gap: 6px; padding: 6px 10px;
+justify-content: center;
 }
 .etiqueta-verdura
 {
-text-align: center;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
 background-color: #B9F8CF;
 color: #17E860;
-border-radius: 6px;
-width: 82px;
-height: 25px;
 border: 1px solid #17E860;
 font-size: 14px;
-display: inline-flex;  gap: 6px; padding: 6px 10px;
+justify-content: center;
 }
 .etiqueta-lacteos
 {
-text-align: center;
 background-color: #A3B3FF;
 color: #002BFF;
-border-radius: 6px;
-width: 82px;
-height: 25px;
+
 border: 1px solid #002BFF;
 font-size: 14px;
-display: inline-flex;  gap: 6px; padding: 6px 10px;
+justify-content: center;
+
+display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
 }
 .etiqueta-congelados
 {
-text-align: center;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+
 background-color: #DBEAFE;
 color: #055AC8;
 font-size: 14px;
-border-radius: 6px;
-width: 82px;
-height: 25px;
 border: 1px solid #055AC8;
-font-size: 14px;
-display: inline-flex;  gap: 6px; padding: 6px 10px;
+font-size: 14px;justify-content: center;
 }
 .etiqueta-fruta
 {
-text-align: center;
-background-color: #E9D4FF;
-color: #8E25FF;
-border-radius: 6px;
-width: 82px;
-height: 25px;
-border: 1px solid #8E25FF;
-font-size: 14px;
-display: inline-flex;  gap: 6px; padding: 6px 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+  background-color: #E9D4FF;
+  color: #8E25FF;
+  border: 1px solid #8E25FF;
+  font-size: 14px;
 }
 .etiqueta-icono {
+  display: flex;
+  align-items: center;
   font-size: 16px;
+  line-height: 1;
 }
