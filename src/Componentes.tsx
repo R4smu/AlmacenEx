@@ -1,4 +1,7 @@
 import './App.css'
+import Boton from './components/Boton'
+import Etiqueta from './components/Etiqueta'
+import TarjetaAlimento from './components/TarjetaAlimento'
 import "./index.css"
 
 // ==============================
@@ -13,19 +16,19 @@ function Componentes() {
 
   return (
     <>
-      <Etiqueta texto="caducado" estilo="etiqueta-caducado"/>
-      <Etiqueta texto="no-caducado" estilo="etiqueta-nocaducado"/>
-      <Etiqueta texto="a punto" estilo="etiqueta-apunto"/>
+      <Etiqueta texto="caducado" tipo="caducado" />
+      <Etiqueta texto="no caducado" tipo="nocaducado" />
+      <Etiqueta texto="a punto" tipo="apunto" />
 
-        <Etiqueta texto="Lácteos" estilo="etiqueta-lacteos" icono={LuMilk} />
-        <Etiqueta texto="Fruta" estilo="etiqueta-fruta" icono={LuApple} />
-        <Etiqueta texto="Pescados" estilo="etiqueta-pescados" icono={LuFish} />
-        <Etiqueta texto="Verdura" estilo="etiqueta-verdura" icono={LuCarrot} />
-
-        <Etiqueta texto="Carne" estilo="etiqueta-carne" icono={GiMeat} />
-        <Etiqueta texto="Panaderia" estilo="etiqueta-panaderia" icono={FaBreadSlice} />
-        <Etiqueta texto="Congelados" estilo="etiqueta-congelados" icono={WiSnowflakeCold} />
-<Boton estilo="carne">Hola</Boton>
+      <Etiqueta texto="Lácteos" tipo="lacteos" />
+      <Etiqueta texto="Fruta" tipo="fruta" />
+      <Etiqueta texto="Pescados" tipo="pescados" />
+      <Etiqueta texto="Verdura" tipo="verdura" />
+      <Etiqueta texto="Carne" tipo="carne" />
+      <Etiqueta texto="Panaderia" tipo="panaderia" />
+      <Etiqueta texto="Congelados" tipo="congelados" />
+      
+      <Boton estilo="carne">Hola</Boton>
       <TarjetaAlimento />
     </>
   )
