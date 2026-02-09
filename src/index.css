@@ -4,6 +4,7 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   --color-primario:#E5E5E5;
   --color-secundario:#009966;
+<<<<<<< HEAD
   --color-terciario:#F0B100;
   --color-peligro:#E7000B;
   --color-carne:#FFA1AD;
@@ -15,6 +16,18 @@
   --color-congelados:#DBEAFE;
   --color-negro: #1D1D1D;
   --color-blanco: #E2E2E2;
+=======
+  --color-peligro:#E7000B;
+  --color-terciario:#F0B100;
+  
+  --color-carne:#FFA1AD;      --color-carne-texto:#FF5C72;
+  --color-lacteos:#A3B3FF;    --color-lacteos-texto:#002BFF;
+  --color-pescado:#B8E6FE;    --color-pescado-texto:#5EC5FD;
+  --color-fruta:#E9D4FF;      --color-fruta-texto:#8E25FF;
+  --color-verdura:#B9F8CF;    --color-verdura-texto:#17E860;
+  --color-panaderia:#FFD6A7;  --color-panaderia-texto:#FF8800;
+  --color-congelados:#DBEAFE; --color-congelados-texto:#055AC8;
+>>>>>>> components-review
 }
 
 /* --- BOTÓN --- */
