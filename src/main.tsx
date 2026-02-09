@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client'
 import './App.css'
 import './index.css'
-import Componentes from './Componentes.tsx'
+import LandingPage from './LandingPage'
 
 createRoot(document.getElementById('root')!).render(
-  <>
-    <Componentes />
-  </>,
+  <StrictMode>
+    <LandingPage />
+  </StrictMode>,
 )

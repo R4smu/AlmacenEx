@@ -62,70 +62,38 @@ button:hover { cursor: pointer; }
   color: white;
 }
 
-.etiqueta-caducado { background-color: red; }
-.etiqueta-apunto { background-color: #F0B100; }
-.etiqueta-nocaducado { background-color: #009966; }
-.etiqueta-apunto, .etiqueta-nocaducado { border: 1px solid #E5E7EB; }
-
-
-.etiqueta-pescados, .etiqueta-carne, .etiqueta-panaderia, .etiqueta-verdura, .etiqueta-lacteos, .etiqueta-congelados, .etiqueta-fruta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.etiqueta-pescados {
-  background-color: #B8E6FE;
-  color: #5EC5FD;
-  border: 1px solid #5EC5FD;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.etiqueta-carne {
-  background-color: #FFA1AD;
-  color: #FF5C72;
-  border: 1px solid #FF5C72;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-.etiqueta-panaderia {
-  background-color: #FFD6A7;
-  color: #FF8800;
-  border: 1px solid #FF8800;
+.card {
+  padding: 2em;
 }
 
-.etiqueta-verdura {
-  background-color: #B9F8CF;
-  color: #17E860;
-  border: 1px solid #17E860;
-}
-
-.etiqueta-lacteos {
-  background-color: #A3B3FF;
-  color: #002BFF;
-  border: 1px solid #002BFF;
-}
-
-.etiqueta-congelados {
-  background-color: #DBEAFE;
-  color: #055AC8;
-  border: 1px solid #055AC8;
-}
-
-.etiqueta-fruta {
-  background-color: #E9D4FF;
-  color: #8E25FF;
-  border: 1px solid #8E25FF;
-}
-
-
-/* --- ICONO --- */
-.etiqueta-icono {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  line-height: 1;
+.read-the-docs {
+  color: #888;
 }
