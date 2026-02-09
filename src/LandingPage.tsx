@@ -9,7 +9,6 @@ function App() {
 
   return (
     <div className='btn-secundario'>
-      <nav className='text-4xl md:text-5xl font-bold text-gray-900 leading-tight flex justify-center'>Landing page</nav>
       <Header></Header>
       <Hero></Hero>
       <br />

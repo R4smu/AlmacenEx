@@ -20,8 +20,8 @@ const ComponentePrincipal = () => {
                 </div>
                 
                 <section className='flex flex-row gap-4 justify-center md:justify-end'>
-                    <Boton texto="Añadir alimentos" estilo="btn-opciones cursor-pointer" />
-                    <Boton texto="Lista de alimentos" estilo="btn-opciones cursor-pointer" />
+                    <Boton estilo="opciones">Añadir alimento</Boton>
+                    <Boton estilo="opciones">Lista de alimentos</Boton>
                 </section>
             </div>
         </div>

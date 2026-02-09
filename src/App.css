@@ -13,14 +13,14 @@ button:hover { cursor: pointer; }
   background-color: #E5E5E5;
   height: 60px;
   width: 110px;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .btn-opciones {
   background-color: #F0B100;
-  height: 92px;
-  width: 300px;
-  font-size: 32px;
+  height: 60px;
+  width: 150px;
+  font-size: 16px;
 }
 
 .btn-login {
