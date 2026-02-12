@@ -1,9 +1,9 @@
-import './App.css'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Tarjeta from './components/Tarjeta'
-import image from "./assets/Image1_landing_page.png"
-import Hero from './components/Hero'
+import '../App.css'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Tarjeta from '../components/Tarjeta'
+import image from "../assets/Image1_landing_page.png"
+import Hero from '../components/Hero'
 
 function App() {
 

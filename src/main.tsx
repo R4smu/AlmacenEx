@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client'
 import './App.css'
 import './index.css'
-import LandingPage from './LandingPage'
 import { StrictMode } from 'react'
+import Componentes from './Componentes'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <LandingPage />
+    <Componentes></Componentes>
   </StrictMode>,
 )
