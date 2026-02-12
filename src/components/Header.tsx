@@ -9,10 +9,16 @@ const Header = () => {
                 <h1 className="text-4xl">Todo Caduca</h1>
             </div>
             <div className="flex gap-4">
-                <Boton texto="Registrar" estilo="btn-header cursor-pointer" />
-                <Boton texto="Login" estilo="btn-header cursor-pointer" />
+                <Boton estilo="header" className="cursor-pointer">
+                    Registrar
+                </Boton>
+                
+                <Boton estilo="header" className="cursor-pointer">
+                    Login
+                </Boton>
             </div>
         </section>
     )
 }
+
 export default Header
