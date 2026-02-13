@@ -61,8 +61,7 @@ function Login() {
             <div className="flex justify-center mt-8">
               <button
                 type="submit"
-                className="px-8 py-3 rounded-lg text-white font-medium text-sm transition-all hover:opacity-90 hover:shadow-lg bg-emerald-700"
-              >
+                className="px-8 py-3 rounded-lg text-white font-medium text-sm transition-all hover:opacity-90 hover:shadow-lg bg-emerald-700">
                 ENTRAR
               </button>
             </div>

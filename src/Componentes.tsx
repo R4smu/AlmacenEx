@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage'
 import Registro from './pages/Registro'
 import Login from './pages/Login'
 import Header from './components/Header'
+import { ListarProducto } from './pages/ListarProducto'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -28,6 +29,7 @@ function Componentes() {
           <Routes>
             <Route path="/landingPage" element={<LandingPage />} />
             <Route path="/anadirAlimentos" element={<AnadirAlimentos />} />
+            <Route path="/listaProducto" element={<ListarProducto />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/login" element={<Login />} />
             {/*  Ruta por defecto si no se carga una pagina o cuando entras en la aplicacion*/}
