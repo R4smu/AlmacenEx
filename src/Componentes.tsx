@@ -1,9 +1,13 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Etiqueta from './components/Etiqueta'
 import TarjetaAlimento from './components/TarjetaAlimento'
 import "./index.css"
 import AnadirAlimentos from './pages/AnadirAlimentos'
 import LandingPage from './pages/LandingPage'
+import Registro from './pages/Registro'
+import Login from './pages/Login'
+import Header from './components/Header'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -16,10 +20,23 @@ import LandingPage from './pages/LandingPage'
 function Componentes() {
 
   return (
-    <>
-      <LandingPage></LandingPage>
-      <AnadirAlimentos></AnadirAlimentos>
-    </>
+    <BrowserRouter>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+
+        <main className="flex-1 flex">
+          <Routes>
+            <Route path="/landingPage" element={<LandingPage />} />
+            <Route path="/anadirAlimentos" element={<AnadirAlimentos />} />
+            <Route path="/registro" element={<Registro />} />
+            <Route path="/login" element={<Login />} />
+            {/*  Ruta por defecto si no se carga una pagina o cuando entras en la aplicacion*/}
+            <Route path="*" element={<LandingPage />} />
+
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
