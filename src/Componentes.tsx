@@ -3,6 +3,7 @@ import Etiqueta from './components/Etiqueta'
 import TarjetaAlimento from './components/TarjetaAlimento'
 import "./index.css"
 import AnadirAlimentos from './pages/AnadirAlimentos'
+import LandingPage from './pages/LandingPage'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -16,22 +17,8 @@ function Componentes() {
 
   return (
     <>
-      <AnadirAlimentos></AnadirAlimentos>      <Etiqueta texto="Fresco (30d)" tipo="nocaducado"></Etiqueta>
-      <Etiqueta texto="Próximo a vencer (3d)" tipo="apunto"></Etiqueta>
-      <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
-      
-      <Etiqueta texto="Carne" tipo="carne"></Etiqueta>
-      <Etiqueta texto="Pescados" tipo="pescados"></Etiqueta>
-      <Etiqueta texto="Verdura" tipo="verdura"></Etiqueta>
-      <Etiqueta texto="Panadería" tipo="panaderia"></Etiqueta>
-      <Etiqueta texto="Lácteos" tipo="lacteos"></Etiqueta>
-      <Etiqueta texto="Congelados" tipo="congelados"></Etiqueta>
-      <Etiqueta texto="Fruta" tipo="fruta"></Etiqueta>
-
-      <TarjetaAlimento nombre_alimento="Leche" fecha="12/12/2012" cantidad="1 L">
-        <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
-        <Etiqueta texto="Carne" tipo="carne"></Etiqueta>
-      </TarjetaAlimento>
+      <LandingPage></LandingPage>
+      <AnadirAlimentos></AnadirAlimentos>
     </>
   )
 }
