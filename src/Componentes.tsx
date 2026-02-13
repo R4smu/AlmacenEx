@@ -1,4 +1,6 @@
 import './App.css'
+import Etiqueta from './components/Etiqueta'
+import TarjetaAlimento from './components/TarjetaAlimento'
 import "./index.css"
 import AnadirAlimentos from './pages/AnadirAlimentos'
 

@@ -97,3 +97,62 @@ button:hover { cursor: pointer; }
 .read-the-docs {
   color: #888;
 }
+
+.etiqueta-lacteos,
+.etiqueta-fruta,
+.etiqueta-pescados,
+.etiqueta-verdura,
+.etiqueta-carne,
+.etiqueta-panaderia,
+.etiqueta-congelados {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  border: 2px solid;
+}
+
+.etiqueta-lacteos {
+  background-color: #A3B3FF;
+  border-color: #6B7FFF;
+  color: #1e3a8a;
+}
+
+.etiqueta-fruta {
+  background-color: #E9D4FF;
+  border-color: #C084FC;
+  color: #6b21a8;
+}
+
+.etiqueta-pescados {
+  background-color: #B8E6FE;
+  border-color: #7DD3FC;
+  color: #0c4a6e;
+}
+
+.etiqueta-verdura {
+  background-color: #B9F8CF;
+  border-color: #6EE7B7;
+  color: #15803d;
+}
+
+.etiqueta-carne {
+  background-color: #FFA1AD;
+  border-color: #FB7185;
+  color: #9f1239;
+}
+
+.etiqueta-panaderia {
+  background-color: #FFD6A7;
+  border-color: #FDBA74;
+  color: #92400e;
+}
+
+.etiqueta-congelados {
+  background-color: #DBEAFE;
+  border-color: #93C5FD;
+  color: #1e40af;
+}
