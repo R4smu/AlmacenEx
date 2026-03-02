@@ -1,10 +1,11 @@
 import Boton from './Boton'
 import imagenfondo from '../assets/imagenfondo.avif'
+import { NavLink } from 'react-router-dom'
 
-const ComponentePrincipal = () => {
+const Hero = () => {
     return (
-        <div className='min-h-screen w-full relative flex items-center justify-center md:justify-end px-8 md:px-12 lg:px-20'>
-            <div 
+        <div className='min-h-screen w-full relative overflow-hidden flex items-center justify-center md:justify-end px-8 md:px-12 lg:px-20'>
+            <div
                 className='absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-x-[-1]'
                 style={{ backgroundImage: `url(${imagenfondo})` }}
             />
@@ -18,14 +19,18 @@ const ComponentePrincipal = () => {
                         Controla la caducidad de tus alimentos y evita desperdicios
                     </p>
                 </div>
-                
+
                 <section className='flex flex-row gap-4 justify-center md:justify-end'>
+                    <NavLink to="/anadirAlimentos">
                     <Boton estilo="opciones">Añadir alimento</Boton>
+                    </NavLink>
+                    <NavLink to="/listaProducto">
                     <Boton estilo="opciones">Lista de alimentos</Boton>
+                    </NavLink>
                 </section>
             </div>
         </div>
     )
 }
 
-export default ComponentePrincipal
+export default Hero
