@@ -21,7 +21,7 @@ const socialIcons = [
 
 const Footer = () => {
   return (
-    <footer className="bg-emerald-700 w-full p-6 shadow-sm">
+    <footer className="bg-emerald-700 dark:bg-slate-900 w-full p-6 shadow-sm transition-colors duration-500">
       <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between md:flex-wrap">
         
         {/* Links */}
@@ -44,7 +44,7 @@ const Footer = () => {
           </li>
         </ul>
 
-        {/* Social Icons */}
+        {/* Iconos de redes sociales */}
         <ul className="flex items-center gap-3">
           {socialIcons.map(({ icon, label }) => (
             <li
@@ -54,6 +54,7 @@ const Footer = () => {
                 text-white text-xl cursor-pointer
                 transition-all duration-200
                 hover:scale-125 hover:text-emerald-200
+                dark:hover:text-blue-400 
               "
             >
               {icon}
