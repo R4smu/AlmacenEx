@@ -26,11 +26,11 @@ const Tarjeta: React.FC<TarjetaProps> = ({
         </div>
         
         {/* Contenido de texto */}
-        <div className="md:w-1/2 p-6 flex flex-col justify-center">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 uppercase tracking-wide">
+        <div className="md:w-1/2 p-6 flex flex-col justify-center bg-white dark:bg-gray-700">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-3 uppercase tracking-wide">
             {titulo}
           </h2>
-          <p className="text-gray-600 leading-relaxed text-sm">
+          <p className="text-gray-600 dark:text-white leading-relaxed text-sm">
             {texto}
           </p>
         </div>
