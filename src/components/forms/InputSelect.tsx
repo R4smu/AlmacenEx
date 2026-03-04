@@ -11,7 +11,7 @@ interface Option {
 
 export default function Select({options, ...props }: SelectProps) {
     return (
-        <div>
+        <div className="text-black dark:text-white">
             Categoria *
             <select {...props} className="w-100 p-2 flex items-center gap-2 rounded border">
                 {options.map(option=>

@@ -8,22 +8,14 @@ import Etiqueta from '../components/Etiqueta'
 import TarjetaAlimento from '../components/TarjetaAlimento'
 import InputFechaCaducidad from '../components/forms/InputFechaCaducidad'
 
-// ==============================
-// Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
-// Luego este archivo lo borraremos porque no lo vamos a necesitar, asi que cuando creeis un componente nuevo,
-// ponedlo aqui tambien para que se vea en el navegador.
-// Al final, cuando meergemos la rama components-review al main,
-// solo vamos a añadir realmente toda la carpeta de components (todos los componentes nuevos que hemos creado en esta rama).
-// ==============================
-
 function AnadirAlimentos() {
 
     return (
         <>
-            <div className='flex flex-1 justify-center gap-20'>
-                <aside className="h-full bg-gray-50 flex p-6">
-                    <div className="w-full max-w-md bg-white p-6 rounded shadow space-y-4">
-                        <h1 className="text-xl font-semibold">
+            <div className='flex flex-1 justify-center gap-20 bg-white dark:bg-gray-800 min-h-screen transition-colors'>
+                <aside className="h-full bg-gray-50 dark:bg-gray-800 flex p-6 transition-colors">
+                    <div className="w-full max-w-md bg-white dark:bg-gray-700 p-6 rounded shadow space-y-4 transition-colors">
+                        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
                             Añadir alimentos
                         </h1>
                         <ImagenAnadida></ImagenAnadida>
