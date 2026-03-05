@@ -7,6 +7,7 @@ import ImagenAnadida from '../components/ImagenAnadida'
 import Etiqueta from '../components/Etiqueta'
 import TarjetaAlimento from '../components/TarjetaAlimento'
 import InputFechaCaducidad from '../components/forms/InputFechaCaducidad'
+import Boton from '../components/Boton'
 
 function AnadirAlimentos() {
 
@@ -23,6 +24,7 @@ function AnadirAlimentos() {
                         <InputSelect options={[]}></InputSelect>
                         <InputFechaCaducidad></InputFechaCaducidad>
                         <InputTextArea></InputTextArea>
+                        <Boton estilo='anadir'>Añadir alimento</Boton>
                     </div>
                 </aside>
                 <div className='flex flex-col gap-8 p-16 bg-white dark:bg-gray-800'>

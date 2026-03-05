@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from "react";
 import "../App.css"; 
 
 interface BotonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  estilo?: "header" | "opciones" | "login" | "registro" | "carne" | "pescado" | "verdura" | "panaderia" | "lacteos" | "congelados" | "fruta";
+  estilo?: "header" | "opciones" | "login" | "registro" | "anadir" | "carne" | "pescado" | "verdura" | "panaderia" | "lacteos" | "congelados" | "fruta";
 }
 
 export default function Boton(
@@ -13,6 +13,7 @@ export default function Boton(
       opciones: "btn-opciones",
       registro: "btn-registro",
       login: "btn-login",
+      anadir: "btn-anadir",
       carne: "btn-carne",
       pescado: "btn-pescado",
       verdura: "btn-verdura",
