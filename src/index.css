@@ -15,3 +15,5 @@
   --color-panaderia:#FFD6A7;  --color-panaderia-texto:#FF8800;
   --color-congelados:#DBEAFE; --color-congelados-texto:#055AC8;
 }
+
+@variant dark (&:where(.dark, .dark *));
