@@ -47,6 +47,19 @@ button:hover { cursor: pointer; }
   color: #fef3c7;
 }
 
+.btn-registro {
+  background-color: #009966;
+  height: 46px;
+  width: 112px;
+  font-size: 20px;
+  color: white;
+}
+.dark .btn-registro {
+  background-color: #065f46;
+  border-color: #059669;
+  color: white;
+}
+
 .btn-login {
   background-color: #009966;
   height: 72px;
@@ -55,8 +68,8 @@ button:hover { cursor: pointer; }
   color: white;
 }
 .dark .btn-login {
-  background-color: #065f46;
-  border-color: #059669;
+  background-color: #04503a;
+  border-color: #00704d;
   color: white;
 }
 

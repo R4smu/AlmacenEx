@@ -5,7 +5,7 @@ import { CiCalendar } from "react-icons/ci";
 const TarjetaAlimento = ({nombre_alimento, fecha, cantidad, children} : any) => {
   return (
     <>
-      <div className="flex h-37.5 w-full justify-between rounded-xl shadow-[0px_2px_4px_0px_black] bg-white dark:bg-gray-800 transition-colors">
+      <div className="flex h-37.5 w-full justify-between rounded-xl shadow-[0px_2px_4px_0px_black] bg-white dark:bg-gray-700 transition-colors">
 
         <div className="flex flex-col items-start justify-normal ml-4 gap-3">
           <p className="mt-4 font-semibold text-gray-800 dark:text-white">{nombre_alimento}</p>

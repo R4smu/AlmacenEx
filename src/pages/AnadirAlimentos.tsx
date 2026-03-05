@@ -25,7 +25,7 @@ function AnadirAlimentos() {
                         <InputTextArea></InputTextArea>
                     </div>
                 </aside>
-                <div className='flex flex-col gap-8 p-2'>
+                <div className='flex flex-col gap-8 p-16 bg-white dark:bg-gray-800'>
                     <TarjetaAlimento nombre_alimento="Leche" fecha="12/12/2012" cantidad="1 L">
                         <Etiqueta texto="Caducado" tipo="caducado"></Etiqueta>
                         <Etiqueta texto="Carne" tipo="carne"></Etiqueta>

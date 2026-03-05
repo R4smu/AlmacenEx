@@ -13,7 +13,7 @@ function Login() {
   return (
     <>
       <div className="flex flex-1 items-center justify-center" style={{ backgroundColor: 'var(--color-primary)' }}>
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-12 w-full max-w-md transition-colors">
+        <div className="bg-white dark:bg-gray-700 rounded-3xl shadow-2xl p-12 w-full max-w-md transition-colors">
           <h1 className="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
             Login
           </h1>
@@ -32,7 +32,7 @@ function Login() {
                 id="usuario"
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                 placeholder="Usuario"
                 required
               />
@@ -51,7 +51,7 @@ function Login() {
                 id="contrasena"
                 value={contrasena}
                 onChange={(e) => setContrasena(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                 placeholder="Contraseña"
                 required
               />

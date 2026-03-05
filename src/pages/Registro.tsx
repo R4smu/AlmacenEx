@@ -117,9 +117,9 @@ function Registro() {
                                 </label>
                             </div>
 
-                            {/* Botón Entrar */}
+                            {/* Botón Entrar */} {/* <Boton estilo="registro">Entrar</Boton> */}
                             <div className="flex justify-center mt-8 pt-4">
-                                <Boton estilo="opciones">Entrar</Boton>
+                                <Boton estilo="registro">Entrar</Boton>                        
                             </div>
                         </form>
                     </div>
