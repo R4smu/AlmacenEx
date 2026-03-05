@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import fondoLogin from '../assets/fondoLogin1.jpg'
 
 function Login() {
   const [usuario, setUsuario] = useState('');
@@ -12,7 +13,8 @@ function Login() {
 
   return (
     <>
-      <div className="flex flex-1 items-center justify-center" style={{ backgroundColor: 'var(--color-primary)' }}>
+      <div className="flex flex-1 items-center justify-center bg-center bg-no-repeat" 
+      style={{ backgroundImage: `url(${fondoLogin})`,backgroundSize:'100% 100%'}}>
         <div className="bg-white rounded-3xl shadow-2xl p-12 w-full max-w-md">
           <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">
             Login

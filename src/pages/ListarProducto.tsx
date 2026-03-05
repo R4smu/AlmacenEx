@@ -1,10 +1,13 @@
 import InputBuscarAlimentos from '../components/InputBuscarAlimentos'
 import Boton from '../components/Boton'
 import TarjetaAlimento from '../components/TarjetaAlimento'
+import Etiqueta from '../components/Etiqueta'
+import "../index.css"
+import '../App.css'
 
 export const ListarProducto = () => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full overflow-x-hidden con">
       <div className='flex justify-center gap-3 p-10'>
         <InputBuscarAlimentos></InputBuscarAlimentos>
       </div>
@@ -18,7 +21,7 @@ export const ListarProducto = () => {
         <Boton estilo='fruta' style={{ width: '160px' }}>Fruta</Boton>
       </div>
       <div className="grid grid-cols-2 gap-12 p-10 max-w-8xl mx-auto">
-        <TarjetaAlimento></TarjetaAlimento>
+        <TarjetaAlimento><Etiqueta texto="Caducado" tipo="caducado"></Etiqueta></TarjetaAlimento>
         <TarjetaAlimento></TarjetaAlimento>
         <TarjetaAlimento></TarjetaAlimento>
         <TarjetaAlimento></TarjetaAlimento>
