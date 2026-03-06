@@ -4,7 +4,7 @@ import TarjetaAlimento from '../components/TarjetaAlimento'
 
 export const ListarProducto = () => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full overflow-x-hidden bg-white dark:bg-gray-800 min-h-screen transition-colors">
       <div className='flex justify-center gap-3 p-10'>
         <InputBuscarAlimentos></InputBuscarAlimentos>
       </div>

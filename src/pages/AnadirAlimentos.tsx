@@ -6,6 +6,7 @@ import InputNombreProducto from '../components/forms/InputNombreProducto'
 import InputSelect from '../components/forms/InputSelect'
 import InputTextArea from '../components/forms/InputTextArea'
 import InputFechaCaducidad from '../components/forms/InputFechaCaducidad'
+import Boton from '../components/Boton'
 import "../index.css"
 
 function AnadirAlimentos() {
@@ -139,8 +140,7 @@ function AnadirAlimentos() {
                     <form
                         onSubmit={handleSubmit}
                         className="w-full max-w-md bg-white p-6 rounded shadow space-y-4"
-                    >
-                        <h1 className="text-xl font-semibold">
+                    >                        <h1 className="text-xl font-semibold">
                             Añadir alimentos
                         </h1>
 
