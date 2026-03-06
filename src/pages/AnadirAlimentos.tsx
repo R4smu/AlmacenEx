@@ -39,7 +39,6 @@ function AnadirAlimentos() {
         }
         console.log(user.id)
 
-
         let { data: productoExistente } = await supabase
             .from("productos")
             .select("*")
@@ -49,7 +48,6 @@ function AnadirAlimentos() {
         let productoId = productoExistente?.id_producto
 
         if (!productoExistente) {
-
             const { data: categoriaData } = await supabase
                 .from("categorias")
                 .select("id_categoria")
@@ -79,7 +77,6 @@ function AnadirAlimentos() {
         let imageUrl = null
 
         if (imagen) {
-
             const fileName = `${Date.now()}-${imagen.name}`
 
             const { error: uploadError } = await supabase.storage
@@ -102,6 +99,7 @@ function AnadirAlimentos() {
 
             imageUrl = data.publicUrl
         }
+
         const { error } = await supabase
             .from("alimentos_registrados")
             .insert([
@@ -120,7 +118,6 @@ function AnadirAlimentos() {
             console.log("ERROR PRODUCTO:", error)
             alert(error.message)
             return
-
         } else {
             alert("Alimento añadido correctamente")
             setNombre("")
@@ -133,14 +130,21 @@ function AnadirAlimentos() {
 
         setLoading(false)
     }
+
     return (
         <>
             <div className='flex flex-1 justify-center gap-20'>
-                <aside className="h-full bg-gray-50 flex p-6">
+                <aside className="h-full bg-gray-50 dark:bg-gray-900 flex p-6 transition-colors duration-300">
                     <form
                         onSubmit={handleSubmit}
-                        className="w-full max-w-md bg-white p-6 rounded shadow space-y-4"
-                    >                        <h1 className="text-xl font-semibold">
+                        className="
+                            w-full max-w-md p-6 rounded shadow space-y-4
+                            bg-white dark:bg-gray-800
+                            text-gray-900 dark:text-gray-100
+                            transition-colors duration-300
+                        "
+                    >
+                        <h1 className="text-xl font-semibold">
                             Añadir alimentos
                         </h1>
 
@@ -150,12 +154,22 @@ function AnadirAlimentos() {
                                 type="file"
                                 accept="image/*"
                                 onChange={handleFileChange}
-                                className='border rounded w-60 p-1 cursor-pointer'
+                                className="
+                                    border rounded w-60 p-1 cursor-pointer
+                                    border-gray-300 dark:border-gray-600
+                                    bg-white dark:bg-gray-700
+                                    text-gray-900 dark:text-gray-100
+                                    file:mr-2 file:py-1 file:px-2
+                                    file:rounded file:border-0
+                                    file:bg-gray-200 dark:file:bg-gray-600
+                                    file:text-gray-700 dark:file:text-gray-200
+                                    transition-colors duration-300
+                                "
                             />
                             {preview && (
                                 <img
                                     src={preview}
-                                    className="w-32 rounded"
+                                    className="w-32 rounded border border-gray-200 dark:border-gray-600"
                                 />
                             )}
                         </div>
@@ -176,12 +190,20 @@ function AnadirAlimentos() {
                                 { value: "Verdura", name: "Verdura" },
                                 { value: "Panadería", name: "Panadería" },
                                 { value: "Congelados", name: "Congelados" }
-                            ]} />
+                            ]}
+                        />
 
                         <input
                             type="number"
                             placeholder="Cantidad"
-                            className="w-100 p-2 flex items-center gap-2 rounded border"
+                            className="
+                                w-100 p-2 flex items-center gap-2 rounded border
+                                border-gray-300 dark:border-gray-600
+                                bg-white dark:bg-gray-700
+                                text-gray-900 dark:text-gray-100
+                                placeholder-gray-400 dark:placeholder-gray-500
+                                transition-colors duration-300
+                            "
                             value={cantidad}
                             onChange={(e) => setCantidad(e.target.value)}
                         />
@@ -193,13 +215,13 @@ function AnadirAlimentos() {
 
                         <InputTextArea />
 
-                        <button
+                        <Boton
                             type="submit"
                             disabled={loading}
-                            className="bg-blue-500 text-white p-2 rounded"
+                            estilo='anadir'
                         >
                             {loading ? "Guardando..." : "Guardar"}
-                        </button>
+                        </Boton>
                     </form>
                 </aside>
             </div>
