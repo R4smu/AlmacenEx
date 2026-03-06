@@ -134,12 +134,12 @@ function AnadirAlimentos() {
     return (
         <>
             <div className='flex flex-1 justify-center gap-20'>
-                <aside className="h-full bg-gray-50 dark:bg-gray-900 flex p-6 transition-colors duration-300">
+                <aside className="h-full bg-gray-50 dark:bg-gray-800 flex p-6 transition-colors duration-300">
                     <form
                         onSubmit={handleSubmit}
                         className="
                             w-full max-w-md p-6 rounded shadow space-y-4
-                            bg-white dark:bg-gray-800
+                            bg-white dark:bg-gray-700
                             text-gray-900 dark:text-gray-100
                             transition-colors duration-300
                         "
