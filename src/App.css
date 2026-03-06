@@ -31,7 +31,7 @@ button:hover { cursor: pointer; }
 }
 
 .btn-header:hover{
-  background-color: #bdbdbd;
+  background-color: #c1c1c1;
 }
 
 .dark .btn-header {
@@ -41,7 +41,7 @@ button:hover { cursor: pointer; }
 }
 
 .dark .btn-header:hover{
-  background-color: #505e75;
+  background-color: #57667e;
 }
 
 .btn-opciones {
@@ -52,17 +52,17 @@ button:hover { cursor: pointer; }
 }
 
 .btn-opciones:hover{
-  background-color: #e2a600;
+  background-color: #dba101;
 }
 
 .dark .btn-opciones {
   background-color: #b45309;
-  border-color: #d97706;
+  border-color: #e57e08;
   color: #fef3c7;
 }
 
 .dark .btn-opciones:hover {
-  background-color: #d6630b;
+  background-color: #e2690d;
 }
 
 .btn-registro {
@@ -111,8 +111,8 @@ button:hover { cursor: pointer; }
 
 .btn-login {
   background-color: #009966;
-  height: 72px;
-  width: 222px;
+  height: 46px;
+  width: 100px;
   font-size: 20px;
   color: white;
 }
@@ -148,13 +148,13 @@ button:hover { cursor: pointer; }
 .btn-congelados { background-color: #DBEAFE; color: #1e40af; }
 .btn-fruta { background-color: #E9D4FF; color: #6b21a8; }
 
-.btn-carne:hover { background-color: #e08d98}
-.btn-pescado:hover { background-color: #9cc5da}
-.btn-verdura:hover { background-color: #a2dbb6}
-.btn-panaderia:hover { background-color: #dfbb92}
-.btn-lacteos:hover { background-color: #8895d5}
-.btn-congelados:hover { background-color: #becbdc}
-.btn-fruta:hover { background-color: #c8b6db}
+.btn-carne:hover { background-color: #eb96a1}
+.btn-pescado:hover { background-color: #a4d0e5}
+.btn-verdura:hover { background-color: #aae5bf}
+.btn-panaderia:hover { background-color: #e3bf96}
+.btn-lacteos:hover { background-color: #8f9de1}
+.btn-congelados:hover { background-color: #c6d4e7}
+.btn-fruta:hover { background-color: #d4c1e9}
 
 .dark .btn-carne { background-color: #7f1d3a; border-color: #fb7185; color: #fecdd3; }
 .dark .btn-pescado { background-color: #0c3a52; border-color: #7dd3fc; color: #bae6fd; }
@@ -164,13 +164,13 @@ button:hover { cursor: pointer; }
 .dark .btn-congelados { background-color: #1e3a6e; border-color: #93c5fd; color: #dbeafe; }
 .dark .btn-fruta { background-color: #4a1d7a; border-color: #c084fc; color: #f3e8ff; }
 
-.dark .btn-carne:hover { background-color: #a3274c; border-color: #fb7185}
-.dark .btn-pescado:hover { background-color: #0e4766; border-color: #7dd3fc}
-.dark .btn-verdura:hover { background-color: #1b6b3b; border-color: #6ee7b7}
-.dark .btn-panaderia:hover { background-color: #974515; border-color: #fdba74}
-.dark .btn-lacteos:hover { background-color: #282488; border-color: #818cf8}
-.dark .btn-congelados:hover { background-color: #274c8c; border-color: #93c5fd}
-.dark .btn-fruta:hover { background-color: #6127a0; border-color: #c084fc}
+.dark .btn-carne:hover { background-color: #c02f5a; border-color: #fb7185}
+.dark .btn-pescado:hover { background-color: #12577c; border-color: #7dd3fc}
+.dark .btn-verdura:hover { background-color: #218248; border-color: #6ee7b7}
+.dark .btn-panaderia:hover { background-color: #ad4f19; border-color: #fdba74}
+.dark .btn-lacteos:hover { background-color: #3430b5; border-color: #818cf8}
+.dark .btn-congelados:hover { background-color: #3362b2; border-color: #93c5fd}
+.dark .btn-fruta:hover { background-color: #752ec1; border-color: #c084fc}
 
 /* --- ETIQUETAS ESTADO --- */
 .etiqueta-caducado, .etiqueta-apunto, .etiqueta-nocaducado {
@@ -222,7 +222,6 @@ button:hover { cursor: pointer; }
   border: 2px solid;
 }
 
-:hover
 
 .etiqueta-lacteos { background-color: #A3B3FF; border-color: #6B7FFF; color: #1e3a8a; }
 .etiqueta-fruta { background-color: #E9D4FF; border-color: #C084FC; color: #6b21a8; }
@@ -232,15 +231,13 @@ button:hover { cursor: pointer; }
 .etiqueta-panaderia { background-color: #FFD6A7; border-color: #FDBA74; color: #92400e; }
 .etiqueta-congelados { background-color: #DBEAFE; border-color: #93C5FD; color: #1e40af; }
 
-.etiqueta-lacteos:hover { background-color: #909ee3}
+.etiqueta-lacteos:hover { background-color: #96a4ec}
 .etiqueta-fruta:hover { background-color: #ccbae0}
 .etiqueta-pescados:hover { background-color: #a4cbe1}
 .etiqueta-verdura:hover { background-color: #9fdab3}
 .etiqueta-carne:hover { background-color: #d58791}
 .etiqueta-panaderia:hover { background-color: #cdac86}
 .etiqueta-congelados:hover { background-color: #b3c0d0}
-
-:hover
 
 .dark .etiqueta-lacteos { background-color: #1e1b6b; border-color: #818cf8; color: #c7d2fe; }
 .dark .etiqueta-fruta { background-color: #4a1d7a; border-color: #c084fc; color: #f3e8ff; }
@@ -250,13 +247,13 @@ button:hover { cursor: pointer; }
 .dark .etiqueta-panaderia { background-color: #78350f; border-color: #fdba74; color: #fed7aa; }
 .dark .etiqueta-congelados { background-color: #1e3a6e; border-color: #93c5fd; color: #dbeafe; }
 
-.dark .etiqueta-lacteos:hover { background-color: #312da4}
-.dark .etiqueta-fruta:hover { background-color: #6d2db3}
-.dark .etiqueta-pescados:hover { background-color: #14638e}
-.dark .etiqueta-verdura:hover { background-color: #299f58}
-.dark .etiqueta-carne:hover { background-color: #b52c55}
-.dark .etiqueta-panaderia:hover { background-color: #ac4e17}
-.dark .etiqueta-congelados:hover { background-color: #274c8f}
+.dark .etiqueta-lacteos:hover { background-color: #3632b5}
+.dark .etiqueta-fruta:hover { background-color: #722fba}
+.dark .etiqueta-pescados:hover { background-color: #156794}
+.dark .etiqueta-verdura:hover { background-color: #2dad60}
+.dark .etiqueta-carne:hover { background-color: #c62f5c}
+.dark .etiqueta-panaderia:hover { background-color: #b9551a}
+.dark .etiqueta-congelados:hover { background-color: #2c55a0}
 
 /* --- MISC --- */
 .logo {
