@@ -53,7 +53,7 @@ function Login() {
                 id="usuario"
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-600 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                 placeholder="Email"
                 required
               />
@@ -63,7 +63,7 @@ function Login() {
             <div className="space-y-2">
               <label
                 htmlFor="contrasena"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 pl-1"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300  pl-1"
               >
                 Contraseña
               </label>
