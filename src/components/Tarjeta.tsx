@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+
 interface TarjetaProps {
   imagen: string;
   titulo: string;
@@ -13,8 +15,43 @@ const Tarjeta: React.FC<TarjetaProps> = ({
   altImagen,
   invertida = false 
 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.2, // La tarjeta debe estar al menos 20% visible
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="w-[70%] mx-auto bg-white  shadow-md overflow-hidden">
+    <div 
+      ref={cardRef}
+      className={`w-[70%] mx-auto bg-white shadow-md overflow-hidden transition-all duration-1000 ease-out ${
+        isVisible 
+          ? 'opacity-100 translate-x-0' 
+          : `opacity-0 ${invertida ? '-translate-x-32' : 'translate-x-32'}`
+      }`}
+    >
       <div className={`flex flex-col md:flex-row ${invertida ? 'md:flex-row-reverse' : ''}`}>
         {/* Imagen */}
         <div className="md:w-1/2">
