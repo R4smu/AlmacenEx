@@ -54,7 +54,7 @@ function Registro() {
     return (
         <>
             <div className="flex flex-1" style={{ backgroundColor: '#f5f5f5' }}>
-                <div className="w-3/4 bg-gray-200 flex items-center justify-center p-12">
+                <div className="w-3/4 bg-gray-200 dark:bg-gray-700 flex items-center justify-center p-12">
                     <div className="max-w-md">
                         <h2 className="text-5xl font-bold text-black dark:text-white mb-8">
                             Lorem ipsum
