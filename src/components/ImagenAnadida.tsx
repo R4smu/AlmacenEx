@@ -1,23 +1,27 @@
 
-const ImageUploader = ({ image }: any) => {
+type Props = {
+  onFileSelect: (file: File | null) => void
+}
+
+export default function ImagenAnadida({ onFileSelect }: Props) {
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      onFileSelect(e.target.files[0])
+    }
+  }
 
   return (
-    <div className="w-60 h-60 border-2 rounded flex flex-col items-center justify-center cursor-pointer">
-      <img
-        src={image}
-        alt="Image"
-        className="flex justify-center object-cover rounded"
-      />
-      <span className="text-gray-400 text-sm text-center">
-        Pulsa para subir<br />una imagen
-      </span>
-      <input
-        type="file"
-        accept="image/*"
-        className="hidden"
-      />
+    <div className="flex flex-col gap-2">
+      Imagen
+      <button>
+        Añadir
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleChange}
+        />
+      </button>
     </div>
-  );
-};
-
-export default ImageUploader;
+  )
+}
