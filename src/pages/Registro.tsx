@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from '../supabaseClient'
 
 function Registro() {
     const [usuario, setUsuario] = useState('');
@@ -7,16 +8,51 @@ function Registro() {
     const [repetirContrasena, setRepetirContrasena] = useState('');
     const [guardarContrasena, setGuardarContrasena] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Lógica de autenticación aquí
-        console.log('Registro:', { usuario, email, contrasena, repetirContrasena, guardarContrasena });
-    };
 
+        if (contrasena !== repetirContrasena) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
+
+        const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: contrasena
+        });
+
+        if (error) {
+            alert(error.message);
+            return;
+        }
+
+        const user = data.user;
+
+        if (!user) {
+            alert("Error creando usuario");
+            return;
+        }
+
+        const { error: errorUsuario } = await supabase
+            .from("usuarios")
+            .insert([
+                {
+                    id_usuario: user.id,
+                    nombre: usuario
+                }
+            ]);
+
+        if (errorUsuario) {
+            alert("Error guardando usuario");
+            console.log(errorUsuario);
+            return;
+        }
+
+        alert("Usuario registrado correctamente");
+    };
     return (
         <>
             <div className="flex flex-1" style={{ backgroundColor: '#f5f5f5' }}>
-                {/* Columna izquierda - Información */}
                 <div className="w-3/4 bg-gray-200 flex items-center justify-center p-12">
                     <div className="max-w-md">
                         <h2 className="text-5xl font-bold text-black mb-8">
@@ -43,7 +79,6 @@ function Registro() {
                         </h1>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Campo Usuario */}
                             <div className="space-y-2">
                                 <label
                                     htmlFor="usuario"
@@ -81,7 +116,6 @@ function Registro() {
                                 />
                             </div>
 
-                            {/* Campo Contraseña */}
                             <div className="space-y-2">
                                 <label
                                     htmlFor="contrasena"
@@ -100,7 +134,6 @@ function Registro() {
                                 />
                             </div>
 
-                            {/* Campo Repetir Contraseña */}
                             <div className="space-y-2">
                                 <label
                                     htmlFor="repetircontrasena"
@@ -119,7 +152,6 @@ function Registro() {
                                 />
                             </div>
 
-                            {/* Checkbox Guardar Contraseña */}
                             <div className="flex items-center space-x-2 pt-2">
                                 <input
                                     type="checkbox"
@@ -136,7 +168,6 @@ function Registro() {
                                 </label>
                             </div>
 
-                            {/* Botón Entrar */}
                             <div className="flex justify-center mt-8 pt-4">
                                 <button
                                     type="submit"
