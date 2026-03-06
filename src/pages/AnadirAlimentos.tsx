@@ -198,10 +198,10 @@ function AnadirAlimentos() {
                             placeholder="Cantidad"
                             className="
                                 w-100 p-2 flex items-center gap-2 rounded border
-                                border-gray-300 dark:border-gray-600
+                                border-gray-300 dark:border-white
                                 bg-white dark:bg-gray-700
-                                text-gray-900 dark:text-gray-100
-                                placeholder-gray-400 dark:placeholder-gray-500
+                                text-gray-900 dark:text-white
+                                placeholder-gray-400 dark:placeholder-white
                                 transition-colors duration-300
                             "
                             value={cantidad}
