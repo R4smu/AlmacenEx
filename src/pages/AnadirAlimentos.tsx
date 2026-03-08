@@ -1,23 +1,45 @@
 import '../App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
 
 import InputNombreProducto from '../components/forms/InputNombreProducto'
-import InputSelect from '../components/forms/InputSelect'
 import InputTextArea from '../components/forms/InputTextArea'
-import InputFechaCaducidad from '../components/forms/InputFechaCaducidad'
 import Boton from '../components/Boton'
 import "../index.css"
+
+interface Categoria {
+    id_categoria: string
+    nombre: string
+}
 
 function AnadirAlimentos() {
 
     const [nombre, setNombre] = useState("")
-    const [categoria, setCategoria] = useState("")
+    const [categorias, setCategorias] = useState<Categoria[]>([])
+    const [idCategoria, setIdCategoria] = useState("")
     const [fechaCaducidad, setFechaCaducidad] = useState("")
     const [cantidad, setCantidad] = useState("")
     const [imagen, setImagen] = useState<File | null>(null)
     const [preview, setPreview] = useState<string | null>(null)
     const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        const cargarCategorias = async () => {
+
+            const { data, error } = await supabase
+                .from("categorias")
+                .select("id_categoria, nombre")
+                .order("nombre", { ascending: true })
+
+            console.log("Categorías data:", data)
+            console.log("Categorías error:", error)
+
+            if (!error && data) {
+                setCategorias(data)
+            }
+        }
+        cargarCategorias()
+    }, [])
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
@@ -37,36 +59,29 @@ function AnadirAlimentos() {
             setLoading(false)
             return
         }
-        console.log(user.id)
 
-        let { data: productoExistente } = await supabase
+        // Buscar si el producto ya existe
+        const { data: productoExistente } = await supabase
             .from("productos")
-            .select("*")
+            .select("id_producto")
             .ilike("nombre", nombre)
-            .single()
+            .maybeSingle()
 
         let productoId = productoExistente?.id_producto
 
-        if (!productoExistente) {
-            const { data: categoriaData } = await supabase
-                .from("categorias")
-                .select("id_categoria")
-                .eq("nombre", categoria)
-                .single()
-
+        // Si no existe, crearlo con el uuid de la categoría
+        if (!productoId) {
             const { data: nuevoProducto, error: errorProducto } = await supabase
                 .from("productos")
-                .insert([
-                    {
-                        nombre: nombre,
-                        id_categoria: categoriaData?.id_categoria
-                    }
-                ])
-                .select()
+                .insert([{
+                    nombre: nombre,
+                    id_categoria: idCategoria
+                }])
+                .select("id_producto")
                 .single()
 
-            if (errorProducto) {
-                alert("Error creando producto")
+            if (errorProducto || !nuevoProducto) {
+                alert("Error creando producto: " + errorProducto?.message)
                 setLoading(false)
                 return
             }
@@ -74,158 +89,150 @@ function AnadirAlimentos() {
             productoId = nuevoProducto.id_producto
         }
 
-        let imageUrl = null
+        // Subir imagen si se seleccionó
+        let imageUrl: string | null = null
 
         if (imagen) {
             const fileName = `${Date.now()}-${imagen.name}`
 
             const { error: uploadError } = await supabase.storage
                 .from("imagenes-alimentos")
-                .upload(fileName, imagen, {
-                    cacheControl: '3600',
-                    upsert: false
-                })
+                .upload(fileName, imagen, { cacheControl: '3600', upsert: false })
 
             if (uploadError) {
-                console.log(uploadError)
-                alert("Error subiendo imagen")
+                alert("Error subiendo imagen: " + uploadError.message)
                 setLoading(false)
                 return
             }
 
-            const { data } = supabase.storage
+            const { data: urlData } = supabase.storage
                 .from("imagenes-alimentos")
                 .getPublicUrl(fileName)
 
-            imageUrl = data.publicUrl
+            imageUrl = urlData.publicUrl
         }
 
+        // Insertar alimento
         const { error } = await supabase
             .from("alimentos_registrados")
-            .insert([
-                {
-                    cantidad: Number(cantidad),
-                    unidad_medida: "unidad",
-                    fecha_caducidad: fechaCaducidad,
-                    estado: "activo",
-                    id_producto: productoId,
-                    id_usuario: user.id,
-                    imagen_url: imageUrl
-                }
-            ])
+            .insert([{
+                cantidad: Number(cantidad),
+                unidad_medida: "unidad",
+                fecha_caducidad: fechaCaducidad,
+                estado: "activo",
+                id_producto: productoId,
+                id_usuario: user.id,
+                imagen_url: imageUrl
+            }])
 
         if (error) {
-            console.log("ERROR PRODUCTO:", error)
-            alert(error.message)
+            alert("Error: " + error.message)
+            setLoading(false)
             return
-        } else {
-            alert("Alimento añadido correctamente")
-            setNombre("")
-            setCategoria("")
-            setFechaCaducidad("")
-            setCantidad("")
-            setImagen(null)
-            setPreview(null)
         }
 
+        alert("¡Alimento añadido correctamente!")
+        setNombre("")
+        setIdCategoria("")
+        setFechaCaducidad("")
+        setCantidad("")
+        setImagen(null)
+        setPreview(null)
         setLoading(false)
     }
 
+    const formularioIncompleto = !nombre || !idCategoria || !fechaCaducidad || !cantidad
+
     return (
-        <>
-            <div className='flex flex-1 justify-center gap-20'>
-                <aside className="h-full bg-gray-50 dark:bg-gray-800 flex p-6 transition-colors duration-300">
-                    <form
-                        onSubmit={handleSubmit}
-                        className="
-                            w-full max-w-md p-6 rounded shadow space-y-4
-                            bg-white dark:bg-gray-700
-                            text-gray-900 dark:text-gray-100
-                            transition-colors duration-300
-                        "
-                    >
-                        <h1 className="text-xl font-semibold">
-                            Añadir alimentos
-                        </h1>
+        <div className='flex flex-1 justify-center'>
+            <aside className="h-full bg-gray-50 dark:bg-gray-800 flex p-6 transition-colors duration-300">
+                <form
+                    onSubmit={handleSubmit}
+                    className="w-full max-w-md p-6 rounded shadow space-y-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+                >
+                    <h1 className="text-xl font-semibold">Añadir alimentos</h1>
 
-                        <div className="flex flex-col gap-2">
-                            <strong>Imagen</strong>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={handleFileChange}
-                                className="
-                                    border rounded w-60 p-1 cursor-pointer
-                                    border-gray-300 dark:border-gray-600
-                                    bg-white dark:bg-gray-700
-                                    text-gray-900 dark:text-gray-100
-                                    file:mr-2 file:py-1 file:px-2
-                                    file:rounded file:border-0
-                                    file:bg-gray-200 dark:file:bg-gray-600
-                                    file:text-gray-700 dark:file:text-gray-200
-                                    transition-colors duration-300
-                                "
-                            />
-                            {preview && (
-                                <img
-                                    src={preview}
-                                    className="w-32 rounded border border-gray-200 dark:border-gray-600"
-                                />
-                            )}
-                        </div>
-
-                        <InputNombreProducto
-                            value={nombre}
-                            onChange={setNombre}
+                    {/* Imagen */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-sm font-medium">Imagen</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            className="border rounded w-full p-1 cursor-pointer border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-gray-200 dark:file:bg-gray-600 file:text-gray-700 dark:file:text-gray-200 transition-colors duration-300"
                         />
+                        {preview && (
+                            <img src={preview} alt="Preview" className="w-32 rounded border border-gray-200 dark:border-gray-600" />
+                        )}
+                    </div>
 
-                        <InputSelect
-                            value={categoria}
-                            onChange={(e) => setCategoria(e.target.value)}
-                            options={[
-                                { value: "Carne", name: "Carne" },
-                                { value: "Pescado", name: "Pescado" },
-                                { value: "Lácteos", name: "Lácteos" },
-                                { value: "Fruta", name: "Fruta" },
-                                { value: "Verdura", name: "Verdura" },
-                                { value: "Panadería", name: "Panadería" },
-                                { value: "Congelados", name: "Congelados" }
-                            ]}
-                        />
+                    {/* Nombre */}
+                    <InputNombreProducto value={nombre} onChange={setNombre} />
 
+                    {/* Categoría — cargada desde Supabase */}
+                    <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium">Categoría *</label>
+                        {categorias.length === 0 ? (
+                            <p className="text-sm text-red-500 dark:text-red-400">
+                                No se pudieron cargar las categorías. Revisa la consola.
+                            </p>
+                        ) : (
+                            <select
+                                value={idCategoria}
+                                onChange={(e) => setIdCategoria(e.target.value)}
+                                required
+                                className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-300"
+                            >
+                                <option value="">Selecciona categoría</option>
+                                {categorias.map(cat => (
+                                    <option key={cat.id_categoria} value={cat.id_categoria}>
+                                        {cat.nombre}
+                                    </option>
+                                ))}
+                            </select>
+                        )}
+                    </div>
+
+                    {/* Cantidad */}
+                    <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium">Cantidad *</label>
                         <input
                             type="number"
-                            placeholder="Cantidad"
-                            className="
-                                w-100 p-2 flex items-center gap-2 rounded border
-                                border-gray-300 dark:border-white
-                                bg-white dark:bg-gray-700
-                                text-gray-900 dark:text-white
-                                placeholder-gray-400 dark:placeholder-white
-                                transition-colors duration-300
-                            "
+                            placeholder="Ej: 2"
+                            min={1}
+                            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 transition-colors duration-300"
                             value={cantidad}
                             onChange={(e) => setCantidad(e.target.value)}
+                            required
                         />
+                    </div>
 
-                        <InputFechaCaducidad
+                    {/* Fecha de caducidad */}
+                    <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium">Fecha de caducidad *</label>
+                        <input
+                            type="date"
+                            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-300"
                             value={fechaCaducidad}
-                            onChange={setFechaCaducidad}
+                            onChange={(e) => setFechaCaducidad(e.target.value)}
+                            required
                         />
+                    </div>
 
-                        <InputTextArea />
+                    {/* Notas */}
+                    <InputTextArea />
 
-                        <Boton
-                            type="submit"
-                            disabled={loading}
-                            estilo='anadir'
-                        >
-                            {loading ? "Guardando..." : "Guardar"}
-                        </Boton>
-                    </form>
-                </aside>
-            </div>
-        </>
+                    {/* Botón */}
+                    <Boton
+                        type="submit"
+                        disabled={loading || formularioIncompleto}
+                        estilo='anadir'
+                    >
+                        {loading ? "Guardando..." : "Guardar"}
+                    </Boton>
+                </form>
+            </aside>
+        </div>
     )
 }
 
