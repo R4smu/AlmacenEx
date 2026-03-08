@@ -2,8 +2,20 @@ import InputBuscarAlimentos from '../components/InputBuscarAlimentos'
 import Boton from '../components/Boton'
 import TarjetaAlimento from '../components/TarjetaAlimento'
 import Etiqueta from '../components/Etiqueta'
+import GraficoCategoria from '../components/GraficoCategoria'
 import "../index.css"
 import '../App.css'
+
+const alimentosPrueba = [
+  { categoria: "carne" },
+  { categoria: "carne" },
+  { categoria: "lacteos" },
+  { categoria: "fruta" },
+  { categoria: "fruta" },
+  { categoria: "fruta" },
+  { categoria: "verdura" },
+  { categoria: "congelados" },
+]
 
 export const ListarProducto = () => {
   return (
@@ -20,6 +32,7 @@ export const ListarProducto = () => {
         <Boton estilo='congelados' style={{ width: '160px' }}>Congelados</Boton>
         <Boton estilo='fruta' style={{ width: '160px' }}>Fruta</Boton>
       </div>
+
       <div className="grid grid-cols-2 gap-12 p-10 max-w-8xl mx-auto">
         <TarjetaAlimento><Etiqueta texto="Caducado" tipo="caducado"></Etiqueta></TarjetaAlimento>
         <TarjetaAlimento></TarjetaAlimento>
@@ -27,6 +40,11 @@ export const ListarProducto = () => {
         <TarjetaAlimento></TarjetaAlimento>
         <TarjetaAlimento></TarjetaAlimento>
         <TarjetaAlimento></TarjetaAlimento>
+      </div>
+
+      {/* Gráfico de categorías */}
+      <div className="px-10 py-4 max-w-md mx-auto">
+        <GraficoCategoria alimentos={alimentosPrueba} />
       </div>
     </div>
   )
