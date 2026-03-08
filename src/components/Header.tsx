@@ -7,41 +7,47 @@ import { supabase } from "../supabaseClient";
 
 const Header = () => {
     const [nombreUsuario, setNombreUsuario] = useState<string | null>(null);
+    const [esAdmin, setEsAdmin] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        // Carga el nombre al montar el componente si ya hay sesión activa
-        const cargarUsuario = async (userId: string, emailFallback?: string) => {
-            console.log("Buscando userId:", userId);
-            const { data, error } = await supabase
-                .from("usuarios")
+    const cargarUsuario = async (userId: string, emailFallback?: string) => {
+        const { data, error } = await supabase
+            .from("usuarios")
+            .select("nombre, id_rol")
+            .eq("id_usuario", userId)
+            .maybeSingle();
+
+        console.log("cargarUsuario →", { data, error });
+
+        if (data?.nombre) {
+            setNombreUsuario(data.nombre);
+        } else if (emailFallback) {
+            setNombreUsuario(emailFallback.split("@")[0]);
+        }
+
+        if (data?.id_rol) {
+            const { data: rolData } = await supabase
+                .from("roles")
                 .select("nombre")
-                .eq("id_usuario", userId)
+                .eq("id_rol", data.id_rol)
                 .maybeSingle();
 
-            console.log("cargarUsuario →", { data, error });
+            console.log("rol →", rolData)
+            setEsAdmin(rolData?.nombre === "admin");
+        }
+    };
 
-            if (data?.nombre) {
-                setNombreUsuario(data.nombre);
-            } else if (emailFallback) {
-                // Fallback: muestra la parte del email antes del @
-                setNombreUsuario(emailFallback.split("@")[0]);
-            }
-        };
-
-        // Comprueba sesión actual
-        supabase.auth.getSession().then(({ data: { session } }: { data: { session: { user: { id: string; email?: string } } | null } }) => {
-            console.log("getSession →", session);
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }: any) => {
             if (session?.user) cargarUsuario(session.user.id, session.user.email);
         });
 
-        // Escucha cambios de sesión (login / logout)
-        const { data: listener } = supabase.auth.onAuthStateChange((_event: string, session: { user: { id: string; email?: string } } | null) => {
-            console.log("onAuthStateChange →", _event, session);
+        const { data: listener } = supabase.auth.onAuthStateChange((_event: string, session: any) => {
             if (session?.user) {
                 cargarUsuario(session.user.id, session.user.email);
             } else {
                 setNombreUsuario(null);
+                setEsAdmin(false);
             }
         });
 
@@ -51,6 +57,7 @@ const Header = () => {
     const handleLogout = async () => {
         await supabase.auth.signOut();
         setNombreUsuario(null);
+        setEsAdmin(false);
         navigate("/landingPage");
     };
 
@@ -62,6 +69,7 @@ const Header = () => {
                     <img src={Logo} alt="Logo" className="h-12" />
                 </div>
             </NavLink>
+
             <div className="flex items-center">
                 <nav>
                     <ul className="flex items-center text-white text-2xl font-medium gap-6">
@@ -80,13 +88,22 @@ const Header = () => {
                                 Lista producto
                             </NavLink>
                         </li>
+                        {esAdmin && (
+                            <li>
+                                <NavLink
+                                    to="/admin"
+                                    className="hover:underline flex items-center gap-1 text-amber-300 hover:text-amber-200"
+                                >
+                                    ⚙ Admin
+                                </NavLink>
+                            </li>
+                        )}
                     </ul>
                 </nav>
             </div>
 
             <div className="flex items-center gap-4">
                 {nombreUsuario ? (
-                    // Usuario autenticado: muestra nombre y botón de cerrar sesión
                     <>
                         <span className="text-white font-medium text-lg">
                             Hola, {nombreUsuario}
@@ -96,7 +113,6 @@ const Header = () => {
                         </Boton>
                     </>
                 ) : (
-                    // Usuario no autenticado: muestra Registrar y Login
                     <div className="flex gap-3">
                         <NavLink to="/registro">
                             <Boton estilo="header">Registrar</Boton>
@@ -106,7 +122,6 @@ const Header = () => {
                         </NavLink>
                     </div>
                 )}
-
                 <BotonOscuro />
             </div>
         </section>
