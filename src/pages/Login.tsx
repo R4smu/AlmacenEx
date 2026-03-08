@@ -27,7 +27,7 @@ function Login() {
     alert("Login correcto");
 
     // redirigir a la página principal
-    navigate("/anadir-alimentos");
+    navigate("/landingPage");
   };
 
   return (

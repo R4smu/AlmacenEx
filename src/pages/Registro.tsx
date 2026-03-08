@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '../supabaseClient'
 import Boton from '../components/Boton';
+import { useNavigate } from 'react-router-dom';
 
 function Registro() {
     const [usuario, setUsuario] = useState('');
@@ -8,6 +9,8 @@ function Registro() {
     const [contrasena, setContrasena] = useState('');
     const [repetirContrasena, setRepetirContrasena] = useState('');
     const [guardarContrasena, setGuardarContrasena] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -19,7 +22,8 @@ function Registro() {
 
         const { data, error } = await supabase.auth.signUp({
             email: email,
-            password: contrasena
+            password: contrasena,
+            options: { data: { nombre: usuario } }
         });
 
         if (error) {
@@ -34,22 +38,8 @@ function Registro() {
             return;
         }
 
-        const { error: errorUsuario } = await supabase
-            .from("usuarios")
-            .insert([
-                {
-                    id_usuario: user.id,
-                    nombre: usuario
-                }
-            ]);
-
-        if (errorUsuario) {
-            alert("Error guardando usuario");
-            console.log(errorUsuario);
-            return;
-        }
-
         alert("Usuario registrado correctamente");
+        navigate("/landingPage");
     };
     return (
         <>
