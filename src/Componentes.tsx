@@ -9,6 +9,7 @@ import Registro from './pages/Registro'
 import Login from './pages/Login'
 import Header from './components/Header'
 import { ListarProducto } from './pages/ListarProducto'
+import RutaProtegida from './components/RutaProtegida'
 
 // ==============================
 // Esto es para comprobar en el navegador que funcionen los componentes que tenemos y que se ven realmente como queremos.
@@ -28,8 +29,8 @@ function Componentes() {
         <main className="flex-1 flex">
           <Routes>
             <Route path="/landingPage" element={<LandingPage />} />
-            <Route path="/anadirAlimentos" element={<AnadirAlimentos />} />
-            <Route path="/listaProducto" element={<ListarProducto />} />
+            <Route path="/anadirAlimentos" element={<RutaProtegida><AnadirAlimentos /></RutaProtegida>} />
+            <Route path="/listaProducto" element={<RutaProtegida><ListarProducto /></RutaProtegida>} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/login" element={<Login />} />
             {/*  Ruta por defecto si no se carga una pagina o cuando entras en la aplicacion*/}

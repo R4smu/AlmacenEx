@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from "react";
 import "../App.css"; 
 
 interface BotonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  estilo?: "header" | "opciones" | "login" | "registro" | "anadir" | "carne" | "pescado" | "verdura" | "panaderia" | "lacteos" | "congelados" | "fruta";
+  estilo?: "header" | "opciones" | "login" | "registro" | "anadir" | "carne" | "pescado" | "verdura" | "panaderia" | "lacteos" | "congelados" | "fruta" | "acceso" | "acceso-secundario";
 }
 
 export default function Boton(
@@ -20,7 +20,9 @@ export default function Boton(
       panaderia: "btn-panaderia",
       lacteos: "btn-lacteos",
       congelados: "btn-congelados",
-      fruta: "btn-fruta"
+      fruta: "btn-fruta",
+      "acceso": "btn-acceso",
+      "acceso-secundario": "btn-acceso-secundario"
     };
 
     const claseSeleccionada = clasesEstilo[estilo];
@@ -30,4 +32,4 @@ export default function Boton(
         {children}
       </button>
     );
-}   
+}

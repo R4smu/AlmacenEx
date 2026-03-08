@@ -131,6 +131,51 @@ button:hover { cursor: pointer; }
   background-color: #067d5b;
 }
 
+.btn-acceso {
+  background-color: #009966;
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+  color: white;
+}
+
+.btn-acceso:hover {
+  background-color: #018156;
+}
+
+.dark .btn-acceso {
+  background-color: #065f46;
+  border-color: #059669;
+  color: white;
+}
+
+.dark .btn-acceso:hover {
+  background-color: #098864;
+}
+
+.btn-acceso-secundario {
+  background-color: transparent;
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+  color: #009966;
+  border: 2px solid #009966;
+}
+
+.btn-acceso-secundario:hover {
+  background-color: #f0fdf4;
+}
+
+.dark .btn-acceso-secundario {
+  background-color: transparent;
+  border-color: #34d399;
+  color: #34d399;
+}
+
+.dark .btn-acceso-secundario:hover {
+  background-color: #064e3b;
+}
+
 .btn-header, .btn-opciones, .btn-login { box-shadow: 0px 1px 4px 0px black; }
 
 /* --- BOTONES CATEGORÍA --- */
