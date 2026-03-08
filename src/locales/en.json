@@ -1,0 +1,88 @@
+{
+  "header": {
+    "title": "Everything Expires",
+    "nav": {
+      "home": "Home",
+      "addProduct": "Add product",
+      "productList": "List products"
+    },
+    "user": {
+      "greeting": "Hello, {{nombre}}",
+      "logout": "Log out"
+    },
+    "auth": {
+      "register": "Register",
+      "login": "Login"
+    }
+  },
+
+
+  "hero": {
+    "title": "EVERYTHING EXPIRES",
+    "subtitle": "Track your food expiration dates and prevent waste",
+    "buttons": {
+      "addFood": "Add food",
+      "foodList": "Food list"
+    }
+  },
+
+
+
+  "footer": {
+    "copyright": "© 2026 All Rights Reserved.",
+    "links": {
+      "about": "About us",
+      "privacy": "Privacy policy",
+      "licenses": "Licenses",
+      "contact": "Contact"
+    }
+  },
+
+
+
+  "busqueda": {
+    "placeholder": "Type your product here..."
+  },
+
+
+
+  "tarjetaAlimento": {
+    "quantity": "Quantity: {{cantidad}}",
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  },
+
+
+
+  "imagenAnadida": {
+    "label": "Image",
+    "button": "Add"
+  },
+
+
+
+  "accesibilidad": {
+    "toggleTheme": "Toggle theme"
+  },
+
+
+
+  "formularios": {
+    "labels": {
+      "nombre": "Name *",
+      "fechaCaducidad": "Expiration date *",
+      "categoria": "Category *",
+      "notas": "Notes (optional)"
+    },
+
+
+
+    "placeholders": {
+      "nombre": "e.g., Whole milk",
+      "categoria": "Select category",
+      "notas": "Add any additional information about the product..."
+    }
+  }
+}
