@@ -82,7 +82,8 @@
     "placeholders": {
       "nombre": "e.g., Whole milk",
       "categoria": "Select category",
-      "notas": "Add any additional information about the product..."
+      "notas": "Add any additional information about the product...",
+      "cantidad": "Quantity: "
     }
   }
 }

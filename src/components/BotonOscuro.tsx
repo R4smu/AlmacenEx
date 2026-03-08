@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const BotonOscuro = () => {
+  const { t } = useTranslation();
+
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
@@ -29,7 +32,8 @@ const BotonOscuro = () => {
     <button
       onClick={toggleTheme}
       className="p-2 rounded-lg bg-emerald-800 hover:bg-emerald-900 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors border border-emerald-600 dark:border-slate-600"
-      aria-label="Cambiar tema"
+      aria-label={t('accesibilidad.toggleTheme')}
+      title={t('accesibilidad.toggleTheme')}
     >
       {theme === 'dark' ? (
         <Sun size={20} className="text-yellow-400 fill-yellow-400" />

@@ -85,7 +85,8 @@
     "placeholders": {
       "nombre": "Ej: Leche entera",
       "categoria": "Selecciona categoría",
-      "notas": "Añade cualquier información adicional al producto..."
+      "notas": "Añade cualquier información adicional al producto...",
+      "cantidad": "Cantidad: "
     }
   }
 }

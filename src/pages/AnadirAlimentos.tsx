@@ -8,8 +8,10 @@ import InputTextArea from '../components/forms/InputTextArea'
 import InputFechaCaducidad from '../components/forms/InputFechaCaducidad'
 import Boton from '../components/Boton'
 import "../index.css"
+import { useTranslation } from 'react-i18next'
 
 function AnadirAlimentos() {
+    const { t } = useTranslation();
 
     const [nombre, setNombre] = useState("")
     const [categoria, setCategoria] = useState("")
@@ -195,7 +197,7 @@ function AnadirAlimentos() {
 
                         <input
                             type="number"
-                            placeholder="Cantidad"
+                            placeholder={t('formularios.placeholders.cantidad')}
                             className="
                                 w-100 p-2 flex items-center gap-2 rounded border
                                 border-gray-300 dark:border-white
