@@ -4,6 +4,7 @@ import Boton from "./Boton"
 import BotonOscuro from "./BotonOscuro"
 import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+import BotonIdioma from "./BotonIdioma";
 
 const Header = () => {
     const [nombreUsuario, setNombreUsuario] = useState<string | null>(null);
@@ -108,6 +109,7 @@ const Header = () => {
                 )}
 
                 <BotonOscuro />
+                <BotonIdioma />
             </div>
         </section>
     );
