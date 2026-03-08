@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 const BotonIdioma = () => {
   const { i18n } = useTranslation();
 
-  // Validación de seguridad: si i18n.language es undefined temporalmente, usamos 'es'
   const idiomaActual = i18n.language || 'es';
   const esEspanol = idiomaActual.startsWith('es');
 

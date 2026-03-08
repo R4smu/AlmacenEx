@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { supabase } from "../supabaseClient";
+import { useTranslation } from "react-i18next";
+
 import Logo from "../assets/Logo.png"
 import Boton from "./Boton"
 import BotonOscuro from "./BotonOscuro"
-import { NavLink, useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
-import BotonIdioma from "./BotonIdioma";
+import BotonIdioma from "./BotonIdioma"
 
 const Header = () => {
+    const { t } = useTranslation();
     const [nombreUsuario, setNombreUsuario] = useState<string | null>(null);
     const navigate = useNavigate();
 
@@ -59,7 +62,7 @@ const Header = () => {
         <section className="py-4 p-8 flex items-center justify-between bg-emerald-700 transition-colors duration-500 dark:bg-slate-900">
             <NavLink to="/landingPage">
                 <div className="flex items-center gap-4">
-                    <h1 className="text-2xl text-white">Todo Caduca</h1>
+                    <h1 className="text-2xl text-white">{t('header.title')}</h1>
                     <img src={Logo} alt="Logo" className="h-12" />
                 </div>
             </NavLink>
@@ -68,17 +71,17 @@ const Header = () => {
                     <ul className="flex items-center text-white text-2xl font-medium gap-6">
                         <li>
                             <NavLink to="/landingPage" className="hover:underline">
-                                Home
+                                {t('header.nav.home')}
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/anadirAlimentos" className="hover:underline">
-                                Añadir producto
+                                {t('header.nav.addProduct')}
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/listaProducto" className="hover:underline">
-                                Lista producto
+                                {t('header.nav.productList')}
                             </NavLink>
                         </li>
                     </ul>
@@ -90,20 +93,20 @@ const Header = () => {
                     // Usuario autenticado: muestra nombre y botón de cerrar sesión
                     <>
                         <span className="text-white font-medium text-lg">
-                            Hola, {nombreUsuario}
+                            {t('header.user.greeting', { nombre: nombreUsuario })}
                         </span>
                         <Boton estilo="header" onClick={handleLogout}>
-                            Cerrar sesión
+                            {t('header.user.logout')}
                         </Boton>
                     </>
                 ) : (
                     // Usuario no autenticado: muestra Registrar y Login
                     <div className="flex gap-3">
                         <NavLink to="/registro">
-                            <Boton estilo="header">Registrar</Boton>
+                            <Boton estilo="header">{t('header.auth.register')}</Boton>
                         </NavLink>
                         <NavLink to="/login">
-                            <Boton estilo="header">Login</Boton>
+                            <Boton estilo="header">{t('header.auth.login')}</Boton>
                         </NavLink>
                     </div>
                 )}

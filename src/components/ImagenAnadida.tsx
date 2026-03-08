@@ -1,9 +1,11 @@
+import { useTranslation } from "react-i18next";
 
 type Props = {
   onFileSelect: (file: File | null) => void
 }
 
 export default function ImagenAnadida({ onFileSelect }: Props) {
+  const { t } = useTranslation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -13,9 +15,9 @@ export default function ImagenAnadida({ onFileSelect }: Props) {
 
   return (
     <div className="flex flex-col gap-2">
-      Imagen
+      {t('imagenAnadida.label')}
       <button>
-        Añadir
+        {t('imagenAnadida.button')}
         <input
           type="file"
           accept="image/*"

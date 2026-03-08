@@ -1,16 +1,20 @@
+import { useTranslation } from "react-i18next";
+
 type Props = {
   value: string
   onChange: (value: string) => void
 }
 
 const InputNombreProducto = ({ value, onChange }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col">
-      Nombre *
+      {t('formularios.labels.nombre')}
       <input
         className="w-100 p-2 rounded border text-gray-700 dark:text-white"
         type="text"
-        placeholder="Ej: Leche entera"
+        placeholder={t('formularios.placeholders.nombre')}
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />

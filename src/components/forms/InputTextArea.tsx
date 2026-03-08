@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
 
 const TextArea = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="flex flex-col text-black dark:text-white">
-            <label>Notas (opcional)</label>
+            <label>{t('formularios.labels.notas')}</label>
             <textarea className="w-100 p-2 flex items-center gap-2 rounded border"
-                placeholder="Añade cualquier información adicional al producto..."
+                placeholder={t('formularios.placeholders.notas')}
                 rows={5}></textarea>
         </div>
     )

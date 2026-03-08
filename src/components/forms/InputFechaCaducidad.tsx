@@ -1,12 +1,16 @@
+import { useTranslation } from "react-i18next";
+
 type Props = {
   value: string
   onChange: (value: string) => void
 }
 
 const FechaCaducidad = ({ value, onChange }: Props) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="flex flex-col">
-      Fecha de caducidad *
+      {t('formularios.labels.fechaCaducidad')}
       <input
         className="w-100 p-2 rounded border"
         type="datetime-local"
