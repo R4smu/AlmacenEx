@@ -12,7 +12,7 @@ function RutaProtegida({ children }: RutaProtegidaProps) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }: { data: { session: { user: { id: string } } | null } }) => {
+        supabase.auth.getSession().then(({ data: { session } }: any) => {
             setSesion(!!session);
         });
     }, []);
