@@ -1,0 +1,92 @@
+{
+
+  "header": {
+    "title": "Todo Caduca",
+    "nav": {
+      "home": "Home",
+      "addProduct": "Añadir producto",
+      "productList": "Lista producto"
+    },
+    "user": {
+      "greeting": "Hola, {{nombre}}",
+      "logout": "Cerrar sesión"
+    },
+    "auth": {
+      "register": "Registrar",
+      "login": "Login"
+    }
+  },
+
+
+
+  "hero": {
+    "title": "TODO CADUCA",
+    "subtitle": "Controla la caducidad de tus alimentos y evita desperdicios",
+    "buttons": {
+      "addFood": "Añadir alimento",
+      "foodList": "Lista de alimentos"
+    }
+  },
+
+
+
+  "footer": {
+    "copyright": "© 2026 All Rights Reserved.",
+    "links": {
+      "about": "Sobre nosotros",
+      "privacy": "Política de privacidad",
+      "licenses": "Licencias",
+      "contact": "Contacto"
+    }
+  },
+
+
+
+  "busqueda": {
+    "placeholder": "Escribe tu producto aquí..."
+  },
+
+
+
+  "tarjetaAlimento": {
+    "quantity": "Cantidad: {{cantidad}}",
+    "actions": {
+      "edit": "Editar",
+      "delete": "Borrar"
+    }
+  },
+
+
+
+  "imagenAnadida": {
+    "label": "Imagen",
+    "button": "Añadir"
+  },
+
+
+
+  "accesibilidad": {
+    "toggleTheme": "Cambiar tema"
+  },
+
+
+
+  "formularios": {
+
+    "labels": {
+      "nombre": "Nombre *",
+      "fechaCaducidad": "Fecha de caducidad *",
+      "categoria": "Categoria *",
+      "notas": "Notas (opcional)"
+    },
+
+
+    
+    "placeholders": {
+      "nombre": "Ej: Leche entera",
+      "categoria": "Selecciona categoría",
+      "notas": "Añade cualquier información adicional al producto...",
+      "cantidad": "Cantidad: "
+    }
+  }
+}

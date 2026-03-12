@@ -7,6 +7,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import { FaPhoneAlt } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const socialIcons = [
   { icon: <MdEmail />, label: "Email" },
@@ -20,6 +21,8 @@ const socialIcons = [
 ];
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-emerald-700 dark:bg-slate-900 w-full p-6 shadow-sm transition-colors duration-500">
       <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between md:flex-wrap">
@@ -27,20 +30,20 @@ const Footer = () => {
         {/* Links */}
         <ul className="flex flex-wrap items-center gap-3 text-sm font-medium text-white justify-center">
           <li>
-            <span className="text-white text-sm">© 2026 All Rights Reserved.</span>
+            <span className="text-white text-sm">{t('footer.copyright')}</span>
           </li>
           <li>
-            <p className="hover:underline cursor-pointer transition-opacity hover:opacity-80">Sobre nosotros</p>
+            <p className="hover:underline cursor-pointer transition-opacity hover:opacity-80">{t('footer.links.about')}</p>
           </li>
           <li>
-            <p className="hover:underline cursor-pointer transition-opacity hover:opacity-80">Política de privacidad</p>
+            <p className="hover:underline cursor-pointer transition-opacity hover:opacity-80">{t('footer.links.privacy')}</p>
           </li>
           <li>
-            <p className="hover:underline cursor-pointer transition-opacity hover:opacity-80">Licencias</p>
+            <p className="hover:underline cursor-pointer transition-opacity hover:opacity-80">{t('footer.links.licenses')}</p>
           </li>
           <li className="flex items-center gap-1 cursor-pointer hover:underline transition-opacity hover:opacity-80">
             <FaPhoneAlt />
-            <p>Contacto</p>
+            <p>{t('footer.links.contact')}</p>
           </li>
         </ul>
 
