@@ -7,7 +7,7 @@ interface InputBuscarAlimentosProps {
 
 const InputBuscarAlimentos = ({ value = "", onChange }: InputBuscarAlimentosProps) => {
   return (
-    <div className="p-2 flex items-center gap-2 rounded border w-96 border-black dark:border-white">
+    <div className="p-2 flex items-center gap-2 rounded border w-full md:w-96 border-black dark:border-white">
       <CiSearch className="text-xl text-gray-500 dark:text-white flex-shrink-0" />
       <input
         type="search"

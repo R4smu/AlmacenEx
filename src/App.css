@@ -89,9 +89,11 @@ button:hover { cursor: pointer; }
 
 .btn-anadir {
   background-color: #009966;
-  height: 64px;
-  width: 100px;
-  font-size:18px;
+  height: 48px;
+  width: auto;
+  min-width: 100px;
+  padding: 0 20px;
+  font-size: 18px;
   color: white;
 }
 
@@ -178,11 +180,13 @@ button:hover { cursor: pointer; }
 
 .btn-header, .btn-opciones, .btn-login { box-shadow: 0px 1px 4px 0px black; }
 
-/* --- BOTONES CATEGORÍA --- */
 .btn-carne, .btn-pescado, .btn-verdura, .btn-panaderia, .btn-lacteos, .btn-congelados, .btn-fruta {
-  height: 30px;
-  width: 116px;
+  height: 34px;
+  width: auto;
+  min-width: 80px;
+  padding: 0 14px;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .btn-carne { background-color: #FFA1AD; color: #9f1239; }

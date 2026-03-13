@@ -208,17 +208,26 @@ export const ListarProducto = () => {
   return (
     <div className="w-full overflow-x-hidden bg-white dark:bg-gray-800 min-h-screen transition-colors">
 
+<<<<<<< HEAD
       <div className="flex justify-center gap-3 p-10 pb-4">
         <InputBuscarAlimentos value={busqueda} onChange={setBusqueda} />
       </div>
 
       <div className="flex justify-evenly flex-wrap gap-3 px-4 pb-6">
+=======
+      {/* Buscador */}
+      <div className="flex justify-center px-4 md:px-10 pt-8 pb-4">
+        <InputBuscarAlimentos value={busqueda} onChange={setBusqueda} />
+      </div>
+
+      {/* Botones categoría — flex-wrap para que se adapten en móvil */}
+      <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-4 md:px-6 pb-4">
+>>>>>>> 976411795bda2c47fa73f2d993d8e9055483fb25
         {CATEGORIA_BOTONES.map(({ estilo, label, valor }) => (
           <Boton
             key={valor}
             estilo={estilo}
             style={{
-              width: '160px',
               outline: filtroCategoria === valor ? '3px solid #009966' : undefined,
               outlineOffset: '2px',
               transition: 'opacity 0.2s',
@@ -231,6 +240,7 @@ export const ListarProducto = () => {
         ))}
       </div>
 
+<<<<<<< HEAD
       {errorMsg && (
         <div className="mx-10 mb-4 px-4 py-3 rounded-lg bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 text-red-700 dark:text-red-300 text-sm flex justify-between items-center">
           {errorMsg}
@@ -239,6 +249,10 @@ export const ListarProducto = () => {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-10 pb-10 max-w-8xl mx-auto">
+=======
+      {/* Grid de tarjetas */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-4 md:px-10 py-4 max-w-8xl mx-auto">
+>>>>>>> 976411795bda2c47fa73f2d993d8e9055483fb25
         {loading ? (
           <div className="col-span-2 flex justify-center items-center py-16">
             <div className="flex flex-col items-center gap-3 text-gray-400 dark:text-gray-500">
@@ -303,7 +317,8 @@ export const ListarProducto = () => {
         )}
       </div>
 
-      <div className="px-10 py-4 max-w-md mx-auto">
+      {/* Gráfico */}
+      <div className="px-4 md:px-10 py-4 max-w-md mx-auto">
         <GraficoCategoria alimentos={datosGrafico} />
       </div>
     </div>
