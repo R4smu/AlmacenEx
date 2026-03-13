@@ -224,5 +224,21 @@
       "singular": "item",
       "plural": "items"
     }
+  },
+  "landingPage": {
+    "tarjetas": {
+      "tarjeta1": {
+        "titulo": "Organize your pantry easily",
+        "texto": "Our app helps you keep a simple and quick track of the food you buy. You can register each product with its quantity and expiration date, avoiding forgetting what you have at home and keeping your pantry always organized."
+      },
+      "tarjeta2": {
+        "titulo": "Prevent food from expiring",
+        "texto": "Food often spoils because we forget when it expires. With this tool you can easily see which products are close to their expiration date, allowing you to consume them in time and reduce food waste."
+      },
+      "tarjeta3": {
+        "titulo": "Full control of your products",
+        "texto": "Search, sort and visualize your food clearly thanks to categories and search tools. Everything is designed to make managing your daily food more comfortable, fast and efficient."
+      }
+    }
   }
 }

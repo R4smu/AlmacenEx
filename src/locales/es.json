@@ -224,5 +224,21 @@
       "singular": "alimento",
       "plural": "alimentos"
     }
+  },
+  "landingPage": {
+    "tarjetas": {
+      "tarjeta1": {
+        "titulo": "Organiza tu despensa fácilmente",
+        "texto": "Nuestra aplicación te ayuda a llevar un control sencillo y rápido de los alimentos que compras. Podrás registrar cada producto con su cantidad y fecha de caducidad, evitando olvidar lo que tienes en casa y manteniendo tu despensa siempre organizada."
+      },
+      "tarjeta2": {
+        "titulo": "Evita que los alimentos caduquen",
+        "texto": "Muchas veces los alimentos se estropean porque no recordamos cuándo caducan. Con esta herramienta podrás ver fácilmente qué productos están próximos a vencer, lo que te permitirá consumirlos a tiempo y reducir el desperdicio de comida."
+      },
+      "tarjeta3": {
+        "titulo": "Control total de tus productos",
+        "texto": "Busca, clasifica y visualiza tus alimentos de forma clara gracias a categorías y herramientas de búsqueda. Todo está pensado para que gestionar tu comida diaria sea más cómodo, rápido y eficiente."
+      }
+    }
   }
 }
