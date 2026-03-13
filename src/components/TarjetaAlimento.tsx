@@ -11,12 +11,15 @@ interface Categoria {
 
 interface TarjetaAlimentoProps {
   nombre_alimento?: string
-  fecha?: string                 // "DD/MM/YYYY" para mostrar
-  fechaRaw?: string              // "YYYY-MM-DD" para editar
+  fecha?: string
+  fechaRaw?: string
   cantidad?: number | string
   imagen_url?: string | null
   categorias?: Categoria[]
   idCategoriaActual?: string
+  confirmandoEliminar?: boolean
+  onSolicitarEliminar?: () => void
+  onCancelarEliminar?: () => void
   onEliminar?: () => void
   onGuardar?: (datos: { nombre: string; fecha_caducidad: string; cantidad: number; id_categoria: string }) => Promise<void>
   children?: React.ReactNode
@@ -30,6 +33,9 @@ const TarjetaAlimento = ({
   imagen_url,
   categorias = [],
   idCategoriaActual = "",
+  confirmandoEliminar = false,
+  onSolicitarEliminar,
+  onCancelarEliminar,
   onEliminar,
   onGuardar,
   children
@@ -38,14 +44,12 @@ const TarjetaAlimento = ({
   const [editando, setEditando] = useState(false)
   const [guardando, setGuardando] = useState(false)
 
-  // Campos editables
   const [nombreEdit, setNombreEdit] = useState(nombre_alimento)
   const [fechaEdit, setFechaEdit] = useState(fechaRaw)
   const [cantidadEdit, setCantidadEdit] = useState(Number(cantidad))
   const [categoriaEdit, setCategoriaEdit] = useState(idCategoriaActual)
 
   const handleEditar = () => {
-    // Resetear a valores actuales al abrir
     setNombreEdit(nombre_alimento)
     setFechaEdit(fechaRaw)
     setCantidadEdit(Number(cantidad))
@@ -53,9 +57,7 @@ const TarjetaAlimento = ({
     setEditando(true)
   }
 
-  const handleCancelar = () => {
-    setEditando(false)
-  }
+  const handleCancelar = () => setEditando(false)
 
   const handleGuardar = async () => {
     if (!onGuardar) return
@@ -70,29 +72,25 @@ const TarjetaAlimento = ({
     setEditando(false)
   }
 
-  // ── MODO EDICIÓN ──────────────────────────────────────────
   if (editando) {
     return (
       <div className="flex flex-col w-full rounded-xl shadow-[0px_2px_4px_0px_black] bg-white dark:bg-gray-700 transition-colors overflow-hidden p-4 gap-3">
-
-        {/* Nombre */}
         <div className="flex flex-col gap-1">
           <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Nombre</label>
           <input
             type="text"
             value={nombreEdit}
             onChange={e => setNombreEdit(e.target.value)}
-            className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm"
+            className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
           />
         </div>
 
-        {/* Categoría */}
         <div className="flex flex-col gap-1">
           <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Categoría</label>
           <select
             value={categoriaEdit}
             onChange={e => setCategoriaEdit(e.target.value)}
-            className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm"
+            className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
           >
             {categorias.map(cat => (
               <option key={cat.id_categoria} value={cat.id_categoria}>
@@ -102,7 +100,6 @@ const TarjetaAlimento = ({
           </select>
         </div>
 
-        {/* Cantidad y Fecha en fila */}
         <div className="flex gap-3">
           <div className="flex flex-col gap-1 flex-1">
             <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Cantidad</label>
@@ -111,7 +108,7 @@ const TarjetaAlimento = ({
               min={1}
               value={cantidadEdit}
               onChange={e => setCantidadEdit(Number(e.target.value))}
-              className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm"
+              className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
             />
           </div>
           <div className="flex flex-col gap-1 flex-1">
@@ -120,17 +117,16 @@ const TarjetaAlimento = ({
               type="date"
               value={fechaEdit}
               onChange={e => setFechaEdit(e.target.value)}
-              className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm"
+              className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
             />
           </div>
         </div>
 
-        {/* Botones guardar / cancelar */}
         <div className="flex gap-2 justify-end mt-1">
           <button
             onClick={handleCancelar}
             style={{ border: 'none' }}
-            className="flex items-center gap-1 px-3 py-1.5 rounded bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 text-sm hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
+            className="flex items-center gap-1 px-3 py-1.5 rounded bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 text-sm hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors cursor-pointer"
           >
             <MdOutlineClose size={16} /> Cancelar
           </button>
@@ -138,7 +134,7 @@ const TarjetaAlimento = ({
             onClick={handleGuardar}
             disabled={guardando || !nombreEdit || !fechaEdit || !cantidadEdit}
             style={{ border: 'none' }}
-            className="flex items-center gap-1 px-3 py-1.5 rounded bg-emerald-600 text-white text-sm hover:bg-emerald-700 transition-colors disabled:opacity-50"
+            className="flex items-center gap-1 px-3 py-1.5 rounded bg-emerald-600 text-white text-sm hover:bg-emerald-700 transition-colors disabled:opacity-50 cursor-pointer"
           >
             <MdOutlineCheck size={16} /> {guardando ? "Guardando..." : "Guardar"}
           </button>
@@ -147,18 +143,46 @@ const TarjetaAlimento = ({
     )
   }
 
+  // ── CONFIRMACIÓN BORRADO ──────────────────────────────────
+  if (confirmandoEliminar) {
+    return (
+      <div className="flex flex-col w-full rounded-xl shadow-[0px_2px_4px_0px_black] bg-white dark:bg-gray-700 transition-colors overflow-hidden p-5 gap-3">
+        <p className="text-sm font-semibold text-gray-800 dark:text-white">
+          ¿Eliminar "{nombre_alimento}"?
+        </p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">
+          Esta acción no se puede deshacer.
+        </p>
+        <div className="flex gap-2 justify-end mt-1">
+          <button
+            onClick={onCancelarEliminar}
+            style={{ border: 'none' }}
+            className="flex items-center gap-1 px-3 py-1.5 rounded bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 text-sm hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors cursor-pointer"
+          >
+            <MdOutlineClose size={16} /> Cancelar
+          </button>
+          <button
+            onClick={onEliminar}
+            style={{ border: 'none' }}
+            className="flex items-center gap-1 px-3 py-1.5 rounded bg-red-500 text-white text-sm hover:bg-red-600 transition-colors cursor-pointer"
+          >
+            <FaRegTrashCan size={14} /> Eliminar
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   // ── MODO NORMAL ───────────────────────────────────────────
   return (
-    <div className="flex w-full min-h-[9.5rem] justify-between rounded-xl shadow-[0px_2px_4px_0px_black] bg-white dark:bg-gray-700 transition-colors overflow-hidden">
+    <div className="flex w-full min-h-38 justify-between rounded-xl shadow-[0px_2px_4px_0px_black] bg-white dark:bg-gray-700 transition-colors overflow-hidden">
 
-      {/* Imagen */}
       {imagen_url && (
-        <div className="w-28 flex-shrink-0">
+        <div className="w-28 shrink-0">
           <img src={imagen_url} alt={nombre_alimento} className="w-full h-full object-cover" />
         </div>
       )}
 
-      {/* Contenido */}
       <div className="flex flex-col justify-between flex-1 px-4 py-3 gap-2">
         <p className="font-semibold text-gray-800 dark:text-white text-base">{nombre_alimento}</p>
 
@@ -174,11 +198,10 @@ const TarjetaAlimento = ({
         </div>
       </div>
 
-      {/* Acciones */}
       <div className="flex flex-col items-center justify-start p-2 gap-1">
         <button
           style={{ border: 'none' }}
-          className="p-2 cursor-pointer text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors bg-transparent"
+          className="p-2 cursor-pointer text-gray-500 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors bg-transparent"
           title="Editar"
           onClick={handleEditar}
         >
@@ -187,9 +210,9 @@ const TarjetaAlimento = ({
 
         <button
           style={{ border: 'none' }}
-          className="p-2 cursor-pointer text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors bg-transparent"
+          className="p-2 cursor-pointer text-gray-500 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors bg-transparent"
           title="Borrar"
-          onClick={onEliminar}
+          onClick={onSolicitarEliminar}
         >
           <FaRegTrashCan size={20} />
         </button>

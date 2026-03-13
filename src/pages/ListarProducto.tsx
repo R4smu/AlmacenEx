@@ -73,6 +73,8 @@ export const ListarProducto = () => {
   const [filtroCategoria, setFiltroCategoria] = useState<string | null>(null)
   const [busqueda, setBusqueda] = useState("")
   const [loading, setLoading] = useState(true)
+  const [errorMsg, setErrorMsg] = useState('')
+  const [confirmandoId, setConfirmandoId] = useState<string | null>(null)
 
   useEffect(() => {
     const cargarCategorias = async () => {
@@ -114,7 +116,7 @@ export const ListarProducto = () => {
         .order("fecha_caducidad", { ascending: true })
 
       if (error) {
-        console.error("Error cargando alimentos:", error)
+        setErrorMsg('Error al cargar los alimentos.')
       } else {
         setAlimentos((data as unknown as Alimento[]) ?? [])
       }
@@ -124,16 +126,16 @@ export const ListarProducto = () => {
   }, [])
 
   const handleEliminar = async (id: string) => {
-    if (!window.confirm("¿Seguro que quieres eliminar este alimento?")) return
     const { error } = await supabase
       .from("alimentos_registrados")
       .update({ estado: "eliminado" })
       .eq("id_alimento", id)
 
     if (error) {
-      alert("Error al eliminar: " + error.message)
+      setErrorMsg('Error al eliminar el alimento.')
     } else {
       setAlimentos(prev => prev.filter(a => a.id_alimento !== id))
+      setConfirmandoId(null)
     }
   }
 
@@ -142,7 +144,6 @@ export const ListarProducto = () => {
     idProductoActual: string | undefined,
     datos: { nombre: string; fecha_caducidad: string; cantidad: number; id_categoria: string }
   ) => {
-    // 1. Actualizar producto
     if (idProductoActual) {
       const { error } = await supabase
         .from("productos")
@@ -150,23 +151,21 @@ export const ListarProducto = () => {
         .eq("id_producto", idProductoActual)
 
       if (error) {
-        alert("Error actualizando producto: " + error.message)
+        setErrorMsg('Error al actualizar el producto.')
         return
       }
     }
 
-    // 2. Actualizar alimento
     const { error } = await supabase
       .from("alimentos_registrados")
       .update({ cantidad: datos.cantidad, fecha_caducidad: datos.fecha_caducidad })
       .eq("id_alimento", id)
 
     if (error) {
-      alert("Error actualizando alimento: " + error.message)
+      setErrorMsg('Error al actualizar el alimento.')
       return
     }
 
-    // 3. Actualizar estado local directamente — sin recargar toda la lista
     const categoriaNueva = categorias.find(c => c.id_categoria === datos.id_categoria) ?? null
 
     setAlimentos(prev => prev.map(a => {
@@ -209,11 +208,11 @@ export const ListarProducto = () => {
   return (
     <div className="w-full overflow-x-hidden bg-white dark:bg-gray-800 min-h-screen transition-colors">
 
-      <div className="flex justify-center gap-3 p-10">
+      <div className="flex justify-center gap-3 p-10 pb-4">
         <InputBuscarAlimentos value={busqueda} onChange={setBusqueda} />
       </div>
 
-      <div className="flex justify-evenly flex-wrap gap-3 px-4 pb-4">
+      <div className="flex justify-evenly flex-wrap gap-3 px-4 pb-6">
         {CATEGORIA_BOTONES.map(({ estilo, label, valor }) => (
           <Boton
             key={valor}
@@ -222,6 +221,8 @@ export const ListarProducto = () => {
               width: '160px',
               outline: filtroCategoria === valor ? '3px solid #009966' : undefined,
               outlineOffset: '2px',
+              transition: 'opacity 0.2s',
+              opacity: filtroCategoria && filtroCategoria !== valor ? 0.45 : 1,
             }}
             onClick={() => setFiltroCategoria(filtroCategoria === valor ? null : valor)}
           >
@@ -230,15 +231,35 @@ export const ListarProducto = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 max-w-8xl mx-auto">
+      {errorMsg && (
+        <div className="mx-10 mb-4 px-4 py-3 rounded-lg bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 text-red-700 dark:text-red-300 text-sm flex justify-between items-center">
+          {errorMsg}
+          <button style={{ border: 'none', background: 'none' }} className="text-red-400 hover:text-red-600 ml-4 cursor-pointer" onClick={() => setErrorMsg('')}>✕</button>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-10 pb-10 max-w-8xl mx-auto">
         {loading ? (
-          <p className="text-gray-500 dark:text-gray-400 col-span-2 text-center py-10">
-            Cargando alimentos...
-          </p>
+          <div className="col-span-2 flex justify-center items-center py-16">
+            <div className="flex flex-col items-center gap-3 text-gray-400 dark:text-gray-500">
+              <div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+              <p className="text-sm">Cargando alimentos...</p>
+            </div>
+          </div>
         ) : alimentosFiltrados.length === 0 ? (
-          <p className="text-gray-500 dark:text-gray-400 col-span-2 text-center py-10">
-            No hay alimentos registrados{filtroCategoria ? ` en "${filtroCategoria}"` : ""}.
-          </p>
+          <div className="col-span-2 flex flex-col items-center justify-center py-16 text-gray-400 dark:text-gray-500 gap-2">
+            <p className="text-4xl">🥦</p>
+            <p className="text-base font-medium">No hay alimentos registrados{filtroCategoria ? ` en "${filtroCategoria}"` : ""}.</p>
+            {filtroCategoria && (
+              <button
+                style={{ border: 'none', background: 'none' }}
+                className="text-sm text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer mt-1"
+                onClick={() => setFiltroCategoria(null)}
+              >
+                Ver todos
+              </button>
+            )}
+          </div>
         ) : (
           alimentosFiltrados.map(alimento => {
             const categoriaNombre = alimento.productos?.categorias?.nombre ?? ""
@@ -260,6 +281,9 @@ export const ListarProducto = () => {
                 imagen_url={getImagen(alimento)}
                 categorias={categorias}
                 idCategoriaActual={alimento.productos?.id_categoria ?? ""}
+                confirmandoEliminar={confirmandoId === alimento.id_alimento}
+                onSolicitarEliminar={() => setConfirmandoId(alimento.id_alimento)}
+                onCancelarEliminar={() => setConfirmandoId(null)}
                 onEliminar={() => handleEliminar(alimento.id_alimento)}
                 onGuardar={(datos) =>
                   handleGuardar(

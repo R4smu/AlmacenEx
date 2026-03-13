@@ -11,13 +11,11 @@ const Header = () => {
     const navigate = useNavigate();
 
     const cargarUsuario = async (userId: string, emailFallback?: string) => {
-        const { data, error } = await supabase
+        const { data } = await supabase
             .from("usuarios")
             .select("nombre, id_rol")
             .eq("id_usuario", userId)
             .maybeSingle();
-
-        console.log("cargarUsuario →", { data, error });
 
         if (data?.nombre) {
             setNombreUsuario(data.nombre);
@@ -31,8 +29,6 @@ const Header = () => {
                 .select("nombre")
                 .eq("id_rol", data.id_rol)
                 .maybeSingle();
-
-            console.log("rol →", rolData)
             setEsAdmin(rolData?.nombre === "admin");
         }
     };
@@ -61,51 +57,48 @@ const Header = () => {
         navigate("/landingPage");
     };
 
+    const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+        `transition-colors hover:text-emerald-200 ${isActive ? 'underline underline-offset-4 text-emerald-200' : ''}`;
+
     return (
-        <section className="py-4 p-8 flex items-center justify-between bg-emerald-700 transition-colors duration-500 dark:bg-slate-900">
-            <NavLink to="/landingPage">
-                <div className="flex items-center gap-4">
-                    <h1 className="text-2xl text-white">Todo Caduca</h1>
-                    <img src={Logo} alt="Logo" className="h-12" />
-                </div>
+        <header className="py-4 px-8 flex items-center justify-between bg-emerald-700 dark:bg-slate-900 transition-colors duration-300 shadow-md">
+
+            <NavLink to="/landingPage" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+                <h1 className="text-xl font-bold text-white">Todo Caduca</h1>
+                <img src={Logo} alt="Logo Todo Caduca" className="h-10" />
             </NavLink>
 
-            <div className="flex items-center">
-                <nav>
-                    <ul className="flex items-center text-white text-2xl font-medium gap-6">
+            <nav>
+                <ul className="flex items-center text-white text-base font-medium gap-6">
+                    <li>
+                        <NavLink to="/landingPage" className={navLinkClass}>
+                            Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/anadirAlimentos" className={navLinkClass}>
+                            Añadir producto
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/listaProducto" className={navLinkClass}>
+                            Lista producto
+                        </NavLink>
+                    </li>
+                    {esAdmin && (
                         <li>
-                            <NavLink to="/landingPage" className="hover:underline">
-                                Home
+                            <NavLink to="/admin" className="transition-colors text-amber-300 hover:text-amber-200 flex items-center gap-1">
+                                Admin
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/anadirAlimentos" className="hover:underline">
-                                Añadir producto
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/listaProducto" className="hover:underline">
-                                Lista producto
-                            </NavLink>
-                        </li>
-                        {esAdmin && (
-                            <li>
-                                <NavLink
-                                    to="/admin"
-                                    className="hover:underline flex items-center gap-1 text-amber-300 hover:text-amber-200"
-                                >
-                                    ⚙ Admin
-                                </NavLink>
-                            </li>
-                        )}
-                    </ul>
-                </nav>
-            </div>
+                    )}
+                </ul>
+            </nav>
 
             <div className="flex items-center gap-4">
                 {nombreUsuario ? (
                     <>
-                        <span className="text-white font-medium text-lg">
+                        <span className="text-white text-sm font-medium hidden sm:block">
                             Hola, {nombreUsuario}
                         </span>
                         <Boton estilo="header" onClick={handleLogout}>
@@ -124,7 +117,7 @@ const Header = () => {
                 )}
                 <BotonOscuro />
             </div>
-        </section>
+        </header>
     );
 };
 
