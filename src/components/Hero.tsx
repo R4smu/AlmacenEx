@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import Boton from './Boton'
-import imagenfondo from '../assets/imagenfondo.avif'
+import imagenfondo from '../assets/imagenfondo.webp'
 
 const Hero = () => {
     const { t } = useTranslation()

@@ -4,7 +4,7 @@ import { supabase } from "../supabaseClient";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 
-import Logo from "../assets/Logo.png"
+import Logo from "../assets/Logo.webp"
 import Boton from "./Boton"
 import BotonOscuro from "./BotonOscuro"
 import BotonIdioma from "./BotonIdioma"
