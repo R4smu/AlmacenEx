@@ -1,22 +1,24 @@
 import { useState } from 'react';
-import { supabase } from '../supabaseClient'
+import { supabase } from '../supabaseClient';
 import Boton from '../components/Boton';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Registro() {
+    const { t } = useTranslation();
+
     const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [repetirContrasena, setRepetirContrasena] = useState('');
     const [guardarContrasena, setGuardarContrasena] = useState(false);
-
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (contrasena !== repetirContrasena) {
-            alert("Las contraseñas no coinciden");
+            alert(t('alertas.errorContrasenasNoCoinciden'));
             return;
         }
 
@@ -34,45 +36,38 @@ function Registro() {
         const user = data.user;
 
         if (!user) {
-            alert("Error creando usuario");
+            alert(t('alertas.errorCrearUsuario'));
             return;
         }
 
-        alert("Usuario registrado correctamente");
+        alert(t('alertas.exitoRegistro'));
         navigate("/landingPage");
     };
+
     return (
         <>
             <div className="flex flex-1" style={{ backgroundColor: '#f5f5f5' }}>
                 <div className="w-3/4 bg-gray-200 dark:bg-gray-700 flex items-center justify-center p-12">
                     <div className="max-w-md">
                         <h2 className="text-5xl font-bold text-black dark:text-white mb-8">
-                            Lorem ipsum
+                            {t('authForms.registro.loremTitulo')}
                         </h2>
                         <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum."
+                            "Lorem ipsum dolor sit amet..."
                         </p>
                     </div>
                 </div>
 
-                {/* Columna derecha - Formulario */}
                 <div className="w-2/4 flex items-center justify-center p-12 bg-white dark:bg-gray-900 transition-colors">
                     <div className="w-full max-w-md">
                         <h1 className="text-4xl font-bold text-center mb-12 text-black dark:text-white">
-                            REGISTRO
+                            {t('authForms.registro.titulo')}
                         </h1>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
                                 <label htmlFor="usuario" className="block text-xs font-medium text-gray-600 dark:text-gray-400">
-                                    Usuario
+                                    {t('authForms.registro.labels.usuario')}
                                 </label>
                                 <input
                                     type="text"
@@ -84,10 +79,9 @@ function Registro() {
                                 />
                             </div>
 
-                            {/* Campo Email */}
                             <div className="space-y-2">
                                 <label htmlFor="email" className="block text-xs font-medium text-gray-600 dark:text-gray-400">
-                                    Email
+                                    {t('authForms.registro.labels.email')}
                                 </label>
                                 <input
                                     type="email"
@@ -101,7 +95,7 @@ function Registro() {
 
                             <div className="space-y-2">
                                 <label htmlFor="contrasena" className="block text-xs font-medium text-gray-600 dark:text-gray-400">
-                                    Contraseña
+                                    {t('authForms.registro.labels.contrasena')}
                                 </label>
                                 <input
                                     type="password"
@@ -115,7 +109,7 @@ function Registro() {
 
                             <div className="space-y-2">
                                 <label htmlFor="repetircontrasena" className="block text-xs font-medium text-gray-600 dark:text-gray-400">
-                                    Repetir Contraseña
+                                    {t('authForms.registro.labels.repetirContrasena')}
                                 </label>
                                 <input
                                     type="password"
@@ -136,12 +130,12 @@ function Registro() {
                                     className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-emerald-600 focus:ring-emerald-500"
                                 />
                                 <label htmlFor="guardarContrasena" className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
-                                    Guardar Contraseña
+                                    {t('authForms.registro.labels.guardarContrasena')}
                                 </label>
                             </div>
 
                             <div className="flex justify-center mt-8 pt-4">
-                                <Boton estilo="registro">Entrar</Boton>                        
+                                <Boton estilo="registro">{t('authForms.registro.boton')}</Boton>                        
                             </div>
                         </form>
                     </div>
