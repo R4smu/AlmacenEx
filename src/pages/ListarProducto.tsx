@@ -70,6 +70,8 @@ export const ListarProducto = () => {
   const [filtroCategoria, setFiltroCategoria] = useState<string | null>(null)
   const [busqueda, setBusqueda] = useState("")
   const [loading, setLoading] = useState(true)
+  const [errorMsg, setErrorMsg] = useState('')
+  const [confirmandoId, setConfirmandoId] = useState<string | null>(null)
 
   useEffect(() => {
     const cargarCategorias = async () => {
@@ -111,23 +113,26 @@ export const ListarProducto = () => {
         .order("fecha_caducidad", { ascending: true })
 
       if (error) {
-        console.error("Error cargando alimentos:", error)
+        setErrorMsg(t('listarProductos.mensajes.errorCargar'))
       } else {
         setAlimentos((data as unknown as Alimento[]) ?? [])
       }
       setLoading(false)
     }
     cargarAlimentos()
-  }, [])
+  }, [t])
 
   const handleEliminar = async (id: string) => {
-    if (!window.confirm(t('alertas.confirmacionEliminarAlimento'))) return
-    const { error } = await supabase.from("alimentos_registrados").update({ estado: "eliminado" }).eq("id_alimento", id)
+    const { error } = await supabase
+      .from("alimentos_registrados")
+      .update({ estado: "eliminado" })
+      .eq("id_alimento", id)
 
     if (error) {
-      alert(t('alertas.errorEliminar', { error: error.message }))
+      setErrorMsg(t('alertas.errorEliminar', { error: error.message }))
     } else {
       setAlimentos(prev => prev.filter(a => a.id_alimento !== id))
+      setConfirmandoId(null)
     }
   }
 
@@ -143,7 +148,7 @@ export const ListarProducto = () => {
         .eq("id_producto", idProductoActual)
 
       if (error) {
-        alert(t('alertas.errorActualizarProducto', { error: error.message }))
+        setErrorMsg(t('alertas.errorActualizarProducto', { error: error.message }))
         return
       }
     }
@@ -154,7 +159,7 @@ export const ListarProducto = () => {
       .eq("id_alimento", id)
 
     if (error) {
-      alert(t('alertas.errorActualizarAlimento', { error: error.message })) 
+      setErrorMsg(t('alertas.errorActualizarAlimento', { error: error.message }))
       return
     }
 
@@ -200,39 +205,64 @@ export const ListarProducto = () => {
   return (
     <div className="w-full overflow-x-hidden bg-white dark:bg-gray-800 min-h-screen transition-colors">
 
-      {/* Buscador */}
-      <div className="flex justify-center px-4 md:px-10 pt-8 pb-4">
+      <div className="flex justify-center gap-3 p-10 pb-4">
         <InputBuscarAlimentos value={busqueda} onChange={setBusqueda} />
       </div>
 
-      {/* Botones categoría — flex-wrap para que se adapten en móvil */}
-      <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-4 md:px-6 pb-4">
+      {/* Botones categoría */}
+      <div className="flex justify-evenly flex-wrap gap-3 px-4 pb-6">
         {CATEGORIA_BOTONES.map(({ estilo, valor }) => (
           <Boton
             key={valor}
             estilo={estilo}
             style={{
+              width: '160px',
               outline: filtroCategoria === valor ? '3px solid #009966' : undefined,
               outlineOffset: '2px',
+              transition: 'opacity 0.2s',
+              opacity: filtroCategoria && filtroCategoria !== valor ? 0.45 : 1,
             }}
             onClick={() => setFiltroCategoria(filtroCategoria === valor ? null : valor)}
-          >            {t(`listarProductos.categorias.${estilo}`)}
+          >
+            {t(`listarProductos.categorias.${estilo}`)}
           </Boton>
         ))}
       </div>
 
-      {/* Grid de tarjetas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-4 md:px-10 py-4 max-w-8xl mx-auto">
+      {/* Mensaje de error */}
+      {errorMsg && (
+        <div className="mx-10 mb-4 px-4 py-3 rounded-lg bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 text-red-700 dark:text-red-300 text-sm flex justify-between items-center">
+          {errorMsg}
+          <button style={{ border: 'none', background: 'none' }} className="text-red-400 hover:text-red-600 ml-4 cursor-pointer" onClick={() => setErrorMsg('')}>✕</button>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-10 pb-10 max-w-8xl mx-auto">
         {loading ? (
-          <p className="text-gray-500 dark:text-gray-400 col-span-2 text-center py-10">
-            {t('listarProductos.mensajes.cargando')}
-          </p>
+          <div className="col-span-2 flex justify-center items-center py-16">
+            <div className="flex flex-col items-center gap-3 text-gray-400 dark:text-gray-500">
+              <div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+              <p className="text-sm">{t('listarProductos.mensajes.cargando')}</p>
+            </div>
+          </div>
         ) : alimentosFiltrados.length === 0 ? (
-          <p className="text-gray-500 dark:text-gray-400 col-span-2 text-center py-10">
-            {filtroCategoria 
-              ? t('listarProductos.mensajes.vacioFiltro', { categoria: t(`listarProductos.categorias.${CATEGORIA_MAP[filtroCategoria]}`) })
-              : t('listarProductos.mensajes.vacio')}
-          </p>
+          <div className="col-span-2 flex flex-col items-center justify-center py-16 text-gray-400 dark:text-gray-500 gap-2">
+            <p className="text-4xl">🥦</p>
+            <p className="text-base font-medium">
+              {filtroCategoria 
+                ? t('listarProductos.mensajes.vacioFiltro', { categoria: t(`listarProductos.categorias.${CATEGORIA_MAP[filtroCategoria]}`) })
+                : t('listarProductos.mensajes.vacio')}
+            </p>
+            {filtroCategoria && (
+              <button
+                style={{ border: 'none', background: 'none' }}
+                className="text-sm text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer mt-1"
+                onClick={() => setFiltroCategoria(null)}
+              >
+                {t('listarProductos.mensajes.verTodos')}
+              </button>
+            )}
+          </div>
         ) : (
           alimentosFiltrados.map(alimento => {
             const categoriaNombre = alimento.productos?.categorias?.nombre ?? ""
@@ -250,6 +280,9 @@ export const ListarProducto = () => {
                 imagen_url={getImagen(alimento)}
                 categorias={categorias}
                 idCategoriaActual={alimento.productos?.id_categoria ?? ""}
+                confirmandoEliminar={confirmandoId === alimento.id_alimento}
+                onSolicitarEliminar={() => setConfirmandoId(alimento.id_alimento)}
+                onCancelarEliminar={() => setConfirmandoId(null)}
                 onEliminar={() => handleEliminar(alimento.id_alimento)}
                 onGuardar={(datos: any) => handleGuardar(alimento.id_alimento, alimento.id_producto ?? undefined, datos)}
               >
@@ -263,8 +296,7 @@ export const ListarProducto = () => {
         )}
       </div>
 
-      {/* Gráfico */}
-      <div className="px-4 md:px-10 py-4 max-w-md mx-auto">
+      <div className="px-10 py-4 max-w-md mx-auto">
         <GraficoCategoria alimentos={datosGrafico} />
       </div>
     </div>

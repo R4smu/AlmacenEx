@@ -37,9 +37,23 @@
   },
   "tarjetaAlimento": {
     "quantity": "Cantidad: {{cantidad}}",
+    "caduca": "Caduca: {{fecha}}",
     "actions": {
       "edit": "Editar",
-      "delete": "Borrar"
+      "delete": "Borrar",
+      "cancel": "Cancelar",
+      "save": "Guardar",
+      "saving": "Guardando..."
+    },
+    "editLabels": {
+      "nombre": "Nombre",
+      "categoria": "Categoría",
+      "cantidad": "Cantidad",
+      "fecha": "Fecha caducidad"
+    },
+    "confirmDelete": {
+      "title": "¿Eliminar \"{{nombre}}\"?",
+      "warning": "Esta acción no se puede deshacer."
     }
   },
   "imagenAnadida": {
@@ -82,29 +96,67 @@
       "vacio": "No hay alimentos registrados",
       "vacioFiltro": "No hay alimentos registrados en \"{{categoria}}\".",
       "sinNombre": "Sin nombre",
-      "sinFecha": "Sin fecha"
+      "sinFecha": "Sin fecha",
+      "errorCargar": "Error al cargar los alimentos.",
+      "verTodos": "Ver todos"
     }
   },
   "authForms": {
     "login": {
-      "titulo": "Login",
+      "titulo": "Iniciar sesión",
+      "subtitulo": "Bienvenido de nuevo",
       "labels": {
         "email": "Email",
         "contrasena": "Contraseña"
       },
+      "placeholders": {
+        "email": "tucorreo@ejemplo.com",
+        "contrasena": "Tu contraseña"
+      },
+      "estados": {
+        "entrando": "Entrando..."
+      },
+      "enlaces": {
+        "noTienes": "¿No tienes cuenta?",
+        "registrate": "Regístrate"
+      },
+      "errores": {
+        "credenciales": "Email o contraseña incorrectos. Inténtalo de nuevo."
+      },
       "boton": "Entrar"
     },
     "registro": {
-      "titulo": "REGISTRO",
-      "loremTitulo": "Lorem ipsum",
+      "titulo": "Crear cuenta",
+      "subtitulo": "Rellena los campos para registrarte",
+      "brand": "Todo Caduca",
+      "slogan": "Controla tus alimentos",
+      "descripcion": "Registra tus productos, controla las fechas de caducidad y reduce el desperdicio alimentario desde un solo lugar.",
       "labels": {
-        "usuario": "Usuario",
+        "usuario": "Nombre de usuario",
         "email": "Email",
         "contrasena": "Contraseña",
-        "repetirContrasena": "Repetir Contraseña",
+        "repetirContrasena": "Repetir contraseña",
         "guardarContrasena": "Guardar Contraseña"
       },
-      "boton": "Entrar"
+      "placeholders": {
+        "usuario": "Tu nombre",
+        "email": "tucorreo@ejemplo.com",
+        "contrasena": "Mínimo 6 caracteres",
+        "repetirContrasena": "Repite tu contraseña"
+      },
+      "validacion": {
+        "coinciden": "Las contraseñas coinciden",
+        "noCoinciden": "Las contraseñas no coinciden",
+        "longitud": "La contraseña debe tener al menos 6 caracteres."
+      },
+      "estados": {
+        "registrando": "Registrando..."
+      },
+      "enlaces": {
+        "yaTienes": "¿Ya tienes cuenta?",
+        "iniciaSesion": "Inicia sesión"
+      },
+      "boton": "Crear cuenta"
     }
   },
   "admin": {
