@@ -72,26 +72,17 @@ const Header = () => {
     };
 
     return (
-<<<<<<< HEAD
         <header className="bg-emerald-700 dark:bg-slate-900 transition-colors duration-500">
             {/* Barra principal */}
             <section className="py-4 px-4 md:px-8 flex items-center justify-between">
                 {/* Logo */}
                 <NavLink to="/landingPage" onClick={cerrarMenu}>
                     <div className="flex items-center gap-3">
-                        <h1 className="text-xl md:text-2xl text-white font-semibold">Todo Caduca</h1>
+                        <h1 className="text-xl md:text-2xl text-white font-semibold">{t('header.title')}</h1>
                         <img src={Logo} alt="Logo" className="h-10 md:h-12" />
                     </div>
                 </NavLink>
-=======
-        <section className="py-4 p-8 flex items-center justify-between bg-emerald-700 transition-colors duration-500 dark:bg-slate-900">
-            <NavLink to="/landingPage">
-                <div className="flex items-center gap-4">
-                    <h1 className="text-2xl text-white">{t('header.title')}</h1>
-                    <img src={Logo} alt="Logo" className="h-12" />
-                </div>
-            </NavLink>
->>>>>>> 901dd38
+
 
                 {/* Nav — solo visible en desktop (md+) */}
                 <nav className="hidden md:block">
@@ -124,34 +115,35 @@ const Header = () => {
                     </ul>
                 </nav>
 
-<<<<<<< HEAD
                 {/* Acciones derechas — desktop */}
                 <div className="hidden md:flex items-center gap-4">
                     {nombreUsuario ? (
                         <>
                             <span className="text-white font-medium text-lg">
-                                Hola, {nombreUsuario}
+                                {t('header.user.greeting', { nombreUsuario })}
                             </span>
                             <Boton estilo="header" onClick={handleLogout}>
-                                Cerrar sesión
+                                {t('header.user.logout')}
                             </Boton>
                         </>
                     ) : (
                         <div className="flex gap-3">
                             <NavLink to="/registro">
-                                <Boton estilo="header">Registrar</Boton>
+                                <Boton estilo="header">{t('header.auth.register')}</Boton>
                             </NavLink>
                             <NavLink to="/login">
-                                <Boton estilo="header">Login</Boton>
+                                <Boton estilo="header">{t('header.auth.login')}</Boton>
                             </NavLink>
                         </div>
                     )}
                     <BotonOscuro />
+                    <BotonIdioma />
                 </div>
 
                 {/* Botones móvil: toggle oscuro + hamburguesa */}
                 <div className="flex md:hidden items-center gap-3">
                     <BotonOscuro />
+                    <BotonIdioma />
                     <button
                         onClick={() => setMenuAbierto(prev => !prev)}
                         className="p-2 rounded-lg bg-emerald-800 hover:bg-emerald-900 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors border border-emerald-600 dark:border-slate-600"
@@ -159,8 +151,7 @@ const Header = () => {
                     >
                         {menuAbierto
                             ? <X size={20} className="text-white" />
-                            : <Menu size={20} className="text-white" />
-                        }
+                            : <Menu size={20} className="text-white" />}
                     </button>
                 </div>
             </section>
@@ -174,21 +165,21 @@ const Header = () => {
                             onClick={cerrarMenu}
                             className="text-white text-lg font-medium py-3 border-b border-emerald-600 dark:border-slate-700 hover:text-emerald-200"
                         >
-                            Home
+                            {t('header.nav.home')}
                         </NavLink>
                         <NavLink
                             to="/anadirAlimentos"
                             onClick={cerrarMenu}
                             className="text-white text-lg font-medium py-3 border-b border-emerald-600 dark:border-slate-700 hover:text-emerald-200"
                         >
-                            Añadir producto
+                            {t('header.nav.addProduct')}
                         </NavLink>
                         <NavLink
                             to="/listaProducto"
                             onClick={cerrarMenu}
                             className="text-white text-lg font-medium py-3 border-b border-emerald-600 dark:border-slate-700 hover:text-emerald-200"
                         >
-                            Lista producto
+                            {t('header.nav.productList')}
                         </NavLink>
                         {esAdmin && (
                             <NavLink
@@ -205,19 +196,19 @@ const Header = () => {
                             {nombreUsuario ? (
                                 <div className="flex flex-col gap-3">
                                     <span className="text-white font-medium text-base">
-                                        Hola, {nombreUsuario}
+                                        {t('header.user.greeting', { nombreUsuario })}
                                     </span>
                                     <Boton estilo="header" onClick={handleLogout} className="w-full">
-                                        Cerrar sesión
+                                        {t('header.user.logout')}
                                     </Boton>
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-3">
                                     <NavLink to="/registro" onClick={cerrarMenu}>
-                                        <Boton estilo="header" className="w-full !h-12 text-base">Registrar</Boton>
+                                        <Boton estilo="header" className="w-full !h-12 text-base">{t('header.auth.register')}</Boton>
                                     </NavLink>
                                     <NavLink to="/login" onClick={cerrarMenu}>
-                                        <Boton estilo="header" className="w-full !h-12 text-base">Login</Boton>
+                                        <Boton estilo="header" className="w-full !h-12 text-base">{t('header.auth.login')}</Boton>
                                     </NavLink>
                                 </div>
                             )}
@@ -226,32 +217,6 @@ const Header = () => {
                 </div>
             )}
         </header>
-=======
-            <div className="flex items-center gap-4">
-                {nombreUsuario ? (
-                    <>
-                        <span className="text-white font-medium text-lg">
-                            {t('header.user.greeting', { nombre: nombreUsuario })}
-                        </span>
-                        <Boton estilo="header" onClick={handleLogout}>
-                            {t('header.user.logout')}
-                        </Boton>
-                    </>
-                ) : (
-                    <div className="flex gap-3">
-                        <NavLink to="/registro">
-                            <Boton estilo="header">{t('header.auth.register')}</Boton>
-                        </NavLink>
-                        <NavLink to="/login">
-                            <Boton estilo="header">{t('header.auth.login')}</Boton>
-                        </NavLink>
-                    </div>
-                )}
-                <BotonOscuro />
-                <BotonIdioma />
-            </div>
-        </section>
->>>>>>> 901dd38
     );
 };
 
