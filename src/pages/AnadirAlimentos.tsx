@@ -6,13 +6,16 @@ import InputNombreProducto from '../components/forms/InputNombreProducto'
 import InputTextArea from '../components/forms/InputTextArea'
 import Boton from '../components/Boton'
 import "../index.css"
-import { useTranslation } from 'react-i18next'
+
+interface Categoria {
+    id_categoria: string
+    nombre: string
+}
 
 function AnadirAlimentos() {
-    const { t } = useTranslation();
 
     const [nombre, setNombre] = useState("")
-    const [categorias, setCategorias] = useState<{ id_categoria: number, nombre: string }[]>([])
+    const [categorias, setCategorias] = useState<Categoria[]>([])
     const [idCategoria, setIdCategoria] = useState("")
     const [fechaCaducidad, setFechaCaducidad] = useState("")
     const [cantidad, setCantidad] = useState("")
@@ -190,15 +193,9 @@ function AnadirAlimentos() {
                         <label className="text-sm font-medium">Cantidad *</label>
                         <input
                             type="number"
-                            placeholder={t('formularios.placeholders.cantidad')}
-                            className="
-                                w-100 p-2 flex items-center gap-2 rounded border
-                                border-gray-300 dark:border-white
-                                bg-white dark:bg-gray-700
-                                text-gray-900 dark:text-white
-                                placeholder-gray-400 dark:placeholder-white
-                                transition-colors duration-300
-                            "
+                            placeholder="Ej: 2"
+                            min={1}
+                            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 transition-colors duration-300"
                             value={cantidad}
                             onChange={(e) => setCantidad(e.target.value)}
                             required

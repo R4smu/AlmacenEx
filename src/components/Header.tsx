@@ -73,14 +73,14 @@ const Header = () => {
         `transition-colors hover:text-emerald-200 ${isActive ? 'underline underline-offset-4 text-emerald-200' : ''}`;
 
     return (
-        <header className="bg-emerald-700 dark:bg-slate-900 transition-colors duration-500">
+        <header className="sticky top-0 z-50 bg-emerald-700 dark:bg-slate-900 transition-colors duration-500">
             {/* Barra principal */}
             <section className="py-4 px-4 md:px-8 flex items-center justify-between">
                 {/* Logo */}
                 <NavLink to="/landingPage" onClick={cerrarMenu}>
                     <div className="flex items-center gap-3">
                         <h1 className="text-xl md:text-2xl text-white font-semibold">{t('header.title')}</h1>
-                        <img src={Logo} alt="Logo" className="h-10 md:h-12" />
+                        <img src={Logo} alt="Logo" className="h-full md:h-12" />
                     </div>
                 </NavLink>
 
