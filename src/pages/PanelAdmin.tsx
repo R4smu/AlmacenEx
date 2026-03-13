@@ -6,6 +6,7 @@ import {
 } from "recharts"
 import { FaRegTrashCan } from "react-icons/fa6"
 import { FiShield, FiUsers, FiUserCheck } from "react-icons/fi"
+import { useTranslation } from "react-i18next"
 
 interface Usuario {
   id_usuario: string
@@ -34,6 +35,8 @@ function ultimosDias(n: number): string[] {
 }
 
 const PanelAdmin = () => {
+  const { t } = useTranslation();
+
   const [usuarios, setUsuarios] = useState<Usuario[]>([])
   const [datosGrafica, setDatosGrafica] = useState<DatoGrafica[]>([])
   const [loading, setLoading] = useState(true)
@@ -85,16 +88,13 @@ const PanelAdmin = () => {
   }
 
   const handleEliminar = async (idUsuario: string, nombre: string | null) => {
-    if (!window.confirm(`¿Eliminar al usuario "${nombre ?? idUsuario}"? Esta acción no se puede deshacer.`)) return
+    if (!window.confirm(t('alertas.confirmacionEliminarUsuario', { nombre: nombre ?? idUsuario }))) return
     setEliminando(idUsuario)
 
-    const { error } = await supabase
-      .from("usuarios")
-      .delete()
-      .eq("id_usuario", idUsuario)
+    const { error } = await supabase.from("usuarios").delete().eq("id_usuario", idUsuario)
 
     if (error) {
-      alert("Error eliminando usuario: " + error.message)
+      alert(t('alertas.errorEliminarUsuario', { error: error.message }))
     } else {
       const nuevaLista = usuarios.filter(u => u.id_usuario !== idUsuario)
       setUsuarios(nuevaLista)
@@ -112,7 +112,7 @@ const PanelAdmin = () => {
       {/* Cabecera */}
       <div className="flex items-center gap-3 mb-8">
         <FiShield size={28} className="text-emerald-600 dark:text-emerald-400" />
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Panel de Administración</h1>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">{t('admin.titulo')}</h1>
       </div>
 
       {/* Tarjetas resumen */}
@@ -122,7 +122,7 @@ const PanelAdmin = () => {
             <FiUsers size={24} className="text-emerald-600 dark:text-emerald-400" />
           </div>
           <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Total usuarios</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{t('admin.tarjetas.totalUsuarios')}</p>
             <p className="text-3xl font-bold text-gray-800 dark:text-white">{totalUsuarios}</p>
           </div>
         </div>
@@ -132,7 +132,7 @@ const PanelAdmin = () => {
             <FiUserCheck size={24} className="text-blue-600 dark:text-blue-400" />
           </div>
           <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Registros hoy</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{t('admin.tarjetas.registrosHoy')}</p>
             <p className="text-3xl font-bold text-gray-800 dark:text-white">
               {datosGrafica[datosGrafica.length - 1]?.registrados ?? 0}
             </p>
@@ -144,7 +144,7 @@ const PanelAdmin = () => {
             <FiShield size={24} className="text-amber-600 dark:text-amber-400" />
           </div>
           <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Administradores</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{t('admin.tarjetas.admins')}</p>
             <p className="text-3xl font-bold text-gray-800 dark:text-white">{totalAdmins}</p>
           </div>
         </div>
@@ -153,7 +153,7 @@ const PanelAdmin = () => {
       {/* Gráfica */}
       <div className="bg-white dark:bg-gray-700 rounded-2xl shadow p-6 mb-8">
         <h2 className="text-lg font-semibold text-gray-700 dark:text-white mb-6">
-          Actividad de usuarios — últimos 14 días
+          {t('admin.grafica.titulo')}
         </h2>
         <ResponsiveContainer width="100%" height={320}>
           <LineChart
@@ -175,7 +175,7 @@ const PanelAdmin = () => {
             <Line
               type="monotone"
               dataKey="registrados"
-              name="Registros del día"
+              name={t('admin.grafica.leyendas.registrosDia')}
               stroke="#10b981"
               strokeWidth={2}
               dot={{ fill: "#fff", stroke: "#10b981", strokeWidth: 2, r: 4 }}
@@ -184,7 +184,7 @@ const PanelAdmin = () => {
             <Line
               type="monotone"
               dataKey="activos"
-              name="Usuarios acumulados"
+              name={t('admin.grafica.leyendas.usuariosAcumulados')}
               stroke="#3b82f6"
               strokeWidth={2}
               dot={{ fill: "#fff", stroke: "#3b82f6", strokeWidth: 2, r: 4 }}
@@ -197,21 +197,21 @@ const PanelAdmin = () => {
       {/* Tabla de usuarios */}
       <div className="bg-white dark:bg-gray-700 rounded-2xl shadow overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-600">
-          <h2 className="text-lg font-semibold text-gray-700 dark:text-white">Usuarios registrados</h2>
+          <h2 className="text-lg font-semibold text-gray-700 dark:text-white">{t('admin.tabla.titulo')}</h2>
         </div>
 
         {loading ? (
-          <div className="p-8 text-center text-gray-400 dark:text-gray-500">Cargando usuarios...</div>
+          <div className="p-8 text-center text-gray-400 dark:text-gray-500">{t('admin.tabla.cargando')}</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-gray-50 dark:bg-gray-600">
                 <tr>
-                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">Nombre</th>
-                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">ID</th>
-                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">Rol</th>
-                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">Registro</th>
-                  <th className="px-6 py-3 text-center font-medium text-gray-500 dark:text-gray-300">Acciones</th>
+                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">{t('admin.tabla.columnas.nombre')}</th>
+                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">{t('admin.tabla.columnas.id')}</th>
+                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">{t('admin.tabla.columnas.rol')}</th>
+                  <th className="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-300">{t('admin.tabla.columnas.registro')}</th>
+                  <th className="px-6 py-3 text-center font-medium text-gray-500 dark:text-gray-300">{t('admin.tabla.columnas.acciones')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-600">
@@ -229,7 +229,7 @@ const PanelAdmin = () => {
                           ? "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200"
                           : "bg-gray-100 text-gray-600 dark:bg-gray-500 dark:text-gray-200"
                       }`}>
-                        {u.roles?.nombre ?? "sin rol"}
+                        {u.roles?.nombre ?? t('admin.tabla.sinRol')}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-gray-500 dark:text-gray-400">
@@ -244,7 +244,7 @@ const PanelAdmin = () => {
                           disabled={eliminando === u.id_usuario}
                           style={{ border: "none" }}
                           className="p-2 text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors bg-transparent cursor-pointer disabled:opacity-40"
-                          title="Eliminar usuario"
+                          title={t('admin.tabla.tooltipEliminar')}
                         >
                           <FaRegTrashCan size={16} />
                         </button>

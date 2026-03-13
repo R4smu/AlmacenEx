@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import { FiShield } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 import Boton from "./Boton";
 
 interface RutaAdminProps {
@@ -9,6 +10,7 @@ interface RutaAdminProps {
 }
 
 function RutaAdmin({ children }: RutaAdminProps) {
+    const { t } = useTranslation();
     const [estado, setEstado] = useState<"cargando" | "admin" | "denegado">("cargando");
     const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ function RutaAdmin({ children }: RutaAdminProps) {
     if (estado === "cargando") {
         return (
             <div className="flex flex-1 items-center justify-center bg-gray-50 dark:bg-gray-800">
-                <p className="text-gray-500 dark:text-gray-400">Verificando permisos...</p>
+                <p className="text-gray-500 dark:text-gray-400">{t('rutaAdmin.cargando')}</p>
             </div>
         );
     }
@@ -43,13 +45,13 @@ function RutaAdmin({ children }: RutaAdminProps) {
                 <div className="bg-white dark:bg-gray-700 rounded-3xl shadow-2xl p-12 w-full max-w-md text-center">
                     <FiShield size={48} className="text-red-400 mx-auto mb-4" />
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                        Acceso denegado
+                        {t('rutaAdmin.titulo')}
                     </h2>
                     <p className="text-gray-500 dark:text-gray-400 mb-6">
-                        No tienes permisos de administrador.
+                        {t('rutaAdmin.mensaje')}
                     </p>
                     <Boton estilo="acceso" onClick={() => navigate("/landingPage")}>
-                        Volver al inicio
+                        {t('rutaAdmin.boton')}
                     </Boton>
                 </div>
             </div>

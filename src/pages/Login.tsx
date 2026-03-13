@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Boton from '../components/Boton';
 
 function Login() {
+  const { t } = useTranslation();
 
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -19,14 +20,11 @@ function Login() {
     });
 
     if (error) {
-      alert("Error al iniciar sesión: " + error.message);
+      alert(t('alertas.errorLogin', { error: error.message }));
       return;
     }
 
-    // login correcto
-    alert("Login correcto");
-
-    // redirigir a la página principal
+    alert(t('alertas.exitoLogin'));
     navigate("/landingPage");
   };
 
@@ -35,18 +33,13 @@ function Login() {
       <div className="flex flex-1 items-center justify-center" style={{ backgroundColor: 'var(--color-primary)' }}>
         <div className="bg-white dark:bg-gray-700 rounded-3xl shadow-2xl p-12 w-full max-w-md transition-colors">
           <h1 className="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
-            Login
+            {t('authForms.login.titulo')}
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-
-            {/* Campo Usuario */}
             <div className="space-y-2">
-              <label
-                htmlFor="usuario"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 pl-1"
-              >
-                Email
+              <label htmlFor="usuario" className="block text-sm font-medium text-gray-700 dark:text-gray-300 pl-1">
+                {t('authForms.login.labels.email')}
               </label>
               <input
                 type="email"
@@ -54,18 +47,14 @@ function Login() {
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-600 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 dark:text-white placeholder-gray-400"
-                placeholder="Email"
+                placeholder={t('authForms.login.labels.email')}
                 required
               />
             </div>
 
-            {/* Campo Contraseña */}
             <div className="space-y-2">
-              <label
-                htmlFor="contrasena"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300  pl-1"
-              >
-                Contraseña
+              <label htmlFor="contrasena" className="block text-sm font-medium text-gray-700 dark:text-gray-300  pl-1">
+                {t('authForms.login.labels.contrasena')}
               </label>
               <input
                 type="password"
@@ -73,16 +62,14 @@ function Login() {
                 value={contrasena}
                 onChange={(e) => setContrasena(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 border-2 border-transparent focus:border-(--color-secondary) focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
-                placeholder="Contraseña"
+                placeholder={t('authForms.login.labels.contrasena')}
                 required
               />
             </div>
 
-            {/* Botón Entrar */}
             <div className="flex justify-center mt-8">
-              <Boton estilo="login">Entrar</Boton>
+              <Boton estilo="login">{t('authForms.login.boton')}</Boton>
             </div>
-
           </form>
         </div>
       </div>

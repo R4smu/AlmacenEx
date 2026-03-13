@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { supabase } from "../supabaseClient";
+import { useTranslation } from "react-i18next";
+import { Menu, X } from "lucide-react";
+
 import Logo from "../assets/Logo.png"
 import Boton from "./Boton"
 import BotonOscuro from "./BotonOscuro"
-import { NavLink, useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
-import { Menu, X } from "lucide-react";
+import BotonIdioma from "./BotonIdioma"
 
 const Header = () => {
+    const { t } = useTranslation();
     const [nombreUsuario, setNombreUsuario] = useState<string | null>(null);
     const [esAdmin, setEsAdmin] = useState(false);
     const [menuAbierto, setMenuAbierto] = useState(false);
@@ -68,6 +72,7 @@ const Header = () => {
     };
 
     return (
+<<<<<<< HEAD
         <header className="bg-emerald-700 dark:bg-slate-900 transition-colors duration-500">
             {/* Barra principal */}
             <section className="py-4 px-4 md:px-8 flex items-center justify-between">
@@ -78,23 +83,32 @@ const Header = () => {
                         <img src={Logo} alt="Logo" className="h-10 md:h-12" />
                     </div>
                 </NavLink>
+=======
+        <section className="py-4 p-8 flex items-center justify-between bg-emerald-700 transition-colors duration-500 dark:bg-slate-900">
+            <NavLink to="/landingPage">
+                <div className="flex items-center gap-4">
+                    <h1 className="text-2xl text-white">{t('header.title')}</h1>
+                    <img src={Logo} alt="Logo" className="h-12" />
+                </div>
+            </NavLink>
+>>>>>>> 901dd38
 
                 {/* Nav — solo visible en desktop (md+) */}
                 <nav className="hidden md:block">
                     <ul className="flex items-center text-white text-xl font-medium gap-6">
                         <li>
                             <NavLink to="/landingPage" className="hover:underline">
-                                Home
+                                {t('header.nav.home')}
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/anadirAlimentos" className="hover:underline">
-                                Añadir producto
+                                {t('header.nav.addProduct')}
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/listaProducto" className="hover:underline">
-                                Lista producto
+                                {t('header.nav.productList')}
                             </NavLink>
                         </li>
                         {esAdmin && (
@@ -110,6 +124,7 @@ const Header = () => {
                     </ul>
                 </nav>
 
+<<<<<<< HEAD
                 {/* Acciones derechas — desktop */}
                 <div className="hidden md:flex items-center gap-4">
                     {nombreUsuario ? (
@@ -211,6 +226,32 @@ const Header = () => {
                 </div>
             )}
         </header>
+=======
+            <div className="flex items-center gap-4">
+                {nombreUsuario ? (
+                    <>
+                        <span className="text-white font-medium text-lg">
+                            {t('header.user.greeting', { nombre: nombreUsuario })}
+                        </span>
+                        <Boton estilo="header" onClick={handleLogout}>
+                            {t('header.user.logout')}
+                        </Boton>
+                    </>
+                ) : (
+                    <div className="flex gap-3">
+                        <NavLink to="/registro">
+                            <Boton estilo="header">{t('header.auth.register')}</Boton>
+                        </NavLink>
+                        <NavLink to="/login">
+                            <Boton estilo="header">{t('header.auth.login')}</Boton>
+                        </NavLink>
+                    </div>
+                )}
+                <BotonOscuro />
+                <BotonIdioma />
+            </div>
+        </section>
+>>>>>>> 901dd38
     );
 };
 

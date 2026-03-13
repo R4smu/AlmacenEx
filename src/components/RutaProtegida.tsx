@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+import { useTranslation } from "react-i18next";
 import Boton from "./Boton";
 
 interface RutaProtegidaProps {
@@ -8,6 +9,7 @@ interface RutaProtegidaProps {
 }
 
 function RutaProtegida({ children }: RutaProtegidaProps) {
+    const { t } = useTranslation();
     const [sesion, setSesion] = useState<boolean | null>(null);
     const navigate = useNavigate();
 
@@ -24,23 +26,23 @@ function RutaProtegida({ children }: RutaProtegidaProps) {
             <div className="flex flex-1 items-center justify-center bg-gray-50 dark:bg-gray-800 transition-colors">
                 <div className="bg-white dark:bg-gray-700 rounded-3xl shadow-2xl p-12 w-full max-w-md text-center transition-colors">
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                        Acceso restringido
+                        {t('accesoRestringido.titulo')}
                     </h2>
                     <div className="flex flex-col gap-3">
                         <div>
                             <p className="text-gray-600 dark:text-gray-300 mb-2">
-                                ¿Ya tienes cuenta? Inicia sesión para continuar.
+                                {t('accesoRestringido.login.mensaje')}
                             </p>
                             <Boton estilo="acceso" onClick={() => navigate("/login")}>
-                                Iniciar sesión
+                                {t('accesoRestringido.login.boton')}
                             </Boton>
                         </div>
                         <div>
                             <p className="text-gray-600 dark:text-gray-300 mb-2">
-                                ¿No tienes cuenta? Regístrate para acceder.
+                                {t('accesoRestringido.registro.mensaje')}
                             </p>
                             <Boton estilo="acceso-secundario" onClick={() => navigate("/registro")}>
-                                Crear cuenta
+                                {t('accesoRestringido.registro.boton')}
                             </Boton>
                         </div>
                     </div>

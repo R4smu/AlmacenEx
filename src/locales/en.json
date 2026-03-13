@@ -1,0 +1,176 @@
+{
+  "header": {
+    "title": "Todo Caduca",
+    "nav": {
+      "home": "Home",
+      "addProduct": "Add product",
+      "productList": "Product list"
+    },
+    "user": {
+      "greeting": "Hello, {{nombre}}",
+      "logout": "Log out"
+    },
+    "auth": {
+      "register": "Register",
+      "login": "Login"
+    }
+  },
+  "hero": {
+    "title": "TODO CADUCA",
+    "subtitle": "Track your food expiration dates and prevent waste",
+    "buttons": {
+      "addFood": "Add food",
+      "foodList": "Food list"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 All Rights Reserved.",
+    "links": {
+      "about": "About us",
+      "privacy": "Privacy policy",
+      "licenses": "Licenses",
+      "contact": "Contact"
+    }
+  },
+  "busqueda": {
+    "placeholder": "Type your product here..."
+  },
+  "tarjetaAlimento": {
+    "quantity": "Quantity: {{cantidad}}",
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  },
+  "imagenAnadida": {
+    "label": "Image",
+    "button": "Add"
+  },
+  "accesibilidad": {
+    "toggleTheme": "Toggle theme"
+  },
+  "formularios": {
+    "labels": {
+      "nombre": "Name *",
+      "fechaCaducidad": "Expiration date *",
+      "categoria": "Category *",
+      "notas": "Notes (optional)"
+    },
+    "placeholders": {
+      "nombre": "e.g., Whole milk",
+      "categoria": "Select category",
+      "notas": "Add any additional information about the product..."
+    }
+  },
+  "listarProductos": {
+    "estados": {
+      "caducado": "Expired",
+      "apunto": "Expiring soon",
+      "nocaducado": "Good condition"
+    },
+    "categorias": {
+      "carne": "Meat",
+      "pescado": "Fish",
+      "verdura": "Vegetables",
+      "panaderia": "Bakery",
+      "lacteos": "Dairy",
+      "congelados": "Frozen",
+      "fruta": "Fruit"
+    },
+    "mensajes": {
+      "cargando": "Loading food...",
+      "vacio": "No food registered",
+      "vacioFiltro": "No food registered in \"{{categoria}}\".",
+      "sinNombre": "No name",
+      "sinFecha": "No date"
+    }
+  },
+  "authForms": {
+    "login": {
+      "titulo": "Login",
+      "labels": {
+        "email": "Email",
+        "contrasena": "Password"
+      },
+      "boton": "Enter"
+    },
+    "registro": {
+      "titulo": "REGISTER",
+      "loremTitulo": "Lorem ipsum",
+      "labels": {
+        "usuario": "Username",
+        "email": "Email",
+        "contrasena": "Password",
+        "repetirContrasena": "Repeat Password",
+        "guardarContrasena": "Save Password"
+      },
+      "boton": "Enter"
+    }
+  },
+  "admin": {
+    "titulo": "Admin Panel",
+    "tarjetas": {
+      "totalUsuarios": "Total users",
+      "registrosHoy": "Registrations today",
+      "admins": "Administrators"
+    },
+    "grafica": {
+      "titulo": "User activity — last 14 days",
+      "leyendas": {
+        "registrosDia": "Daily registrations",
+        "usuariosAcumulados": "Accumulated users"
+      }
+    },
+    "tabla": {
+      "titulo": "Registered users",
+      "cargando": "Loading users...",
+      "columnas": {
+        "nombre": "Name",
+        "id": "ID",
+        "rol": "Role",
+        "registro": "Registration",
+        "acciones": "Actions"
+      },
+      "sinRol": "no role",
+      "tooltipEliminar": "Delete user"
+    }
+  },
+  "alertas": {
+    "confirmacionEliminarAlimento": "Are you sure you want to delete this food?",
+    "errorEliminar": "Error deleting: {{error}}",
+    "errorActualizarProducto": "Error updating product: {{error}}",
+    "errorActualizarAlimento": "Error updating food: {{error}}",
+    "errorLogin": "Error logging in: {{error}}",
+    "exitoLogin": "Login successful",
+    "confirmacionEliminarUsuario": "Delete user \"{{nombre}}\"? This action cannot be undone.",
+    "errorEliminarUsuario": "Error deleting user: {{error}}",
+    "errorContrasenasNoCoinciden": "Passwords do not match",
+    "errorCrearUsuario": "Error creating user",
+    "exitoRegistro": "User registered successfully"
+  },
+  "accesoRestringido": {
+    "titulo": "Restricted Access",
+    "login": {
+      "mensaje": "Already have an account? Log in to continue.",
+      "boton": "Log in"
+    },
+    "registro": {
+      "mensaje": "Don't have an account? Sign up to access.",
+      "boton": "Create account"
+    }
+  },
+  "rutaAdmin": {
+    "cargando": "Verifying permissions...",
+    "titulo": "Access denied",
+    "mensaje": "You do not have administrator permissions.",
+    "boton": "Return to home"
+  },
+  "graficoCategoria": {
+    "titulo": "Food by category",
+    "vacio": "No food registered yet",
+    "tooltip": {
+      "singular": "item",
+      "plural": "items"
+    }
+  }
+}

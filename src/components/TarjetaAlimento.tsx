@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { CiCalendar } from "react-icons/ci";
+import { useTranslation } from "react-i18next";
 import { MdOutlineCheck, MdOutlineClose } from "react-icons/md";
 
 interface Categoria {
@@ -72,7 +73,9 @@ const TarjetaAlimento = ({
 
   // ── MODO EDICIÓN ──────────────────────────────────────────
   if (editando) {
-    return (
+    const { t } = useTranslation();
+
+  return (
       <div className="flex flex-col w-full rounded-xl shadow-[0px_2px_4px_0px_black] bg-white dark:bg-gray-700 transition-colors overflow-hidden p-4 gap-3">
 
         {/* Nombre */}
@@ -114,33 +117,22 @@ const TarjetaAlimento = ({
               className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm"
             />
           </div>
-          <div className="flex flex-col gap-1 flex-1">
-            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Fecha caducidad</label>
-            <input
-              type="date"
-              value={fechaEdit}
-              onChange={e => setFechaEdit(e.target.value)}
-              className="w-full p-2 rounded border border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white text-sm"
-            />
+            
+          <div className="flex items-center justify-evenly text-gray-500 dark:text-gray-400 font-normal gap-2">
+            <CiCalendar size={20} />
+            <p>{fecha}</p>
+            <p>Cantidad: {cantidad}</p>
           </div>
         </div>
 
-        {/* Botones guardar / cancelar */}
-        <div className="flex gap-2 justify-end mt-1">
-          <button
-            onClick={handleCancelar}
-            style={{ border: 'none' }}
-            className="flex items-center gap-1 px-3 py-1.5 rounded bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 text-sm hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
-          >
-            <MdOutlineClose size={16} /> Cancelar
+        <div className="flex m-2.5 items-start gap-2">
+
+          <button style={{ border: 'none' }} className="flex p-2 cursor-pointer text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors bg-transparent" title="Editar">
+            <FiEdit size={20} />
           </button>
-          <button
-            onClick={handleGuardar}
-            disabled={guardando || !nombreEdit || !fechaEdit || !cantidadEdit}
-            style={{ border: 'none' }}
-            className="flex items-center gap-1 px-3 py-1.5 rounded bg-emerald-600 text-white text-sm hover:bg-emerald-700 transition-colors disabled:opacity-50"
-          >
-            <MdOutlineCheck size={16} /> {guardando ? "Guardando..." : "Guardar"}
+
+          <button style={{ border: 'none' }} className="flex p-2 cursor-pointer text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors bg-transparent" title="Borrar">
+            <FaRegTrashCan size={20} />
           </button>
         </div>
       </div>

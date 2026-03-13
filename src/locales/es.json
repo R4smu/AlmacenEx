@@ -1,0 +1,176 @@
+{
+  "header": {
+    "title": "Todo Caduca",
+    "nav": {
+      "home": "Home",
+      "addProduct": "Añadir producto",
+      "productList": "Lista producto"
+    },
+    "user": {
+      "greeting": "Hola, {{nombre}}",
+      "logout": "Cerrar sesión"
+    },
+    "auth": {
+      "register": "Registrar",
+      "login": "Login"
+    }
+  },
+  "hero": {
+    "title": "TODO CADUCA",
+    "subtitle": "Controla la caducidad de tus alimentos y evita desperdicios",
+    "buttons": {
+      "addFood": "Añadir alimento",
+      "foodList": "Lista de alimentos"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 All Rights Reserved.",
+    "links": {
+      "about": "Sobre nosotros",
+      "privacy": "Política de privacidad",
+      "licenses": "Licencias",
+      "contact": "Contacto"
+    }
+  },
+  "busqueda": {
+    "placeholder": "Escribe tu producto aquí..."
+  },
+  "tarjetaAlimento": {
+    "quantity": "Cantidad: {{cantidad}}",
+    "actions": {
+      "edit": "Editar",
+      "delete": "Borrar"
+    }
+  },
+  "imagenAnadida": {
+    "label": "Imagen",
+    "button": "Añadir"
+  },
+  "accesibilidad": {
+    "toggleTheme": "Cambiar tema"
+  },
+  "formularios": {
+    "labels": {
+      "nombre": "Nombre *",
+      "fechaCaducidad": "Fecha de caducidad *",
+      "categoria": "Categoria *",
+      "notas": "Notas (opcional)"
+    },
+    "placeholders": {
+      "nombre": "Ej: Leche entera",
+      "categoria": "Selecciona categoría",
+      "notas": "Añade cualquier información adicional al producto..."
+    }
+  },
+  "listarProductos": {
+    "estados": {
+      "caducado": "Caducado",
+      "apunto": "Caduca pronto",
+      "nocaducado": "En buen estado"
+    },
+    "categorias": {
+      "carne": "Carne",
+      "pescado": "Pescado",
+      "verdura": "Verdura",
+      "panaderia": "Panadería",
+      "lacteos": "Lácteos",
+      "congelados": "Congelados",
+      "fruta": "Fruta"
+    },
+    "mensajes": {
+      "cargando": "Cargando alimentos...",
+      "vacio": "No hay alimentos registrados",
+      "vacioFiltro": "No hay alimentos registrados en \"{{categoria}}\".",
+      "sinNombre": "Sin nombre",
+      "sinFecha": "Sin fecha"
+    }
+  },
+  "authForms": {
+    "login": {
+      "titulo": "Login",
+      "labels": {
+        "email": "Email",
+        "contrasena": "Contraseña"
+      },
+      "boton": "Entrar"
+    },
+    "registro": {
+      "titulo": "REGISTRO",
+      "loremTitulo": "Lorem ipsum",
+      "labels": {
+        "usuario": "Usuario",
+        "email": "Email",
+        "contrasena": "Contraseña",
+        "repetirContrasena": "Repetir Contraseña",
+        "guardarContrasena": "Guardar Contraseña"
+      },
+      "boton": "Entrar"
+    }
+  },
+  "admin": {
+    "titulo": "Panel de Administración",
+    "tarjetas": {
+      "totalUsuarios": "Total usuarios",
+      "registrosHoy": "Registros hoy",
+      "admins": "Administradores"
+    },
+    "grafica": {
+      "titulo": "Actividad de usuarios — últimos 14 días",
+      "leyendas": {
+        "registrosDia": "Registros del día",
+        "usuariosAcumulados": "Usuarios acumulados"
+      }
+    },
+    "tabla": {
+      "titulo": "Usuarios registrados",
+      "cargando": "Cargando usuarios...",
+      "columnas": {
+        "nombre": "Nombre",
+        "id": "ID",
+        "rol": "Rol",
+        "registro": "Registro",
+        "acciones": "Acciones"
+      },
+      "sinRol": "sin rol",
+      "tooltipEliminar": "Eliminar usuario"
+    }
+  },
+  "alertas": {
+    "confirmacionEliminarAlimento": "¿Seguro que quieres eliminar este alimento?",
+    "errorEliminar": "Error al eliminar: {{error}}",
+    "errorActualizarProducto": "Error actualizando producto: {{error}}",
+    "errorActualizarAlimento": "Error actualizando alimento: {{error}}",
+    "errorLogin": "Error al iniciar sesión: {{error}}",
+    "exitoLogin": "Login correcto",
+    "confirmacionEliminarUsuario": "¿Eliminar al usuario \"{{nombre}}\"? Esta acción no se puede deshacer.",
+    "errorEliminarUsuario": "Error eliminando usuario: {{error}}",
+    "errorContrasenasNoCoinciden": "Las contraseñas no coinciden",
+    "errorCrearUsuario": "Error creando usuario",
+    "exitoRegistro": "Usuario registrado correctamente"
+  },
+  "accesoRestringido": {
+    "titulo": "Acceso restringido",
+    "login": {
+      "mensaje": "¿Ya tienes cuenta? Inicia sesión para continuar.",
+      "boton": "Iniciar sesión"
+    },
+    "registro": {
+      "mensaje": "¿No tienes cuenta? Regístrate para acceder.",
+      "boton": "Crear cuenta"
+    }
+  },
+  "rutaAdmin": {
+    "cargando": "Verificando permisos...",
+    "titulo": "Acceso denegado",
+    "mensaje": "No tienes permisos de administrador.",
+    "boton": "Volver al inicio"
+  },
+  "graficoCategoria": {
+    "titulo": "Alimentos por categoría",
+    "vacio": "No hay alimentos registrados aún",
+    "tooltip": {
+      "singular": "alimento",
+      "plural": "alimentos"
+    }
+  }
+}

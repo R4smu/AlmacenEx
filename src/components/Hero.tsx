@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 import Boton from './Boton'
 import imagenfondo from '../assets/imagenfondo.avif'
-import { NavLink } from 'react-router-dom'
 
 const Hero = () => {
+    const { t } = useTranslation()
     const [showBackground, setShowBackground] = useState(false)
     const [showTitle, setShowTitle] = useState(false)
     const [showSubtitle, setShowSubtitle] = useState(false)
@@ -44,7 +47,7 @@ const Hero = () => {
                             showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}
                     >
-                        TODO CADUCA
+                        {t('hero.title')}
                     </h1>
                     {/* Subtítulo con animación */}
                     <p 
@@ -52,7 +55,7 @@ const Hero = () => {
                             showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}
                     >
-                        Controla la caducidad de tus alimentos y evita desperdicios
+                        {t('hero.subtitle')}
                     </p>
                 </div>
 
@@ -63,10 +66,10 @@ const Hero = () => {
                     }`}
                 >
                     <NavLink to="/anadirAlimentos">
-                        <Boton estilo="opciones">Añadir alimento</Boton>
+                        <Boton estilo="opciones">{t('hero.buttons.addFood')}</Boton>
                     </NavLink>
                     <NavLink to="/listaProducto">
-                        <Boton estilo="opciones">Lista de alimentos</Boton>
+                        <Boton estilo="opciones">{t('hero.buttons.foodList')}</Boton>
                     </NavLink>
                 </section>
             </div>

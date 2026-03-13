@@ -7,6 +7,7 @@ import Etiqueta from '../components/Etiqueta'
 import GraficoCategoria from '../components/GraficoCategoria'
 import "../index.css"
 import '../App.css'
+import { useTranslation } from 'react-i18next';
 
 const CATEGORIA_MAP: Record<string, string> = {
   "Carne":      "carne",
@@ -27,12 +28,6 @@ function calcularEstado(fecha: string): "caducado" | "apunto" | "nocaducado" {
   if (diffDias < 0) return "caducado"
   if (diffDias <= 3) return "apunto"
   return "nocaducado"
-}
-
-const ESTADO_TEXTO: Record<string, string> = {
-  caducado:   "Caducado",
-  apunto:     "Caduca pronto",
-  nocaducado: "En buen estado",
 }
 
 const CATEGORIA_BOTONES: Array<{ estilo: any; label: string; valor: string }> = [
@@ -68,6 +63,8 @@ interface Alimento {
 }
 
 export const ListarProducto = () => {
+  const { t } = useTranslation();
+
   const [alimentos, setAlimentos] = useState<Alimento[]>([])
   const [categorias, setCategorias] = useState<Categoria[]>([])
   const [filtroCategoria, setFiltroCategoria] = useState<string | null>(null)
@@ -124,14 +121,11 @@ export const ListarProducto = () => {
   }, [])
 
   const handleEliminar = async (id: string) => {
-    if (!window.confirm("¿Seguro que quieres eliminar este alimento?")) return
-    const { error } = await supabase
-      .from("alimentos_registrados")
-      .update({ estado: "eliminado" })
-      .eq("id_alimento", id)
+    if (!window.confirm(t('alertas.confirmacionEliminarAlimento'))) return
+    const { error } = await supabase.from("alimentos_registrados").update({ estado: "eliminado" }).eq("id_alimento", id)
 
     if (error) {
-      alert("Error al eliminar: " + error.message)
+      alert(t('alertas.errorEliminar', { error: error.message }))
     } else {
       setAlimentos(prev => prev.filter(a => a.id_alimento !== id))
     }
@@ -149,7 +143,7 @@ export const ListarProducto = () => {
         .eq("id_producto", idProductoActual)
 
       if (error) {
-        alert("Error actualizando producto: " + error.message)
+        alert(t('alertas.errorActualizarProducto', { error: error.message }))
         return
       }
     }
@@ -160,7 +154,7 @@ export const ListarProducto = () => {
       .eq("id_alimento", id)
 
     if (error) {
-      alert("Error actualizando alimento: " + error.message)
+      alert(t('alertas.errorActualizarAlimento', { error: error.message })) 
       return
     }
 
@@ -213,7 +207,7 @@ export const ListarProducto = () => {
 
       {/* Botones categoría — flex-wrap para que se adapten en móvil */}
       <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-4 md:px-6 pb-4">
-        {CATEGORIA_BOTONES.map(({ estilo, label, valor }) => (
+        {CATEGORIA_BOTONES.map(({ estilo, valor }) => (
           <Boton
             key={valor}
             estilo={estilo}
@@ -222,8 +216,7 @@ export const ListarProducto = () => {
               outlineOffset: '2px',
             }}
             onClick={() => setFiltroCategoria(filtroCategoria === valor ? null : valor)}
-          >
-            {label}
+          >            {t(`listarProductos.categorias.${estilo}`)}
           </Boton>
         ))}
       </div>
@@ -232,27 +225,25 @@ export const ListarProducto = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-4 md:px-10 py-4 max-w-8xl mx-auto">
         {loading ? (
           <p className="text-gray-500 dark:text-gray-400 col-span-2 text-center py-10">
-            Cargando alimentos...
+            {t('listarProductos.mensajes.cargando')}
           </p>
         ) : alimentosFiltrados.length === 0 ? (
           <p className="text-gray-500 dark:text-gray-400 col-span-2 text-center py-10">
-            No hay alimentos registrados{filtroCategoria ? ` en "${filtroCategoria}"` : ""}.
+            {filtroCategoria 
+              ? t('listarProductos.mensajes.vacioFiltro', { categoria: t(`listarProductos.categorias.${CATEGORIA_MAP[filtroCategoria]}`) })
+              : t('listarProductos.mensajes.vacio')}
           </p>
         ) : (
           alimentosFiltrados.map(alimento => {
             const categoriaNombre = alimento.productos?.categorias?.nombre ?? ""
             const categoriaKey = CATEGORIA_MAP[categoriaNombre] ?? ""
-            const estado = alimento.fecha_caducidad
-              ? calcularEstado(alimento.fecha_caducidad)
-              : "nocaducado"
-            const fechaFormateada = alimento.fecha_caducidad
-              ? alimento.fecha_caducidad.split("-").reverse().join("/")
-              : "Sin fecha"
+            const estado = alimento.fecha_caducidad ? calcularEstado(alimento.fecha_caducidad) : "nocaducado"
+            const fechaFormateada = alimento.fecha_caducidad ? alimento.fecha_caducidad.split("-").reverse().join("/") : t('listarProductos.mensajes.sinFecha')
 
             return (
               <TarjetaAlimento
                 key={alimento.id_alimento}
-                nombre_alimento={alimento.productos?.nombre ?? "Sin nombre"}
+                nombre_alimento={alimento.productos?.nombre ?? t('listarProductos.mensajes.sinNombre')}
                 fecha={fechaFormateada}
                 fechaRaw={alimento.fecha_caducidad ?? ""}
                 cantidad={alimento.cantidad}
@@ -260,17 +251,11 @@ export const ListarProducto = () => {
                 categorias={categorias}
                 idCategoriaActual={alimento.productos?.id_categoria ?? ""}
                 onEliminar={() => handleEliminar(alimento.id_alimento)}
-                onGuardar={(datos) =>
-                  handleGuardar(
-                    alimento.id_alimento,
-                    alimento.id_producto ?? undefined,
-                    datos
-                  )
-                }
+                onGuardar={(datos: any) => handleGuardar(alimento.id_alimento, alimento.id_producto ?? undefined, datos)}
               >
-                <Etiqueta texto={ESTADO_TEXTO[estado]} tipo={estado} />
+                <Etiqueta texto={t(`listarProductos.estados.${estado}`)} tipo={estado} />
                 {categoriaKey && (
-                  <Etiqueta texto={categoriaNombre} tipo={categoriaKey} />
+                  <Etiqueta texto={t(`listarProductos.categorias.${categoriaKey}`)} tipo={categoriaKey} />
                 )}
               </TarjetaAlimento>
             )
