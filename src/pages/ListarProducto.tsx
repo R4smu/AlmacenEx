@@ -302,3 +302,5 @@ export const ListarProducto = () => {
     </div>
   )
 }
+
+export default ListarProducto

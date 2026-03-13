@@ -12,7 +12,7 @@ function AnadirAlimentos() {
     const { t } = useTranslation();
 
     const [nombre, setNombre] = useState("")
-    const [categorias, setCategorias] = useState<Categoria[]>([])
+    const [categorias, setCategorias] = useState<{ id_categoria: number, nombre: string }[]>([])
     const [idCategoria, setIdCategoria] = useState("")
     const [fechaCaducidad, setFechaCaducidad] = useState("")
     const [cantidad, setCantidad] = useState("")

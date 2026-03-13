@@ -28,7 +28,7 @@ const Tarjeta: React.FC<TarjetaProps> = ({
         });
       },
       {
-        threshold: 0.2, // La tarjeta debe estar al menos 20% visible
+        threshold: 0.2,
       }
     );
 
@@ -46,7 +46,7 @@ const Tarjeta: React.FC<TarjetaProps> = ({
   return (
     <div 
       ref={cardRef}
-      className={`w-[70%] mx-auto bg-white shadow-md overflow-hidden transition-all duration-1000 ease-out ${
+      className={`w-[70%] mx-auto bg-white shadow-md overflow-hidden transition-[opacity,transform] duration-1000 ease-out ${
         isVisible 
           ? 'opacity-100 translate-x-0' 
           : `opacity-0 ${invertida ? '-translate-x-32' : 'translate-x-32'}`
@@ -58,6 +58,9 @@ const Tarjeta: React.FC<TarjetaProps> = ({
           <img 
             src={imagen} 
             alt={altImagen || titulo}
+            width={600}
+            height={400}
+            loading="lazy"
             className="w-full h-56 md:h-full object-cover"
           />
         </div>
