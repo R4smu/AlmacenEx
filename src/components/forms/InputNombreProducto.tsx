@@ -8,7 +8,7 @@ const InputNombreProducto = ({ value, onChange }: Props) => {
     <div className="flex flex-col">
       Nombre *
       <input
-        className="w-100 p-2 rounded border text-gray-700 dark:text-white"
+        className="w-full p-2 rounded border text-gray-700 dark:text-white"
         type="text"
         placeholder="Ej: Leche entera"
         value={value}

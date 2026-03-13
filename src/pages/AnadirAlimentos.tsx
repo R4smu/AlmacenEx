@@ -25,7 +25,6 @@ function AnadirAlimentos() {
 
     useEffect(() => {
         const cargarCategorias = async () => {
-
             const { data, error } = await supabase
                 .from("categorias")
                 .select("id_categoria, nombre")
@@ -60,7 +59,6 @@ function AnadirAlimentos() {
             return
         }
 
-        // Buscar si el producto ya existe
         const { data: productoExistente } = await supabase
             .from("productos")
             .select("id_producto")
@@ -69,7 +67,6 @@ function AnadirAlimentos() {
 
         let productoId = productoExistente?.id_producto
 
-        // Si no existe, crearlo con el uuid de la categoría
         if (!productoId) {
             const { data: nuevoProducto, error: errorProducto } = await supabase
                 .from("productos")
@@ -89,7 +86,6 @@ function AnadirAlimentos() {
             productoId = nuevoProducto.id_producto
         }
 
-        // Subir imagen si se seleccionó
         let imageUrl: string | null = null
 
         if (imagen) {
@@ -112,7 +108,6 @@ function AnadirAlimentos() {
             imageUrl = urlData.publicUrl
         }
 
-        // Insertar alimento
         const { error } = await supabase
             .from("alimentos_registrados")
             .insert([{
@@ -144,11 +139,11 @@ function AnadirAlimentos() {
     const formularioIncompleto = !nombre || !idCategoria || !fechaCaducidad || !cantidad
 
     return (
-        <div className='flex flex-1 justify-center'>
-            <aside className="h-full bg-gray-50 dark:bg-gray-800 flex p-6 transition-colors duration-300">
+        <div className="flex flex-1 justify-center items-start bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+            <div className="w-full max-w-md mx-auto p-4 md:p-8">
                 <form
                     onSubmit={handleSubmit}
-                    className="w-full max-w-md p-6 rounded shadow space-y-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+                    className="w-full p-5 md:p-6 rounded shadow space-y-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-300"
                 >
                     <h1 className="text-xl font-semibold">Añadir alimentos</h1>
 
@@ -169,7 +164,7 @@ function AnadirAlimentos() {
                     {/* Nombre */}
                     <InputNombreProducto value={nombre} onChange={setNombre} />
 
-                    {/* Categoría — cargada desde Supabase */}
+                    {/* Categoría */}
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-medium">Categoría *</label>
                         {categorias.length === 0 ? (
@@ -207,7 +202,7 @@ function AnadirAlimentos() {
                         />
                     </div>
 
-                    {/* Fecha de caducidad */}
+                    {/* Fecha */}
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-medium">Fecha de caducidad *</label>
                         <input
@@ -227,11 +222,12 @@ function AnadirAlimentos() {
                         type="submit"
                         disabled={loading || formularioIncompleto}
                         estilo='anadir'
+                        className="w-full"
                     >
                         {loading ? "Guardando..." : "Guardar"}
                     </Boton>
                 </form>
-            </aside>
+            </div>
         </div>
     )
 }

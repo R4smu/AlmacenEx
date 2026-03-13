@@ -142,7 +142,6 @@ export const ListarProducto = () => {
     idProductoActual: string | undefined,
     datos: { nombre: string; fecha_caducidad: string; cantidad: number; id_categoria: string }
   ) => {
-    // 1. Actualizar producto
     if (idProductoActual) {
       const { error } = await supabase
         .from("productos")
@@ -155,7 +154,6 @@ export const ListarProducto = () => {
       }
     }
 
-    // 2. Actualizar alimento
     const { error } = await supabase
       .from("alimentos_registrados")
       .update({ cantidad: datos.cantidad, fecha_caducidad: datos.fecha_caducidad })
@@ -166,7 +164,6 @@ export const ListarProducto = () => {
       return
     }
 
-    // 3. Actualizar estado local directamente — sin recargar toda la lista
     const categoriaNueva = categorias.find(c => c.id_categoria === datos.id_categoria) ?? null
 
     setAlimentos(prev => prev.map(a => {
@@ -209,17 +206,18 @@ export const ListarProducto = () => {
   return (
     <div className="w-full overflow-x-hidden bg-white dark:bg-gray-800 min-h-screen transition-colors">
 
-      <div className="flex justify-center gap-3 p-10">
+      {/* Buscador */}
+      <div className="flex justify-center px-4 md:px-10 pt-8 pb-4">
         <InputBuscarAlimentos value={busqueda} onChange={setBusqueda} />
       </div>
 
-      <div className="flex justify-evenly flex-wrap gap-3 px-4 pb-4">
+      {/* Botones categoría — flex-wrap para que se adapten en móvil */}
+      <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-4 md:px-6 pb-4">
         {CATEGORIA_BOTONES.map(({ estilo, label, valor }) => (
           <Boton
             key={valor}
             estilo={estilo}
             style={{
-              width: '160px',
               outline: filtroCategoria === valor ? '3px solid #009966' : undefined,
               outlineOffset: '2px',
             }}
@@ -230,7 +228,8 @@ export const ListarProducto = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 max-w-8xl mx-auto">
+      {/* Grid de tarjetas */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-4 md:px-10 py-4 max-w-8xl mx-auto">
         {loading ? (
           <p className="text-gray-500 dark:text-gray-400 col-span-2 text-center py-10">
             Cargando alimentos...
@@ -279,7 +278,8 @@ export const ListarProducto = () => {
         )}
       </div>
 
-      <div className="px-10 py-4 max-w-md mx-auto">
+      {/* Gráfico */}
+      <div className="px-4 md:px-10 py-4 max-w-md mx-auto">
         <GraficoCategoria alimentos={datosGrafico} />
       </div>
     </div>
